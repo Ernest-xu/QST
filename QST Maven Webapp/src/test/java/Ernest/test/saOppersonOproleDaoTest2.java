@@ -11,7 +11,7 @@ import Ernest.Dao.saOppersonOproleDaoI;
 import Ernest.Entity.SaOppersonOprole;
 
 
-/**
+/**第二种测试类方法
  * @author Ernest
  *
  */

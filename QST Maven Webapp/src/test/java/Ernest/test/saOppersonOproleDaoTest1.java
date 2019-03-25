@@ -3,6 +3,7 @@
  */
 package Ernest.test;
 
+import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ import Ernest.Entity.SaOppersonOprole;
 @ContextConfiguration(locations = { "classpath:conf/applicationContext.xml", "classpath:conf/spring-servlet.xml" })
 public class saOppersonOproleDaoTest1 {
 	
+	private static final Logger logger = Logger.getLogger(saOppersonOproleDaoTest1.class);
 	
 	@Autowired
 	private saOppersonOproleDaoI saOppersonproleDao;
@@ -34,6 +36,6 @@ public class saOppersonOproleDaoTest1 {
 		saOppersonOprole.setRoleId("aa");
 		saOppersonOprole.setSmd5str("aa");
 		saOppersonproleDao.save(saOppersonOprole);
-		System.out.println("成功");
+		logger.info("成功");
 	}
 }
