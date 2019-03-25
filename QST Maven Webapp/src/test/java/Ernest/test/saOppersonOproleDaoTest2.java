@@ -3,6 +3,7 @@
  */
 package Ernest.test;
 
+import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import Ernest.Entity.SaOppersonOprole;
  */
 
 public class saOppersonOproleDaoTest2 extends TestBase{
+	private static final Logger logger = Logger.getLogger(saOppersonOproleDaoTest2.class);
 	@Autowired
 	private saOppersonOproleDaoI saOppersonOproleDao;
 	@Before
@@ -31,7 +33,6 @@ public class saOppersonOproleDaoTest2 extends TestBase{
 		saOppersonOprole.setRoleId("aabb");
 		saOppersonOprole.setSmd5str("aabb");
 		saOppersonOproleDao.save(saOppersonOprole);
-		System.out.println("成功");
-		
+		logger.info("成功");
 	}
 }

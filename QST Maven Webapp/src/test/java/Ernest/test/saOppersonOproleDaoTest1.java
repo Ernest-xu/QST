@@ -3,6 +3,8 @@
  */
 package Ernest.test;
 
+import java.util.UUID;
+
 import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,12 +22,11 @@ import Ernest.Entity.SaOppersonOprole;
  * @author Ernest
  *
  */
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(JUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:conf/applicationContext.xml", "classpath:conf/spring-servlet.xml" })
 public class saOppersonOproleDaoTest1 {
 	
 	private static final Logger logger = Logger.getLogger(saOppersonOproleDaoTest1.class);
-	
 	@Autowired
 	private saOppersonOproleDaoI saOppersonproleDao;
 	
