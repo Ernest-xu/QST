@@ -46,11 +46,11 @@ public class saOproleServiceimp implements saOproleServiceI {
 			list.add(map);
 		}
 		if(list.isEmpty()){
-			json.put("date", "[]");
+			json.put("data", "[]");
 			json.put("success", false);
 			json.put("message", "查无数据");
 		}else{
-			json.put("date", list);
+			json.put("data", list);
 			json.put("success", true);
 			json.put("message", "查找成功");
 			

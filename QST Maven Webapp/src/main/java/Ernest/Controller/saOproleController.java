@@ -30,9 +30,9 @@ public class saOproleController {
 	@Autowired
     private saOproleServiceI saOproleservice;
 	@GetMapping("/selectRole")
-	public JSONObject getSaOproleBymd5(String md5){
+	public JSONObject getSaOproleBymd5(String md5Str){
 		
-		JSONObject jsonResult = saOproleservice.listSaOprole(md5);
+		JSONObject jsonResult = saOproleservice.listSaOprole(md5Str);
 		return jsonResult;
 	}
 	

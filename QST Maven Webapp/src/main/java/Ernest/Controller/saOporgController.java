@@ -3,6 +3,7 @@
  */
 package Ernest.Controller;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +23,8 @@ import Ernest.Service.saOporgServiceI;
 @RestController
 @RequestMapping("/saOporgController")
 public class saOporgController {
-
+	private static final Logger logger = Logger.getLogger(saOporgController.class);
+	
 	@Autowired
 	private saOporgServiceI saOporgService;
 	@PostMapping("/update")

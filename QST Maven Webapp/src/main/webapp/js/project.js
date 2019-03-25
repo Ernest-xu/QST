@@ -566,7 +566,7 @@ $(document).ready(function() {
 				var _this = this;
 				this.postArry.length = 0;
 				this.teamArry.length = 0;
-				$.axse("get", "/baas/PC/project/SelectJobList", {
+				$.axse("get", "/QST/postsetbXm3gwController/SelectJobList", {
 						id: id,
 						UserID: this.token.sID,
 					},

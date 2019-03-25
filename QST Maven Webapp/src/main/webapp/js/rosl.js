@@ -88,7 +88,7 @@ $(document).ready(function() {
 			},
 			handleNodeClick(data) {
 				var _this = this;
-				console.info(data,this.sMd5Str)
+//				console.info(data,this.sMd5Str)
 				$.axse("get", "/QST/saOppersonController/SelectOpperson", {
 						id: data,
 						md5Str: this.sMd5Str
@@ -99,7 +99,7 @@ $(document).ready(function() {
 						for (let i in _this.tableData) {
 							_this.tableData[i].hidePass = "* * * * * *";
 						}
-						console.log(_this.tableData)
+//						console.log(_this.tableData)
 						for (let j in res.Data) {
 							orleIds = "";
 							for (let i in res.Data[j].roleIds) {
@@ -686,14 +686,14 @@ $(document).ready(function() {
 						var fID = res.list[0].children[0].id;
 						_this.addForm2.Department = res.list[0].children;
 						localStorage.setItem("fName", res.list[0].label);
-						console.info(fID,_this.sMd5Str)
+//						console.info(fID,_this.sMd5Str)
 						$.axse("get", "/QST/saOppersonController/SelectOpperson", {
 								id: fID,
 								md5Str: _this.sMd5Str
 							},
 							function(res) {
 								_this.tableData = res.Data
-								console.info(res.Data);
+//								console.info(res.Data);
 								for (let i in _this.tableData) {
 									_this.tableData[i].hidePass = "* * * * * *";
 								}
@@ -742,7 +742,7 @@ $(document).ready(function() {
 						var fID = res.list[0].children[0].id;
 						_this.addForm2.Department = res.list[0].children;
 						localStorage.setItem("fName", res.list[0].label);
-						console.info(fID,_this.sMd5Str)
+//						console.info(fID,_this.sMd5Str)
 						$.axse("get", "/QST/saOppersonController/SelectOpperson", {
 								id: fID,
 								md5Str: _this.sMd5Str
@@ -1130,7 +1130,7 @@ $(document).ready(function() {
 										_this.$message.error("系统管理员不能删除~~")
 									} else {
 										_this.organArry.splice(i, 1);
-										console.log(_this.organArry);
+//										console.log(_this.organArry);
 										$.axse("get", "/baas/PC/structure/DeleteDepartment", { //baas/PC/structure/DeleteDepartment
 												sID: data
 											},

@@ -28,7 +28,7 @@ public class TimeUntil {
         DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");   
         try {   
            date = sdf.parse(TimeStr);   
-            System.out.println(date.toString());
+//            System.out.println(date.toString());
             return date;
         } catch (Exception e) {   
             e.printStackTrace();   
@@ -48,7 +48,7 @@ public class TimeUntil {
 	    DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");   
         try {   
             dateStr = sdf.format(date);   
-            System.out.println(dateStr); 
+//            System.out.println(dateStr); 
             return dateStr;
         } catch (Exception e) {   
             e.printStackTrace();   
@@ -66,7 +66,7 @@ public class TimeUntil {
 		Timestamp ts = new Timestamp(System.currentTimeMillis());   
         try {   
             ts = Timestamp.valueOf(Time);   
-            System.out.println(ts);   
+//            System.out.println(ts);   
             return ts;  
         } catch (Exception e) {   
             e.printStackTrace();   
@@ -85,7 +85,7 @@ public class TimeUntil {
         try {   
             //方法一   
         	TimeStr = sdf.format(timestamp);   
-            System.out.println(TimeStr);  
+//            System.out.println(TimeStr);  
             
             //方法二   
 //	            tsStr = ts.toString();   

@@ -26,11 +26,11 @@ import Ernest.until.TimeUntil;
 @RestController
 @RequestMapping(value="/saOppersonController")
 public class saOppersonController {
+	private static final Logger logger = Logger.getLogger(saOppersonController.class);
 	@Autowired
 	private saOppersonServiceI saOppersonService;
 	@Autowired
 	private saOporgServiceI saOporgService;
-	private static final Logger logger = Logger.getLogger(saOproleController.class);
 	
 	/**
 	 * 登录功能

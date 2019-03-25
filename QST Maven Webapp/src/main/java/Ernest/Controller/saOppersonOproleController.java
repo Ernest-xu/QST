@@ -3,8 +3,8 @@
  */
 package Ernest.Controller;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +24,7 @@ import Ernest.Service.saOppersonOproleServiceI;
 @RequestMapping("/saOppersonOprole")
 public class saOppersonOproleController {
 //	
+	private static final Logger logger = Logger.getLogger(saOppersonOproleController.class);
 	@Autowired
 	private saOppersonOproleServiceI saOppersonOproleService;
 	
