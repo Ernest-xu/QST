@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Ernest.Dao.postsetbXm3gwDaoI">
+	<resultMap type="Ernest.Entity.PostsetbXm3gw" id="PostsetbXm3gwMap">
+		<id column="fid" jdbcType="VARCHAR" property="fid"/>
+		<result column="fpostName" jdbcType="VARCHAR" property="fpostName"/>
+		<result column="fpostxmid2" jdbcType="VARCHAR" property="fpostxmid2"/>
+		<collection  property="postsetbXm"  ofType="Ernest.Entity.PostsetbXm">
+			<id column="px_fid" jdbcType="VARCHAR" property="fid"/>
+			<result column="px_fpostName" jdbcType="VARCHAR" property="fpostName"/>
+		</collection>
+	</resultMap>
+	
+	<select id="findByProjectIdAndUser" resultMap="PostsetbXm3gwMap">
+		select 
+			gw.fID as fid,
+			gw.fPostName as fpostName,
+			gw.fPostxmid2 as fpostxmid2  
+		from 
+			pm_project_project_informationtable_postsetb_xm_3gw gw ,
+			pm_project_project_informationtable_postsetb_xm xm 
+		where 
+			xm.fID=gw.fPostxmid 
+		and 
+			gw.fPostxmid1 is not null 
+		and 
+			xm.fMasterID=#{0} and xm.fWriteID=#{1}
+	</select>
+	
+</mapper>
