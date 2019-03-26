@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<organization id="1">
+		<name></name>
+		<system></system>
+		<password></password>
+		<phone></phone>
+		<functions>
+			<!-- 项目立项 -->
+			<function id="1">
+				<name>项目立项</name>
+				<url>$UI/BZB01/project/project_mainPro/mainActivity.w</url>
+				<icon>/x5/UI2/BZB01/common/image/project.png</icon>
+				<type>engineeringManager</type>
+			</function>
+
+			<!-- 角色管理 -->
+			<function id="2">
+				<name>角色管理</name>
+				<url>$UI/BZB01/organization/role/main.w</url>
+				<icon>/x5/UI2/BZB01/common/image/juese.png</icon>
+				<type>systemManager</type>
+			</function>
+			<!-- 授权管理 -->
+			<function id="3">
+				<name>授权管理</name>
+				<url>$UI/BZB01/organization/grant/main.w</url>
+				<icon>/x5/UI2/BZB01/common/image/shouquan.png</icon>
+				<type>systemManager</type>
+			</function>
+			<!-- 站班汇报 <function id="22"> <name>站班汇报</name> <url>/BZB01/project/project_zhanbanPro/mainActivity.w</url> 
+				<icon>/x5/UI2/BZB01/common/image/zhanban.png</icon> <type>systemManager</type> 
+				</function> -->
+			<!-- 岗位管理 -->
+			<function id="4">
+				<name>岗位管理</name>
+				<url>$UI/BZB01/organization/post/main.w</url>
+				<icon>/x5/UI2/BZB01/common/image/gangwei.png</icon>
+				<type>systemManager</type>
+			</function>
+			<!-- 任务分配 -->
+			<function id="5">
+				<name>任务分配</name>
+				<url>$UI/BZB01/project/project_work_distriPro/mainActivity.w</url>
+				<icon>/x5/UI2/BZB01/common/image/task.png</icon>
+				<type>engineeringManager</type>
+			</function>
+
+			<!-- 任务清单 -->
+			<function id="6">
+				<name>任务清单</name>
+				<url>$UI/BZB01/project/project_list_xmjl/mainActivity.w</url>
+				<icon>/x5/UI2/BZB01/common/image/taskList.png</icon>
+				<type>engineeringManager</type>
+			</function>
+			<!-- 现场监控 -->
+			<function id="7">
+				<name>现场监控</name>
+				<url>$UI/BZB01/RemoveVideo/mainActivity.w</url>
+				<icon>/x5/UI2/BZB01/common/image/video.png</icon>
+				<type>engineeringManager</type>
+			</function>
+
+			<!-- 1、安全标准 -->
+			<function id="8">
+				<name>安全标准</name>
+				<url>$UI/BZB01/check/safetyBasic/ins_main.w</url>
+				<icon>/x5/UI2/BZB01/common/img/iron/safeStandard.png</icon>
+				<type>systemManager</type>
+			</function>
+
+			<!-- 2、质量标准 -->
+			<function id="9">
+				<name>质量标准</name>
+				<url>$UI/BZB01/check/basic/ins_main.w</url>
+				<icon>/x5/UI2/BZB01/common/img/iron/qualityStandard.png</icon>
+				<type>systemManager</type>
+			</function>
+
+
+			<!-- 文档中心 -->
+			<function id="10">
+				<name>文档中心</name>
+				<url>$UI/BZB01/project/project_docCenter/main.w</url>
+				<icon>/x5/UI2/BZB01/common/image/document.png</icon>
+				<type>engineeringManager</type>
+			</function>
+
+			<!-- 公告通知 -->
+			<function id="11">
+				<name>公告通知</name>
+				<url>$UI/BZB01/project/projectSub_notice/noticeList.w</url>
+				<icon>/x5/UI2/BZB01/common/image/gonggao.png</icon>
+				<type>engineeringManager</type>
+			</function>
+
+			<!-- 签到打卡 -->
+			<function id="12">
+				<name>签到打卡</name>
+				<url>$UI/BZB01/project/project_Sign/Sign_SinglePerson/mainActivity.w</url>
+				<icon>/x5/UI2/BZB01/common/image/qiandao.png</icon>
+				<type>engineeringManager</type>
+			</function>
+			<function id="50">
+				<name>企业云盘</name>
+				<url>$UI/BZB01/project/project_cloud_disk/cloudDisk.w</url>
+				<icon>/x5/UI2/BZB01/common/image/cloud.png</icon>
+				<type>engineeringManager</type>
+			</function>
+
+			<!-- 日志统计 -->
+
+			<!-- 1、项目看板 -->
+			<function id="13">
+				<name>项目看板</name>
+				<url>$UI/BZB01/project/project_pandect/project_proTong/mainActivity.w</url>
+				<icon>/x5/UI2/BZB01/common/image/projectBoard.png</icon>
+				<type>logStatistics</type>
+			</function>
+
+			<!-- 2、实时数据 -->
+			<function id="14">
+				<name>实时数据</name>
+				<url>$UI/BZB01/project/project_statistics/liveDataNew.w</url>
+				<icon>/x5/UI2/BZB01/common/image/liveData.png</icon>
+				<type>logStatistics</type>
+			</function>
+
+			<!-- 3、站班日志 -->
+			<function id="15">
+				<name>站班日志</name>
+				<url>$UI/BZB01/project/project_log/project_zhanbanLog/classLog.w</url>
+				<icon>/x5/UI2/BZB01/common/image/classLog.png</icon>
+				<type>logStatistics</type>
+			</function>
+
+			<!-- 4、进度日志 -->
+			<function id="16">
+				<name>进度日志</name>
+				<url>$UI/BZB01/project/project_log/project_jinduLog/progressLog.w</url>
+				<icon>/x5/UI2/BZB01/common/image/progressLog.png</icon>
+				<type>logStatistics</type>
+			</function>
+
+			<!-- 5、质量日志 -->
+			<function id="17">
+				<name>质量日志</name>
+				<url>$UI/BZB01/check/inspectLog/inspectLog.w</url>
+				<icon>/x5/UI2/BZB01/common/img/iron/qualityLog.png</icon>
+				<type>logStatistics</type>
+			</function>
+
+			<!-- 6、安全日志 -->
+			<function id="18">
+				<name>安全日志</name>
+				<url>$UI/BZB01/check/safetyInspectLog/inspectLog.w</url>
+				<!-- 图标没换 -->
+				<icon>/x5/UI2/BZB01/common/img/iron/safeLog.png</icon>
+				<type>logStatistics</type>
+			</function>
+
+			<!-- 7、质量统计 -->
+			<function id="19">
+				<name>质量统计</name>
+				<url>$UI/BZB01/check/statisticsChart/passNumChart/passNumChart.w</url>
+				<icon>/x5/UI2/BZB01/common/img/iron/qualityStatistic.png</icon>
+				<type>logStatistics</type>
+			</function>
+			<!-- 8、安全统计 -->
+			<function id="20">
+				<name>安全统计</name>
+				<url>$UI/BZB01/check/statisticsChart/safetyStatistics/passNumChart.w</url>
+				<icon>/x5/UI2/BZB01/common/img/iron/safeStatistic.png</icon>
+				<type>logStatistics</type>
+			</function>
+
+
+
+			<!-- 履职日志 -->
+			<function id="21">
+				<name>履职日志</name>
+				<url>$UI/BZB01/project/project_record/mainActivity.w</url>
+				<icon>/x5/UI2/BZB01/common/image/resumption.png</icon>
+				<type>logStatistics</type>
+			</function>
+
+			<function id="22">
+				<name>风险日志</name>
+				<url>$UI/BZB01/project/project_riskwarning/list/listRiskwarning.w</url>
+				<icon>/x5/UI2/BZB01/common/image/riskLog.png</icon>
+				<type>logStatistics</type>
+			</function>
+
+			<!-- 汇报类功能 -->
+
+			<function id="23">
+				<name>站班汇报</name>
+				<url>$UI/BZB01/project/project_zhanbanPro/mainActivity.w</url>
+				<icon>/x5/UI2/BZB01/common/image/zhanban.png</icon>
+				<type>reportFunctions</type>
+			</function>
+
+
+			<function id="24">
+				<name>进度汇报</name>
+				<url>$UI/BZB01/project/project_jindureport/mainActivity.w</url>
+				<icon>/x5/UI2/BZB01/common/image/jindu.png</icon>
+				<type>reportFunctions</type>
+			</function>
+
+			<function id="25">
+				<name>质量检查</name>
+				<url>$UI/BZB01/check/addInspect/addInspect.w</url>
+				<icon>/x5/UI2/BZB01/common/img/iron/qualityCheck.png</icon>
+				<type>reportFunctions</type>
+			</function>
+			<function id="26">
+				<name>安全检查</name>
+				<url>$UI/BZB01/check/safetyAddInspect/addInspect.w</url>
+				<icon>/x5/UI2/BZB01/common/img/iron/safeCheck.png</icon>
+				<type>reportFunctions</type>
+			</function>
+			<!-- <function id="37"> <name>公告通知</name> <url>/BZB01/project/projectSub_notice/noticeList.w</url> 
+				<icon>/x5/UI2/BZB01/common/image/gonggao.png</icon> <type>reportFunctions</type> 
+				</function> -->
+			<function id="27">
+				<name>签到打卡</name>
+				<url>$UI/BZB01/project/project_Sign/Sign_SinglePerson/mainActivity.w</url>
+				<icon>/x5/UI2/BZB01/common/image/qiandao.png</icon>
+				<type>reportFunctions</type>
+			</function>
+
+
+			<function id="28">
+				<name>工作票配置</name>
+				<url>$UI/BZB01/basic/basic_BasicworkPiao/BasicworkPianPro/mainActivity.w</url>
+				<icon>/x5/UI2/BZB01/common/image/workTicket.png</icon>
+				<type>systemManager</type>
+			</function>
+
+			<function id="29">
+				<name>日排行榜</name>
+				<url>$UI/BZB01/project/project_clock_in/clockDay/clockDay.w</url>
+				<icon>/x5/UI2/BZB01/common/image/riskLog.png</icon>
+				<type>engineeringManager</type>
+			</function>
+
+			<function id="30">
+				<name>月度考勤</name>
+				<url>$UI/BZB01/project/project_clock_in/clockMonth/clockMonth.w</url>
+				<icon>/x5/UI2/BZB01/common/image/jiaodiLog.png</icon>
+				<type>engineeringManager</type>
+			</function>
+		
+			<function id="31">
+				<name>工作履职</name>
+				<url>$UI/BZB01/project/project_workSchedule/workSchedule.w</url>
+				<icon>/x5/UI2/BZB01/common/image/workSchedule.png</icon>
+				<type>reportFunctions</type>
+			</function>
+
+			<function id="32">
+				<name>风险管控</name>
+				<url>$UI/BZB01/project/project_riskwarning/new/newRiskwarning.w</url>
+				<icon>/x5/UI2/BZB01/common/image/riskController.png</icon>
+				<type>reportFunctions</type>
+			</function>
+			<function id="33">
+				<name>交底日志</name>
+				<url>$UI/BZB01/project/project_disclosure_log/listDisclosure.w</url>
+				<icon>/x5/UI2/BZB01/common/image/jiaodiLog.png</icon>
+				<type>logStatistics</type>
+			</function>
+
+			<function id="34">
+				<name>工程罗盘</name>
+				<url>$UI/BZB01/mobileCharts/index.w</url>
+				<icon>/x5/UI2/BZB01/common/image/mobileCharts.png</icon>
+				<type>logStatistics</type>
+			</function>
+			<function id="35">
+				<name>施工交底</name>
+				<url>$UI/BZB01/project/project_disclosure/mainActivity.w</url>
+				<icon>/x5/UI2/BZB01/common/image/jiaodi.png</icon>
+				<type>reportFunctions</type>
+			</function>
+			
+			<function id="36">
+				<name>人脸注册</name>
+				<url>$UI/BZB01/face/faceRegister.w</url>
+				<icon>/x5/UI2/BZB01/common/image/faceRegister.png</icon>
+				<type>engineeringManager</type>
+			</function>
+
+			<function id="37">
+				<name>人脸签到</name>
+				<url>$UI/BZB01/face/faceSign.w</url>
+				<icon>/x5/UI2/BZB01/common/image/faceSign.png</icon>
+				<type>engineeringManager</type>
+			</function>
+		</functions>
+	</organization>
+</root>
