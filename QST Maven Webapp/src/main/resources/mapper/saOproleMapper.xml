@@ -85,7 +85,7 @@
 				<if test="sname != null">
 					sname = #{sname,jdbcType=VARCHAR},
 				</if>
-				<if test="smd5ste !=null">
+				<if test="smd5str !=null">
 					smd5str = #{smd5str,jdbcType=VARCHAR},
 				</if>
 				<if test="screateTime !=null">
@@ -115,4 +115,8 @@
 		where  
 			sa.sID=so.roleID and so.userID=sop.sParentID2 and sop.sID=#{id}
 	</select>
+	
+	<delete id="deleteById" parameterType="String">
+		DELETE  FROM sa_oprole WHERE sID=#{id}
+	</delete>
 </mapper>

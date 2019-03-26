@@ -27,6 +27,8 @@ public interface saOproleDaoI {
 	
 	void update(saOprole saOprole);
 	
+	void deleteById(String id);
+	
 	List<saOprole> findJob(String id);
 
 	List<saOprole> findgroup(String id);

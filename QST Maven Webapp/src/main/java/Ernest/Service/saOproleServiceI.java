@@ -23,7 +23,12 @@ public interface saOproleServiceI {
 	
 	void addSaOprole(saOprole saOprole);
 	
-	void updateById(saOprole saOprole);
+	JSONObject updateById(String sID,String sName);
 	
 	List<Map<String, Object>> selectJobName(String id);
+	
+	JSONObject CreateRoleAndFunction(String fRoleName,String companyId,String md5Str);
+	
+	JSONObject DeleteRole(String id);
+	
 }

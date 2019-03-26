@@ -57,6 +57,22 @@ public class saOproleController {
 		return jsonResult;
 	}
 	
+	@GetMapping("/CreateRole")
+	public JSONObject CreateRole(String fRoleName,String companyId,String md5Str){
+		JSONObject json = saOproleservice.CreateRoleAndFunction(fRoleName, companyId, md5Str);
+		return json;
+	}
+	
+	@GetMapping("/UpdateRole")
+	public JSONObject updateRole(String sID,String sName){
+		JSONObject json = saOproleservice.updateById(sID, sName);
+		return json;
+	}
+	@GetMapping("/deleteRole")
+	public JSONObject DeleteRole(String sID){
+		JSONObject json = saOproleservice.DeleteRole(sID);
+		return json;
+	}
 	
 	
 }

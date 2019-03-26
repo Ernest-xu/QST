@@ -3,10 +3,13 @@
  */
 package Ernest.Service.Imp;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +18,7 @@ import com.alibaba.fastjson.JSONObject;
 
 import Ernest.Dao.saOproleDaoI;
 import Ernest.Entity.saOprole;
+import Ernest.Service.saFunctionServiceI;
 import Ernest.Service.saOproleServiceI;
 import Ernest.until.TimeUntil;
 
@@ -26,6 +30,8 @@ import Ernest.until.TimeUntil;
 public class saOproleServiceimp implements saOproleServiceI {
 	 @Autowired
 	private saOproleDaoI saOproleDao;
+	 @Autowired
+	 private saFunctionServiceI saFunctionService;
 	/* (non-Javadoc)
 	 * @see Ernest.Service.saOproleServiceI#listSaOprole(java.lang.String)
 	 */
@@ -74,11 +80,6 @@ public class saOproleServiceimp implements saOproleServiceI {
 		saOproleDao.save(saOprole);
 	}
 
-	
-	@Override
-	public void updateById(saOprole saOprole) {
-		saOproleDao.update(saOprole);
-	}
 
 	/* (non-Javadoc)
 	 * @see Ernest.Service.saOproleServiceI#selectJobName(java.lang.String)
@@ -125,6 +126,62 @@ public class saOproleServiceimp implements saOproleServiceI {
 			json.put("message", "查找成功");
 			
 		}
+		return json;
+	}
+
+	/* (non-Javadoc)
+	 * @see Ernest.Service.saOproleServiceI#CreateRoleAndFunction(java.lang.String, java.lang.String, java.lang.String)
+	 */
+	@Override
+	public JSONObject CreateRoleAndFunction(String fRoleName, String companyId, String md5Str) {
+		JSONObject json = new JSONObject();
+		saOprole saoprole = new saOprole();
+		String sID = UUID.randomUUID().toString();
+		saoprole.setSid(sID);
+		saoprole.setSmd5str(md5Str);
+		Date date = new Date();
+		Timestamp timeStamep = new Timestamp(date.getTime());
+		saoprole.setScreateTime(timeStamep);
+		saoprole.setSname(fRoleName);
+		JSONObject job = saFunctionService.saveAllFunction(sID, companyId);
+		if(job.getBoolean("success")){
+			saOproleDao.save(saoprole);
+			json.put("success", true);
+			json.put("message", "创建成功");
+		}else{
+			json.put("success", false);
+			json.put("message", "创建失败");
+			
+		}
+		
+		return json;
+	}
+
+	/* (non-Javadoc)
+	 * @see Ernest.Service.saOproleServiceI#updateById(java.lang.String, java.lang.String)
+	 */
+	@Override
+	public JSONObject updateById(String sID, String sName) {
+		saOprole saoprole = new saOprole();
+		JSONObject json = new JSONObject();
+		saoprole.setSid(sID);
+		saoprole.setSname(sName);
+		saOproleDao.update(saoprole);
+		json.put("success", true);
+		json.put("message", "修改成功");
+		return json;
+	}
+
+	/* (non-Javadoc)
+	 * @see Ernest.Service.saOproleServiceI#DeleteRole(java.lang.String)
+	 */
+	@Override
+	public JSONObject DeleteRole(String id) {
+		JSONObject json = new JSONObject();
+		saOproleDao.deleteById(id);
+		saFunctionService.deleteFunctionByRole(id);
+		json.put("success", true);
+		json.put("message", "成功");
 		return json;
 	}
 

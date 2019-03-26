@@ -868,7 +868,7 @@ $(document).ready(function() {
 							if (data.sName == "") {
 								return _this.$message.error("添加职位不能为空~");
 							}
-							$.axse("get", "/baas/PC/structure/CreateRole", {
+							$.axse("get", "/QST/saOproleController/CreateRole", {
 									fRoleName: data.sName,
 									companyId: companyId,
 									md5Str: _this.sMd5Str
@@ -924,7 +924,7 @@ $(document).ready(function() {
 							if (data.sName == "") {
 								return _this.$message.error("修改职位不能为空~");
 							}
-							$.axse("get", "/baas/PC/structure/UpdateRole", {
+							$.axse("get", "/QST/saOproleController/UpdateRole", {
 									sID: data.sID,
 									sName: data.sName
 								},
@@ -976,7 +976,7 @@ $(document).ready(function() {
 									break;
 								}
 							}
-							$.axse("get", "/baas/PC/structure/deleteRole", {
+							$.axse("get", "/QST/saOproleController/deleteRole", {
 									sID: data
 								},
 								function(res) {
@@ -1176,10 +1176,12 @@ $(document).ready(function() {
 				var objID = JSON.parse(token)
 				var companyId = objID.sMainOrgID;
 				var _this = this;
+				console.info(this.sMd5Str,_this.sMd5tr);
 				$.axse("get", "/QST/saOproleController/selectRole", {
 						md5Str: this.sMd5Str,
 					},
 					function(res) {
+						console.info("角色表",res.data);
 						_this.source = res.data;
 						_this.getList(companyId);
 					},

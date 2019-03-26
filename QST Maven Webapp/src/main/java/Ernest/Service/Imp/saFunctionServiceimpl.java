@@ -68,14 +68,26 @@ public class saFunctionServiceimpl implements saFunctionServiceI {
 				saFunction.setSicon(fIcon);
 				saFunction.setSorder(id);
 				saFunction.setStype(fType);
-				logger.info(saFunction.toString());
+//				logger.info(saFunction.toString());
 				list.add(saFunction);
 			}
 		}
-		logger.info(aa);
+//		logger.info(aa);
 		saFunctionDao.batchSaves(list);
 		json.put("success",true);
 		json.put("message","成功");
+		return json;
+	}
+
+	/* (non-Javadoc)
+	 * @see Ernest.Service.saFunctionServiceI#deleteFunctionByRole(java.lang.String)
+	 */
+	@Override
+	public JSONObject deleteFunctionByRole(String id) {
+		JSONObject json = new JSONObject();
+		saFunctionDao.deleteByRoleId(id);
+		json.put("success", true);
+		json.put("message", "成功");
 		return json;
 	}
 
