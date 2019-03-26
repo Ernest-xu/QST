@@ -25,10 +25,14 @@ public interface saOporgDaoI {
 
 	List<SaOporg> getAllDepartment(String md5,String kind);
 	
-	void save(SaOporg saOporg);
+	int save(SaOporg saOporg);
 	
-	void updateById(SaOporg saOporg);
+	int updateById(SaOporg saOporg);
 	
 	List<SaOporg> findByMd5(String md5);
+	
+	int deleteByIds(List<String> list);
+	
+	SaOporg findDetail(String id);
 	
 }

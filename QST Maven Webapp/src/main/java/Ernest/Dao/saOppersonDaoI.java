@@ -24,9 +24,11 @@ public interface saOppersonDaoI {
 	 */
 	SaOpperson Login(String name,String password);
 	
-	void save(SaOpperson saOpperson);
+	int save(SaOpperson saOpperson);
 	
 	List<SaOpperson> findPersonList(String id);
 	
 	List<SaOpperson> likeFindPersonList(String md5 ,String id,String name);
+	
+	int deleteByIds(List<String> list);
 }

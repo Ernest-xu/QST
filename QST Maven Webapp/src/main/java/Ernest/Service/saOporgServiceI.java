@@ -17,11 +17,17 @@ public interface saOporgServiceI {
 	
 	SaOporg findAdmin(String md5,String kind);
 	
-	void save(SaOporg saOporg);
+	JSONObject save(String sFName,String sMd5Str,String sParentID);
 	
 	String updateSaOporgById(JSONObject json);
 	
 	String findRoleList(String md5);
 	
 	Map<String ,Object> AllDepartment(String md5);
+	
+	JSONObject updateSaOporgById(String sFName,String sID);
+	
+	
+	
+	
 }

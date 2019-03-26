@@ -320,4 +320,12 @@
 		where 
 			 (sa.sID=so.sID or sa.sID=so.sParentID2) and sa.sMd5Str = #{0} and sDeptID=#{1} and (sa.sName  LIKE CONCAT('%',#{2},'%') or sa.sLoginName like CONCAT('%',#{2},'%'))
 	</select>
+	
+	<delete id="deleteByIds" parameterType="java.util.List">
+		DELETE FROM  sa_opperson where sID in 
+	<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+		#{item}
+	</foreach>
+	</delete>
+	
 </mapper>

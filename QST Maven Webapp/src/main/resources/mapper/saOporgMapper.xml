@@ -164,4 +164,13 @@
 		where 
 			sMd5Str=#{md5}
 	</select>
+	
+	<delete id="deleteByIds" parameterType="java.util.List">
+		DELETE FROM  sa_oporg where sID in 
+	<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+		#{item}
+	</foreach>
+	</delete>
+	
+	
 </mapper>

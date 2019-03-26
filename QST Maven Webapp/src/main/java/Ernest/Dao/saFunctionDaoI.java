@@ -17,11 +17,13 @@ import Ernest.Entity.SaFunction;
 public interface saFunctionDaoI {
 
 	
-	void save(SaFunction saFunction);
+	int save(SaFunction saFunction);
 	
-	void updateById(SaFunction saFunction);
+	int updateById(SaFunction saFunction);
 	
 	void batchSaves(List<SaFunction> list);
 	
-	void deleteByRoleId(String id);
+	int deleteByRoleId(String id);
+	
+	int deleteByRoleIds(List<String> list);
 }

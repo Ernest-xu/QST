@@ -42,4 +42,17 @@ public class saOporgController {
 		String message = saOporgService.findRoleList(sMd5Str);
 		return message;
 	}
+	
+	@PostMapping("/CreateDepartment")
+	public JSONObject CreateDepartment(String sFName,String sParentID,String sMd5Str){
+		JSONObject json = saOporgService.save(sFName, sMd5Str, sParentID);
+		return json;
+	}
+	@PostMapping("/UpdateDepartment")
+	public JSONObject UpdateDepartment(String sFName,String sID){
+		JSONObject json = saOporgService.updateSaOporgById(sFName, sID);
+		return json;
+	}
+	
+	
 }

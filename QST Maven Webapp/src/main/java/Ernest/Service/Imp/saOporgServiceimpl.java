@@ -3,11 +3,16 @@
  */
 package Ernest.Service.Imp;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
+import java.util.UUID;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +30,7 @@ import Ernest.until.RecursiveHierarchy;
 @Service
 public class saOporgServiceimpl implements saOporgServiceI{
 
+	private static final Logger logger = Logger.getLogger(saOporgServiceimpl.class);
 	@Autowired
 	private saOporgDaoI saOporgDao;
 	@Override
@@ -32,11 +38,7 @@ public class saOporgServiceimpl implements saOporgServiceI{
 		return saOporgDao.findAdmin(md5, kind);
 	}
 	
-	@Override
-	public void save(SaOporg saOporg) {
-		
-		saOporgDao.save(saOporg);
-	}
+	
 
 	
 	@Override
@@ -108,6 +110,78 @@ public class saOporgServiceimpl implements saOporgServiceI{
 			map.put(list.get(i).getSid(),list.get(i).getSfname() );
 		}
 		return map;
+	}
+
+
+
+
+	/* (non-Javadoc)
+	 * @see Ernest.Service.saOporgServiceI#save(java.lang.String, java.lang.String, java.lang.String)
+	 */
+	@Override
+	public JSONObject save(String sFName, String sMd5Str, String sParentID) {
+		JSONObject json = new JSONObject();
+		SaOporg saOporg = new SaOporg();
+		String sNodeKind = "dep";
+		String img1 = "/x5/UI2/BZB01/common/image/dept1.png", 
+			   img2 = "/x5/UI2/BZB01/common/image/dept2.png", 
+			   img3 = "/x5/UI2/BZB01/common/image/dept3.png", 
+			   img4 = "/x5/UI2/BZB01/common/image/dept1.png", 
+			   img5 = "/x5/UI2/BZB01/common/image/dept1.png", 
+			   img6 = "/x5/UI2/BZB01/common/image/dept1.png";
+		List<String> imgList=new ArrayList<String>();
+		imgList.add(img6);
+		imgList.add(img5);
+		imgList.add(img4);
+		imgList.add(img3);
+		imgList.add(img2);
+		imgList.add(img1);
+		String fImage=imgList.get(new Random().nextInt(5)+1);
+		Date date = new Date();
+		Timestamp screateTime = new Timestamp(date.getTime());
+		if("系统管理员".equals(sFName)){
+			json.put("message", "保存失败，不允许创建名为系统管理员的部门");
+			json.put("success", false);
+		}else{
+			String sID = UUID.randomUUID().toString();
+			saOporg.setSid(sID);
+			saOporg.setSmd5str(sMd5Str);
+			saOporg.setSparentId(sParentID);
+			saOporg.setFimage(fImage);
+			saOporg.setSnodeKind(sNodeKind);
+			saOporg.setScreateTime(screateTime);
+			saOporgDao.save(saOporg);
+			logger.info(sID);
+			json.put("message", "保存成功");
+			json.put("success", true);
+		}
+		
+		return json;
+	}
+
+
+
+
+	/* (non-Javadoc)
+	 * @see Ernest.Service.saOporgServiceI#updateSaOporgById(java.lang.String, java.lang.String)
+	 */
+	@Override
+	public JSONObject updateSaOporgById(String sFName, String sID) {
+		JSONObject json = new JSONObject();
+		SaOporg saOporg = new SaOporg();
+		if("系统管理员".equals(sFName)){
+			json.put("success",false);
+			json.put("message","修改失败，不允许修改为系统管理员");
+		}else{
+			saOporg.setSid(sID);
+			saOporg.setSfname(sFName);
+			saOporgDao.updateById(saOporg);
+			json.put("success",true);
+			json.put("message","修改成功");
+		}
+		
+		
+		return json;
 	}
 
 }

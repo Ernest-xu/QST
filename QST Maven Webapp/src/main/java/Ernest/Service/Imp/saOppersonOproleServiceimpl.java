@@ -3,6 +3,7 @@
  */
 package Ernest.Service.Imp;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,7 @@ import Ernest.Service.saOppersonOproleServiceI;
  */
 @Service
 public class saOppersonOproleServiceimpl implements saOppersonOproleServiceI {
-	
+	private static final Logger logger = Logger.getLogger(saOppersonOproleServiceimpl.class);
 	@Autowired
 	private saOppersonOproleDaoI saOODao;
 	
@@ -83,6 +84,20 @@ public class saOppersonOproleServiceimpl implements saOppersonOproleServiceI {
 			return job.toJSONString();
 		}
 		
+	}
+
+
+	/* (non-Javadoc)
+	 * @see Ernest.Service.saOppersonOproleServiceI#deletByUserId(java.lang.String)
+	 */
+	@Override
+	public JSONObject deletByUserId(String id) {
+		JSONObject json = new JSONObject();
+		int a =  saOODao.deletByUserId(id);
+		logger.info(a);
+		json.put("success", true);
+		json.put("message", "成功");
+		return json;
 	}
 
 	

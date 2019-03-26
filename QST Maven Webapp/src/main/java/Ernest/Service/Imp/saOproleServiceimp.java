@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,7 @@ import com.alibaba.fastjson.JSONObject;
 import Ernest.Dao.saOproleDaoI;
 import Ernest.Entity.saOprole;
 import Ernest.Service.saFunctionServiceI;
+import Ernest.Service.saOppersonOproleServiceI;
 import Ernest.Service.saOproleServiceI;
 import Ernest.until.TimeUntil;
 
@@ -28,10 +30,13 @@ import Ernest.until.TimeUntil;
  */
 @Service
 public class saOproleServiceimp implements saOproleServiceI {
+	private static final Logger logger = Logger.getLogger(saOproleServiceimp.class);
 	 @Autowired
 	private saOproleDaoI saOproleDao;
 	 @Autowired
 	 private saFunctionServiceI saFunctionService;
+	 @Autowired
+	 private saOppersonOproleServiceI saOppersonOproleService;
 	/* (non-Javadoc)
 	 * @see Ernest.Service.saOproleServiceI#listSaOprole(java.lang.String)
 	 */
@@ -77,7 +82,7 @@ public class saOproleServiceimp implements saOproleServiceI {
 	 */
 	@Override
 	public void addSaOprole(saOprole saOprole) {
-		saOproleDao.save(saOprole);
+		int a = saOproleDao.save(saOprole);
 	}
 
 
@@ -166,7 +171,8 @@ public class saOproleServiceimp implements saOproleServiceI {
 		JSONObject json = new JSONObject();
 		saoprole.setSid(sID);
 		saoprole.setSname(sName);
-		saOproleDao.update(saoprole);
+		int a = saOproleDao.update(saoprole);
+		logger.info(a);
 		json.put("success", true);
 		json.put("message", "修改成功");
 		return json;
@@ -178,8 +184,9 @@ public class saOproleServiceimp implements saOproleServiceI {
 	@Override
 	public JSONObject DeleteRole(String id) {
 		JSONObject json = new JSONObject();
-		saOproleDao.deleteById(id);
+		int a = saOproleDao.deleteById(id);
 		saFunctionService.deleteFunctionByRole(id);
+		saOppersonOproleService.deletByUserId(id);
 		json.put("success", true);
 		json.put("message", "成功");
 		return json;

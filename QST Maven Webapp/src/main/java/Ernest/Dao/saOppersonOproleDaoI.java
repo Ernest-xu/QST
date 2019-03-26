@@ -17,13 +17,16 @@ import Ernest.Entity.SaOppersonOprole;
 public interface saOppersonOproleDaoI {
 
 	
-	void save(SaOppersonOprole saOppersonOprole);
+	int save(SaOppersonOprole saOppersonOprole);
 	
-	void updateById(SaOppersonOprole saOppersonOprole);
+	int updateById(SaOppersonOprole saOppersonOprole);
 	
 	SaOppersonOprole findById(String id);
 	
-	void deletById(String id);
+	int deletById(String id);
 	
+	int deletByUserId(String id);
+	
+	int deleteByUserIds(List<String> list);
 	
 }

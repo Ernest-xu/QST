@@ -30,13 +30,14 @@ public class saOppersonOproleDaoTest1 {
 	@Autowired
 	private saOppersonOproleDaoI saOppersonproleDao;
 	
-	@Test
+//	@Test
 	public void save(){
 		SaOppersonOprole saOppersonOprole=new SaOppersonOprole();
 		saOppersonOprole.setSid("aa");
 		saOppersonOprole.setRoleId("aa");
 		saOppersonOprole.setSmd5str("aa");
-		saOppersonproleDao.save(saOppersonOprole);
+		int a  = saOppersonproleDao.save(saOppersonOprole);
+		logger.info(a);
 		logger.info("成功");
 	}
 }

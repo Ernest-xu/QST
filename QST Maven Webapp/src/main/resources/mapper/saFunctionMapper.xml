@@ -125,4 +125,11 @@
 		Delete From sa_function where roleId =#{id}
 	</delete>
 	
+	<delete id="deleteByRoleIds" parameterType="java.util.List">
+	DELETE FROM  sa_function where roleId in 
+	<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+	#{item}
+	</foreach>
+	</delete>
+	
 </mapper>

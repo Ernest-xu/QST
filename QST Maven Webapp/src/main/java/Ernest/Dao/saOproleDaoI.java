@@ -19,15 +19,15 @@ public interface saOproleDaoI {
 	/**
 	 * 
 	 */
-	void save(saOprole saOprole);
+	int save(saOprole saOprole);
 	
 	saOprole findBySaOproleId(String Id); 
 		
 	List<saOprole> findAllBySaOproleSmd5str(String smd5str);
 	
-	void update(saOprole saOprole);
+	int update(saOprole saOprole);
 	
-	void deleteById(String id);
+	int deleteById(String id);
 	
 	List<saOprole> findJob(String id);
 

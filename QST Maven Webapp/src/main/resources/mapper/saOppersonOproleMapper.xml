@@ -70,5 +70,16 @@
 		DELETE FROM sa_opperson_oprole WHERE sid=#{id,jdbcType=VARCHAR}
 	</delete>
 	
+	<delete id="deletByUserId" parameterType="String">
+		DELETE FROM sa_opperson_oprole WHERE userID=#{id,jdbcType=VARCHAR}
+	</delete>
+	
+	<delete id="deleteByUserIds" parameterType="java.util.List">
+	DELETE FROM  sa_opperson_oprole where userID in 
+	<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+	#{item}
+	</foreach>
+	</delete>
+	
 	
 </mapper>

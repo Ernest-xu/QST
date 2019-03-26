@@ -20,4 +20,6 @@ public interface saOppersonOproleServiceI {
 	String DeleteSaOpersonOprole(String id);
 	
 	String findSaOpersonOprole(String id);
+	
+	JSONObject deletByUserId(String id);
 }

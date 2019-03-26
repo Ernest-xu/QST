@@ -86,4 +86,16 @@ public class saFunctionTest extends TestBase {
 //		json.put("message","成功");
 	}
 	
+//	@Test
+	public void Deletefunction(){
+		List<String> list = new ArrayList<String>();
+		list.add("aa");
+		list.add("bb");
+		list.add("cc");
+		int a = saFunctionDao.deleteByRoleIds(list);
+		logger.info(a);
+		logger.info("成功");
+		
+	}
+	
 }

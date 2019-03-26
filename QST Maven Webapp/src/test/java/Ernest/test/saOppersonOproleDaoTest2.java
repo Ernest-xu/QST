@@ -25,7 +25,7 @@ public class saOppersonOproleDaoTest2 extends TestBase{
 	public void init(){
 		saOppersonOproleDao = super.getContext().getBean("saOppersonOproleDaoI",saOppersonOproleDaoI.class);
 	}
-	@Test
+//	@Test
 	public void Testsave(){
 		
 		SaOppersonOprole saOppersonOprole=new SaOppersonOprole();

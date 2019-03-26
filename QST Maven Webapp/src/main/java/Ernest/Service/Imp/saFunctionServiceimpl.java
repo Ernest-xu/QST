@@ -85,7 +85,8 @@ public class saFunctionServiceimpl implements saFunctionServiceI {
 	@Override
 	public JSONObject deleteFunctionByRole(String id) {
 		JSONObject json = new JSONObject();
-		saFunctionDao.deleteByRoleId(id);
+		int a = saFunctionDao.deleteByRoleId(id);
+		logger.info(a);
 		json.put("success", true);
 		json.put("message", "成功");
 		return json;

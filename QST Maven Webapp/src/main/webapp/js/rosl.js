@@ -1042,7 +1042,7 @@ $(document).ready(function() {
 								return _this.$message.error("系统管理员不能创建~~")
 							}
 							_this.organArry.push(data);
-							$.axse("get", "/baas/PC/structure/CreateDepartment", {
+							$.axse("post", "/QST/saOporgController/CreateDepartment", {
 									sFName: data.label,
 									sParentID: findId,
 									sMd5Str: _this.sMd5Str
@@ -1092,7 +1092,7 @@ $(document).ready(function() {
 								if (data.label == "") {
 									return _this.$message.error("修改部门不能为空~");
 								}
-								$.axse("get", "/baas/PC/structure/UpdateDepartment", { 
+								$.axse("post", "/QST/saOporgController/UpdateDepartment", { 
 										sFName: data.label,
 										sID: data.id
 									},

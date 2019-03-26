@@ -119,4 +119,10 @@
 	<delete id="deleteById" parameterType="String">
 		DELETE  FROM sa_oprole WHERE sID=#{id}
 	</delete>
+	<delete id="deleteByIds" parameterType="java.util.List">
+	DELETE FROM  sa_oprole where sID in 
+	<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+	#{item}
+	</foreach>
+	</delete>
 </mapper>
