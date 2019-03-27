@@ -89,4 +89,12 @@ public class saOppersonController {
 		
 	}
 	
+	@PostMapping("/InsertOpperson")
+	@ResponseBody
+	public JSONObject InsertOpperson(String realName,String account,String sex,String password,String md5Str ,String roleIds,String orgId){
+		JSONObject json = saOppersonService.CreatePerson(realName, account, sex, password, md5Str, roleIds, orgId);
+		logger.info(json);
+		return json;
+	}
+	
 }

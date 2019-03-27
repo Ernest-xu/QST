@@ -81,5 +81,13 @@
 	</foreach>
 	</delete>
 	
+	<insert id="batchSaves" parameterType="java.util.List">
+ 		insert into sa_opperson_oprole  (sid,userId,roleId,smd5str )values 
+		<foreach collection="list" item="item" index="index" separator=",">
+			<!-- 保证与实体类的字段一致，以对象的关系定义（注：区分大小写） -->
+ 			(#{item.sid,jdbcType=VARCHAR},#{item.userId,jdbcType=VARCHAR},
+			#{item.roleId,jdbcType=VARCHAR},#{item.smd5str,jdbcType=SMALLINT}) 
+		</foreach>
+	</insert>
 	
 </mapper>

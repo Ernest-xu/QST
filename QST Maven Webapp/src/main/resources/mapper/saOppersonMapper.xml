@@ -74,7 +74,7 @@
 		and sa.sLoginName=#{0} and sa.sPassword=#{1} order by sNodeKind 
 		
 	</select>
-	
+			
 	<insert id="save" parameterType="Ernest.Entity.SaOpperson">
 		insert into sa_opperson 
 		<trim prefix="(" suffix=")" suffixOverrides=",">

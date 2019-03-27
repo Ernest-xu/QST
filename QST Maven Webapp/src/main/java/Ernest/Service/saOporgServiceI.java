@@ -29,4 +29,7 @@ public interface saOporgServiceI {
 	
 	JSONObject deleteByParentId(String sParentID);
 	
+	SaOporg findTopByMd5(String md5);
+	
+	int save(SaOporg saOporg);
 }

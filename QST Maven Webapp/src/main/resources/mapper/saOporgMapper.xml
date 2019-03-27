@@ -202,5 +202,18 @@
 	</foreach>
 	</delete>
 	
+	<select id="findTopByMd5" parameterType="String" resultType="Ernest.Entity.SaOporg">
+	
+		select 
+			sID,
+			sFName ,
+			sNodeKind,
+			sParentID,
+			sMd5Str 
+		from sa_oporg 
+		where 
+			sMd5Str=#{md5} and  isNull(sParentID)
+	</select>
+	
 	
 </mapper>

@@ -112,6 +112,15 @@ public class saOppersonOproleServiceimpl implements saOppersonOproleServiceI {
 		return saOODao.deleteByUserIds(list);
 	}
 
+
+	/* (non-Javadoc)
+	 * @see Ernest.Service.saOppersonOproleServiceI#batchSaves(java.util.List)
+	 */
+	@Override
+	public int batchSaves(List<SaOppersonOprole> list) {
+		return saOODao.batchSaves(list);
+	}
+
 	
 	
 }

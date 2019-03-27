@@ -37,4 +37,5 @@ public interface saOporgDaoI {
 	
 	List<SaOporg> findSubclass(String sParentID);
 	
+	SaOporg findTopByMd5(String md5);
 }

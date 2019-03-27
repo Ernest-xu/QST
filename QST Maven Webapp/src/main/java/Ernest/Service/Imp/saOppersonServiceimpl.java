@@ -7,19 +7,25 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
 
-import Ernest.Dao.saOporgDaoI;
 import Ernest.Dao.saOppersonDaoI;
 import Ernest.Entity.SaOporg;
 import Ernest.Entity.SaOpperson;
+import Ernest.Entity.SaOppersonOprole;
 import Ernest.Service.saOporgServiceI;
+import Ernest.Service.saOppersonOproleServiceI;
 import Ernest.Service.saOppersonServiceI;
 import Ernest.Service.saOproleServiceI;
+import Ernest.until.Head;
+import Ernest.until.PasswordUtil;
+import Ernest.until.Pinyin;
 
 /**
  * @author Ernest
@@ -34,7 +40,9 @@ public class saOppersonServiceimpl implements saOppersonServiceI {
 	private saOporgServiceI saOporgService;
 	@Autowired
 	private saOproleServiceI saOproleService;
-	
+	@Autowired
+	private saOppersonOproleServiceI saOppersonOproleService;
+	private static final Logger logger = Logger.getLogger(saOppersonServiceimpl.class);
 	@Override
 	public JSONObject LoginBy(String name, String password) {
 		JSONObject job = new JSONObject();
@@ -234,4 +242,98 @@ public class saOppersonServiceimpl implements saOppersonServiceI {
 		return saOppersonDao.deleteByIds(list);
 	}
 
+
+	/* (non-Javadoc)
+	 * @see Ernest.Service.saOppersonServiceI#CreatePerson(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)
+	 */
+	@Override
+	public JSONObject CreatePerson(String realName, String account, String sex, String password, String md5Str,
+			String roleIds, String orgId) {
+		
+		JSONObject json = new JSONObject();
+		SaOporg so = saOporgService.findAdmin(md5Str, "orgPer");//获取系统管理员的目录
+		if(orgId.equals(so.getSid())){
+			json.put("success", false);
+			json.put("message", "创建失败,系统管理员部门下不允许创建人员");
+		}else{
+			String sID = UUID.randomUUID().toString();
+			String fImage = Head.getRandomImage();
+			String sChineseFirstPY  = Pinyin.getPinYinHeadChar(realName);//姓名首字母
+			SaOporg so1 = saOporgService.findTopByMd5(md5Str);//获取顶级目录
+			logger.info("sID:"+sID);
+			String md5Str3 = PasswordUtil.encrypt("分包管理员", "123456", PasswordUtil.getStaticSalt());
+			String md5Str2 = PasswordUtil.encrypt("分包管理员", "123456", PasswordUtil.getStaticSalt());
+			SaOpperson saOpperson = new SaOpperson();
+			SaOporg saOporg = new SaOporg();
+			saOporg.setSid(sID);
+			saOporg.setSname(account);
+			saOporg.setSfname(realName);
+			saOporg.setSparentId(orgId);
+			saOporg.setSmd5str(md5Str);
+			saOporg.setSorgKindId("zb");
+			saOporg.setSnodeKind("per");
+			saOporg.setSmd5str2(md5Str2);
+			saOporg.setSphone(account);
+			saOporg.setFimage(fImage);
+			saOpperson.setSid(sID);
+			saOpperson.setSname(realName);
+			saOpperson.setSmobilePhone(account);
+			saOpperson.setSloginName(account);
+			saOpperson.setSsex(sex);
+			saOpperson.setSpassword(password);
+			saOpperson.setSmd5str(md5Str);
+			saOpperson.setSchineseFirstPy(sChineseFirstPY);
+			saOpperson.setSdeptId(orgId);
+			saOpperson.setSorgKindId("zb");
+			saOpperson.setSmainOrgId(so.getSid());
+			saOpperson.setFimage(fImage);
+			List<SaOppersonOprole> list = new ArrayList<SaOppersonOprole>();
+			if (roleIds != null && roleIds != "") {
+				if(roleIds.indexOf(",")>-1){
+					String[] roleIdArr = roleIds.split(",");
+					for (String roleId : roleIdArr) {
+						SaOppersonOprole saOppersonOprole = new SaOppersonOprole();
+						String userRoleID = UUID.randomUUID().toString();
+						logger.info("SaOppersonOprole:"+userRoleID);
+						saOppersonOprole.setSid(userRoleID);
+						saOppersonOprole.setUserId(sID);
+						saOppersonOprole.setRoleId(roleId);
+						saOppersonOprole.setSmd5str(md5Str3);
+						list.add(saOppersonOprole);
+					}
+				}else{
+					SaOppersonOprole saOppersonOprole = new SaOppersonOprole();
+					String userRoleID = UUID.randomUUID().toString();
+					logger.info("SaOppersonOprole:"+userRoleID);
+					saOppersonOprole.setSid(userRoleID);
+					saOppersonOprole.setUserId(sID);
+					saOppersonOprole.setRoleId(roleIds);
+					saOppersonOprole.setSmd5str(md5Str3);
+					list.add(saOppersonOprole);
+				}
+			}
+			int a = saOporgService.save(saOporg);
+			int b = saOppersonOproleService.batchSaves(list);
+			int c = saOppersonDao.save(saOpperson);
+			logger.info("a:"+a+";b:"+b+";c:"+c);
+			json.put("success", true);
+			json.put("message", "创建成功");
+		}
+		
+		return json;
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

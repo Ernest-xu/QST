@@ -209,7 +209,7 @@ $(document).ready(function() {
 				if(backr == orgId){
 					return this.$message.error('不能在系统管理员部门中添加人员~~');
 				}
-				$.axse("get", "/baas/PC/person/InsertOpperson", {   
+				$.axse("post", "/QST/saOppersonController/InsertOpperson", {   
 						fID: "", //UUID主键
 						realName: sName, //填写的姓名
 						account: sLoginName, //登录电话号
@@ -222,6 +222,7 @@ $(document).ready(function() {
 						roleIds: AddPositionArry, //角色id串
 					},
 					function(res) {
+						console.info(res)
 						if (res.success == true) {
 							_this.fromOffNew()
 							_this.handleNodeClick(_this.key)

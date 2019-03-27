@@ -29,4 +29,5 @@ public interface saOppersonOproleDaoI {
 	
 	int deleteByUserIds(List<String> list);
 	
+	int batchSaves(List<SaOppersonOprole> list);
 }

@@ -23,6 +23,7 @@ import Ernest.Entity.SaOporg;
 import Ernest.Service.saOporgServiceI;
 import Ernest.Service.saOppersonOproleServiceI;
 import Ernest.Service.saOppersonServiceI;
+import Ernest.until.Head;
 import Ernest.until.RecursiveHierarchy;
 
 /**
@@ -123,20 +124,7 @@ public class saOporgServiceimpl implements saOporgServiceI{
 		JSONObject json = new JSONObject();
 		SaOporg saOporg = new SaOporg();
 		String sNodeKind = "dep";
-		String img1 = "/x5/UI2/BZB01/common/image/dept1.png", 
-			   img2 = "/x5/UI2/BZB01/common/image/dept2.png", 
-			   img3 = "/x5/UI2/BZB01/common/image/dept3.png", 
-			   img4 = "/x5/UI2/BZB01/common/image/dept1.png", 
-			   img5 = "/x5/UI2/BZB01/common/image/dept1.png", 
-			   img6 = "/x5/UI2/BZB01/common/image/dept1.png";
-		List<String> imgList=new ArrayList<String>();
-		imgList.add(img6);
-		imgList.add(img5);
-		imgList.add(img4);
-		imgList.add(img3);
-		imgList.add(img2);
-		imgList.add(img1);
-		String fImage=imgList.get(new Random().nextInt(5)+1);
+		String fImage=Head.getRandomImage();
 		Date date = new Date();
 		Timestamp screateTime = new Timestamp(date.getTime());
 		if("系统管理员".equals(sFName)){
@@ -212,6 +200,18 @@ public class saOporgServiceimpl implements saOporgServiceI{
 			json.put("message","删除成功");
 		}
 		return json;
+	}
+
+
+	@Override
+	public SaOporg findTopByMd5(String md5) {
+		
+		return saOporgDao.findTopByMd5(md5);
+	}
+
+	@Override
+	public int save(SaOporg saOporg) {
+		return saOporgDao.save(saOporg);
 	}
 
 }
