@@ -29,5 +29,4 @@ public interface saOporgServiceI {
 	
 	JSONObject deleteByParentId(String sParentID);
 	
-	
 }

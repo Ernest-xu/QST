@@ -3,9 +3,9 @@
  */
 package Ernest.Service;
 
-import com.alibaba.fastjson.JSONObject;
+import java.util.List;
 
-import Ernest.Entity.SaOppersonOprole;
+import com.alibaba.fastjson.JSONObject;
 
 /**
  * @author Ernest
@@ -22,4 +22,6 @@ public interface saOppersonOproleServiceI {
 	String findSaOpersonOprole(String id);
 	
 	JSONObject deletByUserId(String id);
+	
+	int deleteByUserIds(List<String> list);
 }
