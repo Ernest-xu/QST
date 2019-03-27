@@ -27,7 +27,7 @@ public interface saOporgServiceI {
 	
 	JSONObject updateSaOporgById(String sFName,String sID);
 	
-	
+	JSONObject deleteByParentId(String sParentID);
 	
 	
 }

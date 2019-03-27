@@ -207,4 +207,18 @@ public class SaOporg implements Serializable {
 		this.fimage = fimage;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "SaOporg [sid=" + sid + ", sname=" + sname + ", sfname=" + sfname + ", smd5str=" + smd5str
+				+ ", smd5str3=" + smd5str3 + ", screateTime=" + screateTime + ", sorgKindId=" + sorgKindId
+				+ ", sparentId=" + sparentId + ", sparentId2=" + sparentId2 + ", sphone=" + sphone + ", saddress="
+				+ saddress + ", sdescription=" + sdescription + ", spersonId=" + spersonId + ", snodeKind=" + snodeKind
+				+ ", smd5str2=" + smd5str2 + ", fimage=" + fimage + "]";
+	}
+
+	
+	
 }

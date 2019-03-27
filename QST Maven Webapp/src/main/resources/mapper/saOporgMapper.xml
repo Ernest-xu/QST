@@ -48,6 +48,23 @@
 		where 
 			sMd5Str=#{0} and sNodeKind=#{1} 
 	</select>
+	<select id="findDetail"  parameterType="String" resultMap="SaOporgMap">
+		select 
+			sID ,
+			sFName,
+			sName,
+			sMd5Str,
+			sOrgKindID,
+			sNodeKind,
+			sMd5Str2,
+			sPhone,
+			sParentID ,
+			fImage  
+		from 
+			sa_oporg 
+		where 
+			sID=#{id}
+	</select>
 	
 	<insert id="save" parameterType="Ernest.Entity.SaOporg">
 		insert into sa_oporg 
@@ -163,6 +180,19 @@
 		from sa_oporg 
 		where 
 			sMd5Str=#{md5}
+	</select>
+	<select id="findSubclass" parameterType="String" resultType="Ernest.Entity.SaOporg">
+	
+		select 
+			sID,
+			sName,
+			sFName ,
+			sNodeKind,
+			sParentID,
+			sMd5Str 
+		from sa_oporg 
+		where 
+			sParentID=#{sParentID}
 	</select>
 	
 	<delete id="deleteByIds" parameterType="java.util.List">

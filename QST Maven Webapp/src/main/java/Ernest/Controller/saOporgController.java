@@ -55,4 +55,10 @@ public class saOporgController {
 	}
 	
 	
+	@PostMapping("/DeleteDepartment")
+	public JSONObject DeleteDepartment(String sID){
+		JSONObject json= saOporgService.deleteByParentId(sID);
+		return json;
+	}
+	
 }

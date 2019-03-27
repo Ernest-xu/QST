@@ -19,6 +19,8 @@ import org.springframework.stereotype.Service;
 import com.alibaba.fastjson.JSONObject;
 
 import Ernest.Dao.saOporgDaoI;
+import Ernest.Dao.saOppersonDaoI;
+import Ernest.Dao.saOppersonOproleDaoI;
 import Ernest.Entity.SaOporg;
 import Ernest.Service.saOporgServiceI;
 import Ernest.until.RecursiveHierarchy;
@@ -33,6 +35,10 @@ public class saOporgServiceimpl implements saOporgServiceI{
 	private static final Logger logger = Logger.getLogger(saOporgServiceimpl.class);
 	@Autowired
 	private saOporgDaoI saOporgDao;
+	@Autowired
+	private saOppersonOproleDaoI saOppersonOproleDao;
+	@Autowired
+	private saOppersonDaoI saOppersonDao;
 	@Override
 	public SaOporg findAdmin(String md5, String kind) {
 		return saOporgDao.findAdmin(md5, kind);
@@ -62,8 +68,8 @@ public class saOporgServiceimpl implements saOporgServiceI{
 		return job.toString();
 	}
 
-	/* (non-Javadoc)
-	 * @see Ernest.Service.saOporgServiceI#findRoleList(java.lang.String)
+	/**
+	 * 递归分层显示
 	 */
 	@Override
 	public String findRoleList(String md5) {
@@ -98,8 +104,8 @@ public class saOporgServiceimpl implements saOporgServiceI{
 		
 	}
 
-	/* (non-Javadoc)
-	 * @see Ernest.Service.saOporgServiceI#AllDepartment(java.lang.String)
+	/**
+	 * 获取所有部门并以map的形式返回
 	 */
 	@Override
 	public Map<String, Object> AllDepartment(String md5) {
@@ -114,9 +120,8 @@ public class saOporgServiceimpl implements saOporgServiceI{
 
 
 
-
-	/* (non-Javadoc)
-	 * @see Ernest.Service.saOporgServiceI#save(java.lang.String, java.lang.String, java.lang.String)
+	/**
+	 * 新增部门
 	 */
 	@Override
 	public JSONObject save(String sFName, String sMd5Str, String sParentID) {
@@ -162,8 +167,8 @@ public class saOporgServiceimpl implements saOporgServiceI{
 
 
 
-	/* (non-Javadoc)
-	 * @see Ernest.Service.saOporgServiceI#updateSaOporgById(java.lang.String, java.lang.String)
+	/**
+	 * 修改部门名称
 	 */
 	@Override
 	public JSONObject updateSaOporgById(String sFName, String sID) {
@@ -181,6 +186,35 @@ public class saOporgServiceimpl implements saOporgServiceI{
 		}
 		
 		
+		return json;
+	}
+
+
+
+	/**
+	 * 删除部门，如果部门下有人员，连同人员一起删除
+	 */
+	@Override
+	public JSONObject deleteByParentId(String sParentID) {
+		JSONObject json = new JSONObject();
+		SaOporg saOporg = saOporgDao.findDetail(sParentID);
+		if(saOporg!=null&&"系统管理员".equals(saOporg.getSfname())){
+			json.put("success",false);
+			json.put("message","删除失败,该部门不允许删除");
+		}else{
+			List<String> list = new ArrayList<String>();
+			List<SaOporg> SOlist = saOporgDao.findSubclass(sParentID);
+			for(SaOporg so:SOlist){
+				list.add(so.getSid());
+			}
+			/*需要另外两张表的删除*/
+			saOppersonDao.deleteByIds(list);
+			saOppersonOproleDao.deleteByUserIds(list);
+			list.add(sParentID);
+			saOporgDao.deleteByIds(list);
+			json.put("success",true);
+			json.put("message","删除成功");
+		}
 		return json;
 	}
 

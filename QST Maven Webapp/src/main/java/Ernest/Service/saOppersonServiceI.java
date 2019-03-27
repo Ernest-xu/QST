@@ -3,6 +3,8 @@
  */
 package Ernest.Service;
 
+import java.util.List;
+
 import com.alibaba.fastjson.JSONObject;
 
 import Ernest.Entity.SaOpperson;
@@ -21,5 +23,5 @@ public interface saOppersonServiceI {
 	
 	JSONObject likeFind(String id,String md5Str,String name);
 	
-	
+	JSONObject deleteUserAndOrder(List<String> list);
 }

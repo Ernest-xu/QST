@@ -1131,7 +1131,7 @@ $(document).ready(function() {
 									} else {
 										_this.organArry.splice(i, 1);
 //										console.log(_this.organArry);
-										$.axse("get", "/baas/PC/structure/DeleteDepartment", { //baas/PC/structure/DeleteDepartment
+										$.axse("post", "/QST/saOporgController/DeleteDepartment", { //baas/PC/structure/DeleteDepartment
 												sID: data
 											},
 											function(res) {

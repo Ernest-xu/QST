@@ -219,4 +219,11 @@ public class saOppersonServiceimpl implements saOppersonServiceI {
 		return json;
 	}
 
+
+	@Override
+	public JSONObject deleteUserAndOrder(List<String> list) {
+		
+		return null;
+	}
+
 }

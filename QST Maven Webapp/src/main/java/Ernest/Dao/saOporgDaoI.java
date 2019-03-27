@@ -35,4 +35,6 @@ public interface saOporgDaoI {
 	
 	SaOporg findDetail(String id);
 	
+	List<SaOporg> findSubclass(String sParentID);
+	
 }
