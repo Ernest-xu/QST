@@ -328,4 +328,27 @@
 	</foreach>
 	</delete>
 	
+	<select id="findListById" parameterType="String" resultMap="SaOppersonMap">
+		select 
+			sa.sID as sid,
+			sa.sSex as ssex,
+			sa.sName as sname,
+			sa.sIDCard as sidcard,
+			sa.sLoginName as sloginName,
+			sa.sPassword as spassword,
+			sa.loginCount as loginCount,
+			sa.sMd5Str as smd5str,
+			sa.sMainOrgID as smainOrgId,
+			sa.sDeptID as sdeptId,
+			sa.sChineseFirstPY as schineseFirstPy,
+			sa.sOrgKindID as sorgKindId,
+			sa.fImage as fimage,
+			sa.sJoinDate as sjoinDate,
+			sa.orgId as orgId 
+		from 
+			sa_opperson sa
+		where 
+			sid=#{id}
+	</select>
+	
 </mapper>

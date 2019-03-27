@@ -28,4 +28,7 @@ public interface saOppersonServiceI {
 	int deleteByIds(List<String> list);
 	
 	JSONObject CreatePerson(String realName,String account,String sex,String password,String md5Str ,String roleIds,String orgId);
+	
+	JSONObject UpdatePerson(String fID,String realName,String account,String sex,String password,String md5Str ,String roleIds,String orgId);
+	
 }

@@ -80,6 +80,12 @@
 	#{item}
 	</foreach>
 	</delete>
+	<delete id="deletByIds" parameterType="java.util.List">
+	DELETE FROM  sa_opperson_oprole where sID in 
+	<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+	#{item}
+	</foreach>
+	</delete>
 	
 	<insert id="batchSaves" parameterType="java.util.List">
  		insert into sa_opperson_oprole  (sid,userId,roleId,smd5str )values 

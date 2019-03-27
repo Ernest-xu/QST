@@ -31,4 +31,8 @@ public interface saOppersonDaoI {
 	List<SaOpperson> likeFindPersonList(String md5 ,String id,String name);
 	
 	int deleteByIds(List<String> list);
+	
+	int update(SaOpperson saOpperson);
+	
+	List<SaOpperson> findListById(String id);
 }

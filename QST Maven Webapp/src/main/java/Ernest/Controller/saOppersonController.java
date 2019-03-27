@@ -96,5 +96,12 @@ public class saOppersonController {
 		logger.info(json);
 		return json;
 	}
+	@PostMapping("/UpdataOpperson")
+	@ResponseBody
+	public JSONObject UpdataOpperson(String fID,String realName,String account,String sex,String password,String md5Str ,String roleIds,String orgId){
+		JSONObject json = saOppersonService.UpdatePerson(fID,realName, account, sex, password, md5Str, roleIds, orgId);
+		logger.info(json);
+		return json;
+	}
 	
 }

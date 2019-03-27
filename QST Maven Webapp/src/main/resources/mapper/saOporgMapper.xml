@@ -4,6 +4,7 @@
 	<resultMap type="Ernest.Entity.SaOporg" id="SaOporgMap">
 		<id column="sID" jdbcType="VARCHAR" property="sid"/>
 		<result column="sParentID" jdbcType="VARCHAR" property="sparentId" />
+		<result column="sParentID2" jdbcType="VARCHAR" property="sparentId2" />
 		<result column="sName" jdbcType="VARCHAR" property="sname" />
 		<result column="sFName" jdbcType="VARCHAR" property="sfname" />
 		<result column="sMd5Str" jdbcType="VARCHAR" property="smd5str" />
@@ -96,6 +97,9 @@
 		<if test="sparentId != null">
 			sParentID,
 		</if>  
+		<if test="sparentId2 != null">
+			sParentID2,
+		</if>  
 		<if test="fimage != null">
 			fImage
 		</if>  
@@ -127,6 +131,9 @@
          </if>	
          <if test="sparentId != null">
           #{sparentId,jdbcType=VARCHAR},
+         </if>	
+         <if test="sparentId2 != null">
+          #{sparentId2,jdbcType=VARCHAR},
          </if>	
          <if test="fimage != null">
           #{fimage,jdbcType=VARCHAR}
@@ -180,6 +187,18 @@
 		from sa_oporg 
 		where 
 			sMd5Str=#{md5}
+	</select>
+	<select id="findBysParentID2" parameterType="String" resultType="Ernest.Entity.SaOporg">
+	
+		select 
+			sID,
+			sFName ,
+			sNodeKind,
+			sParentID,
+			sMd5Str 
+		from sa_oporg 
+		where 
+			sParentID2=#{sParentID2}
 	</select>
 	<select id="findSubclass" parameterType="String" resultType="Ernest.Entity.SaOporg">
 	

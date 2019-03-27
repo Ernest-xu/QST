@@ -325,7 +325,7 @@ $(document).ready(function() {
 				if (sPassword == undefined) {
 					return this.$message.error('密码不能为空');
 				}
-				$.axse("get", "/baas/PC/person/UpdataOpperson", {   
+				$.axse("post", "/QST/saOppersonController/UpdataOpperson", {   
 						fID: this.ruleForm.sID, //UUID主键
 						realName: this.ruleForm.sName, //填写的姓名
 						account: sLoginName, //登录电话号

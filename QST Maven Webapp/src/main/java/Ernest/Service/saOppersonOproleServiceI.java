@@ -28,4 +28,6 @@ public interface saOppersonOproleServiceI {
 	int deleteByUserIds(List<String> list);
 	
 	int batchSaves(List<SaOppersonOprole> list);
+	
+	int deleteById(List<String> list);
 }

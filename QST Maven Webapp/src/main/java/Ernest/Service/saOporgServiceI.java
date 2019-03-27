@@ -3,6 +3,7 @@
  */
 package Ernest.Service;
 
+import java.util.List;
 import java.util.Map;
 
 import com.alibaba.fastjson.JSONObject;
@@ -32,4 +33,8 @@ public interface saOporgServiceI {
 	SaOporg findTopByMd5(String md5);
 	
 	int save(SaOporg saOporg);
+	
+	int update(SaOporg saOporg);
+	
+	List<SaOporg> findBysParentID2(String sParentID2);
 }
