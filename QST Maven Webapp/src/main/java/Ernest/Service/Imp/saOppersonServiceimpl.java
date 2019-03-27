@@ -31,8 +31,6 @@ public class saOppersonServiceimpl implements saOppersonServiceI {
 	@Autowired
 	private saOppersonDaoI saOppersonDao;
 	@Autowired
-	private saOporgDaoI saOporgDao;
-	@Autowired
 	private saOporgServiceI saOporgService;
 	@Autowired
 	private saOproleServiceI saOproleService;
@@ -53,7 +51,7 @@ public class saOppersonServiceimpl implements saOppersonServiceI {
 			job1.put("sLoginName", sa.getSloginName());
 			job1.put("sMd5Str", sa.getSmd5str());
 			String sID = sa.getSid();
-			SaOporg so = saOporgDao.findAdmin(sa.getSmd5str(), "orgPer");
+			SaOporg so = saOporgService.findAdmin(sa.getSmd5str(), "orgPer");
 			String sID2 = so.getSid();
 			if(!sID.equals(sID2)){
 				sID=sID2;
@@ -224,6 +222,16 @@ public class saOppersonServiceimpl implements saOppersonServiceI {
 	public JSONObject deleteUserAndOrder(List<String> list) {
 		
 		return null;
+	}
+
+
+	/* (non-Javadoc)
+	 * @see Ernest.Service.saOppersonServiceI#deleteByIds(java.util.List)
+	 */
+	@Override
+	public int deleteByIds(List<String> list) {
+		
+		return saOppersonDao.deleteByIds(list);
 	}
 
 }

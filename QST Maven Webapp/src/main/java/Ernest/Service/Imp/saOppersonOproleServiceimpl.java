@@ -3,6 +3,8 @@
  */
 package Ernest.Service.Imp;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -98,6 +100,16 @@ public class saOppersonOproleServiceimpl implements saOppersonOproleServiceI {
 		json.put("success", true);
 		json.put("message", "成功");
 		return json;
+	}
+
+
+	/* (non-Javadoc)
+	 * @see Ernest.Service.saOppersonOproleServiceI#deleteByUserIds(java.util.List)
+	 */
+	@Override
+	public int deleteByUserIds(List<String> list) {
+		
+		return saOODao.deleteByUserIds(list);
 	}
 
 	

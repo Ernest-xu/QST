@@ -19,10 +19,10 @@ import org.springframework.stereotype.Service;
 import com.alibaba.fastjson.JSONObject;
 
 import Ernest.Dao.saOporgDaoI;
-import Ernest.Dao.saOppersonDaoI;
-import Ernest.Dao.saOppersonOproleDaoI;
 import Ernest.Entity.SaOporg;
 import Ernest.Service.saOporgServiceI;
+import Ernest.Service.saOppersonOproleServiceI;
+import Ernest.Service.saOppersonServiceI;
 import Ernest.until.RecursiveHierarchy;
 
 /**
@@ -36,9 +36,9 @@ public class saOporgServiceimpl implements saOporgServiceI{
 	@Autowired
 	private saOporgDaoI saOporgDao;
 	@Autowired
-	private saOppersonOproleDaoI saOppersonOproleDao;
+	private saOppersonOproleServiceI saOppersonOproleService;
 	@Autowired
-	private saOppersonDaoI saOppersonDao;
+	private saOppersonServiceI saOppersonService;
 	@Override
 	public SaOporg findAdmin(String md5, String kind) {
 		return saOporgDao.findAdmin(md5, kind);
@@ -54,17 +54,12 @@ public class saOporgServiceimpl implements saOporgServiceI{
 		saOporg.setSname(json.getString("sname"));
 		saOporg.setSfname(json.getString("sfname"));
 		saOporg.setSmd5str(json.getString("smd5str"));
-//		saOporg.setSorgKindId(json.getString("sorgKindId"));
-//		saOporg.setSnodeKind(json.getString("snodeKind"));
-//		saOporg.setSmd5str2(json.getString("smd5str2"));
-//		saOporg.setSphone(json.getString("sphone"));
 		saOporg.setSparentId(json.getString("sparentId"));
 		saOporg.setFimage(json.getString("fimage"));
 		saOporgDao.updateById(saOporg);
 		JSONObject job = new JSONObject();
 		job.put("success",true);
 		job.put("message", "成功");
-		//[{"sid":"1106","sname":"1","sfname":"2","smd5str":"3","sorgKindId":"4","snodeKind":"5","smd5str2":"6","sphone":"7","sparentId":"8","fimgae":"9"}]
 		return job.toString();
 	}
 
@@ -150,6 +145,7 @@ public class saOporgServiceimpl implements saOporgServiceI{
 		}else{
 			String sID = UUID.randomUUID().toString();
 			saOporg.setSid(sID);
+			saOporg.setSfname(sFName);
 			saOporg.setSmd5str(sMd5Str);
 			saOporg.setSparentId(sParentID);
 			saOporg.setFimage(fImage);
@@ -208,9 +204,9 @@ public class saOporgServiceimpl implements saOporgServiceI{
 				list.add(so.getSid());
 			}
 			/*需要另外两张表的删除*/
-			saOppersonDao.deleteByIds(list);
-			saOppersonOproleDao.deleteByUserIds(list);
 			list.add(sParentID);
+			saOppersonService.deleteByIds(list);
+			saOppersonOproleService.deleteByUserIds(list);
 			saOporgDao.deleteByIds(list);
 			json.put("success",true);
 			json.put("message","删除成功");
