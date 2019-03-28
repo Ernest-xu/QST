@@ -227,16 +227,6 @@ public class saOppersonServiceimpl implements saOppersonServiceI {
 
 
 	@Override
-	public JSONObject deleteUserAndOrder(List<String> list) {
-		
-		return null;
-	}
-
-
-	/* (non-Javadoc)
-	 * @see Ernest.Service.saOppersonServiceI#deleteByIds(java.util.List)
-	 */
-	@Override
 	public int deleteByIds(List<String> list) {
 		
 		return saOppersonDao.deleteByIds(list);
