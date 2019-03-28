@@ -31,4 +31,5 @@ public interface saOppersonServiceI {
 	
 	JSONObject UpdatePerson(String fID,String realName,String account,String sex,String password,String md5Str ,String roleIds,String orgId);
 	
+	JSONObject DeletePerson(String fIDs);
 }

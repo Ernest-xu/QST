@@ -214,4 +214,40 @@ public class saOporgServiceimpl implements saOporgServiceI{
 		return saOporgDao.save(saOporg);
 	}
 
+
+	@Override
+	public int update(SaOporg saOporg) {
+		return saOporgDao.updateById(saOporg);
+	}
+
+
+	@Override
+	public List<SaOporg> findBysParentID2(String sParentID2) {
+		
+		return saOporgDao.findBysParentID2(sParentID2);
+	}
+
+
+
+	@Override
+	public List<SaOporg> findByListId(List<String> list) {
+		
+		return saOporgDao.findListByIds(list);
+	}
+
+
+
+	@Override
+	public int DeleteParentID2(List<String> list) {
+		
+		return saOporgDao.DeleteParentID2(list);
+	}
+
+
+	@Override
+	public int DeleteByListId(List<String> list) {
+		
+		return saOporgDao.deleteByIds(list);
+	}
+
 }

@@ -79,6 +79,7 @@ public class saOppersonController {
 	@ResponseBody
 	public JSONObject SelectOpperson(String id ,String md5Str){
 		JSONObject json = saOppersonService.findPerson(id, md5Str);
+//		logger.info(json);
 		return json;
 	}
 	
@@ -93,14 +94,21 @@ public class saOppersonController {
 	@ResponseBody
 	public JSONObject InsertOpperson(String realName,String account,String sex,String password,String md5Str ,String roleIds,String orgId){
 		JSONObject json = saOppersonService.CreatePerson(realName, account, sex, password, md5Str, roleIds, orgId);
-		logger.info(json);
+//		logger.info(json);
 		return json;
 	}
 	@PostMapping("/UpdataOpperson")
 	@ResponseBody
 	public JSONObject UpdataOpperson(String fID,String realName,String account,String sex,String password,String md5Str ,String roleIds,String orgId){
 		JSONObject json = saOppersonService.UpdatePerson(fID,realName, account, sex, password, md5Str, roleIds, orgId);
-		logger.info(json);
+//		logger.info(json);
+		return json;
+	}
+	@PostMapping("/deletePerson")
+	@ResponseBody
+	public JSONObject DeleteOpperson(String fID){
+		JSONObject json = saOppersonService.DeletePerson(fID);
+//		logger.info(json);
 		return json;
 	}
 	

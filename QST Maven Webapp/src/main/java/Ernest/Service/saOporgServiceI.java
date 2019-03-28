@@ -37,4 +37,11 @@ public interface saOporgServiceI {
 	int update(SaOporg saOporg);
 	
 	List<SaOporg> findBysParentID2(String sParentID2);
+	
+	List<SaOporg> findByListId(List<String> list);
+	
+	int DeleteParentID2(List<String> list);
+	
+	int DeleteByListId(List<String> list);
+	
 }

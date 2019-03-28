@@ -132,7 +132,7 @@ public class saOppersonServiceimpl implements saOppersonServiceI {
 			Map<String, Object> map = new HashMap<String, Object>();
 			SaOpperson saOpperson = new SaOpperson();
 			saOpperson = list1.get(i);
-			map.put("sID", saOpperson.getSid());//人员ID
+			map.put("sID", saOpperson.getSaOporg().getSid());//人员ID
 			map.put("sName", saOpperson.getSname());//真实姓名
 			map.put("sIDCard",saOpperson.getSidcard());//人员身份证
 			map.put("sLoginName", saOpperson.getSloginName());//登录名
@@ -190,7 +190,7 @@ public class saOppersonServiceimpl implements saOppersonServiceI {
 			Map<String, Object> map = new HashMap<String, Object>();
 			SaOpperson saOpperson = new SaOpperson();
 			saOpperson = list1.get(i);
-			map.put("sID", saOpperson.getSid());//人员ID
+			map.put("sID", saOpperson.getSaOporg().getSid());//人员ID
 			map.put("sName", saOpperson.getSname());//真实姓名
 			map.put("sIDCard",saOpperson.getSidcard());//人员身份证
 			map.put("sLoginName", saOpperson.getSloginName());//登录名
@@ -320,6 +320,181 @@ public class saOppersonServiceimpl implements saOppersonServiceI {
 			json.put("message", "创建成功");
 		}
 		
+		return json;
+	}
+
+
+	/* (non-Javadoc)
+	 * @see Ernest.Service.saOppersonServiceI#UpdatePerson(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)
+	 */
+	@Override
+	public JSONObject UpdatePerson(String fID, String realName, String account, String sex, String password,
+			String md5Str, String roleIds, String orgId) {
+		JSONObject json = new JSONObject();
+		List<SaOpperson> list = saOppersonDao.findListById(fID);
+		logger.info(fID);
+		SaOporg so = saOporgService.findAdmin(md5Str, "orgPer");
+		SaOpperson saOpperson = new SaOpperson();
+		String message="";
+		boolean newfalge = false;
+		boolean oldfalge = true;
+		boolean orgfalge = true;
+		if(orgId!=null&&!"".equals(orgId)&&!"null".equals(orgId)){
+			if(orgId.equals(so.getSparentId())){
+				newfalge=true;
+			}
+		}else{
+			newfalge=false;
+			message="没有选择部门";
+			oldfalge = false;
+		}
+		if(fID!=null&&!"".equals(fID)&&!"null".equals(fID)){
+			if(fID.equals(so.getSid())){
+				orgfalge=false;
+				message="系统管理员不允许修改部门";
+			}else{
+				
+			}
+		}
+		if(list.isEmpty()){
+			json.put("success", false);
+			json.put("message", "该人员不允许修改");
+		}else{
+			if(oldfalge){
+				String sChineseFirstPY = Pinyin.getPinYinHeadChar(realName);
+				SaOporg saOporg = new SaOporg();
+				saOporg.setSid(fID);
+				saOporg.setSfname(realName);
+				saOporg.setSmd5str(md5Str);
+				saOporg.setSorgKindId("zb");
+					if(orgfalge){
+						if(newfalge){//如果普通用户修改到管理员用户给创建一个只读管理员用户
+							boolean mapfalge = saOporgService.findBysParentID2(fID).isEmpty();
+							logger.info("mapfalge:"+mapfalge);
+							if(mapfalge){
+								String uuid = UUID.randomUUID().toString();
+								logger.info("admin:"+uuid);
+								SaOporg saOporg2 = new SaOporg();
+								saOporg2.setSid(uuid);
+								saOporg2.setSname(account);
+								saOporg2.setSfname(realName);
+								saOporg2.setSparentId(so.getSparentId());
+								saOporg2.setSmd5str(md5Str);
+								saOporg2.setSorgKindId("zb");
+								saOporg2.setSnodeKind("per");
+								saOporg2.setSparentId2(fID);
+								saOporg2.setSphone(account);
+								saOporgService.save(saOporg2);
+							}else{
+								message="该用户已是系统管理员";
+							}
+							saOporg.setSnodeKind("orgPer");
+							saOpperson.setOrgId("zd");
+						}else{
+							if(!newfalge){//进入系统管理员就不能改部门了
+								saOporg.setSparentId(orgId);
+							}
+//							saOporg.setSnodeKind("per");
+						}
+						
+					}
+				saOporg.setSphone(account);
+				saOporgService.update(saOporg);
+				
+				saOpperson.setSid(fID);
+				saOpperson.setSname(realName);
+				saOpperson.setSmobilePhone(account);
+				saOpperson.setSloginName(account);
+				saOpperson.setSsex(sex);
+				saOpperson.setSpassword(password);
+				saOpperson.setSmd5str(md5Str);
+				saOpperson.setSchineseFirstPy(sChineseFirstPY);
+				saOpperson.setSdeptId(orgId);
+				saOpperson.setSorgKindId("zb");
+				int a = saOppersonDao.update(saOpperson);
+				saOppersonOproleService.deletByUserId(fID);
+				String md5Str3 = PasswordUtil.encrypt("分包管理员", "123456", PasswordUtil.getStaticSalt());
+				List<SaOppersonOprole> list2 = new ArrayList<SaOppersonOprole>();
+				if (roleIds != null && roleIds != "") {
+					if(roleIds.indexOf(",")>-1){
+						String[] roleIdArr = roleIds.split(",");
+						for (String roleId : roleIdArr) {
+							SaOppersonOprole saOppersonOprole = new SaOppersonOprole();
+							String userRoleID = UUID.randomUUID().toString();
+							logger.info("SaOppersonOprole:"+userRoleID);
+							saOppersonOprole.setSid(userRoleID);
+							saOppersonOprole.setUserId(fID);
+							saOppersonOprole.setRoleId(roleId);
+							saOppersonOprole.setSmd5str(md5Str3);
+							list2.add(saOppersonOprole);
+						}
+					}else{
+						SaOppersonOprole saOppersonOprole = new SaOppersonOprole();
+						String userRoleID = UUID.randomUUID().toString();
+						logger.info("SaOppersonOprole:"+userRoleID);
+						saOppersonOprole.setSid(userRoleID);
+						saOppersonOprole.setUserId(fID);
+						saOppersonOprole.setRoleId(roleIds);
+						saOppersonOprole.setSmd5str(md5Str3);
+						list2.add(saOppersonOprole);
+					}
+				}
+				saOppersonOproleService.batchSaves(list2);
+				logger.info(a);
+				if(a >0){
+					json.put("success", true);
+					json.put("message", "成功");
+				}else{
+					json.put("success", false);
+					json.put("message", "失败"+message);
+				}
+			}else{
+				json.put("success", false);
+				json.put("message", message);
+			}
+		}
+		
+		return json;
+	}
+
+
+	
+	@Override
+	public JSONObject DeletePerson(String fIDs) {
+		JSONObject json = new JSONObject();
+		List<String> idlist = new ArrayList<String>();
+		String fID = fIDs;
+		String[] fIds; 
+		if(fID==null||"".equals(fID)){
+			fID="";
+		}else{
+			fIds=fID.split(",");
+			for(int i=0;i<fIds.length;i++){
+				idlist.add(fIds[i]);
+			}
+		}
+		List<SaOporg> list = saOporgService.findByListId(idlist);
+		for(SaOporg saOporg:list){
+			SaOporg saOporg1 = new SaOporg();
+			saOporg1.setSid(saOporg.getSparentId2());
+			saOporg1.setSnodeKind("per");
+//			logger.info(saOporg.getSparentId2());
+			int a = saOporgService.update(saOporg1);
+//			logger.info("update1:"+a);
+			SaOpperson saOpperson = new SaOpperson();
+			saOpperson.setSid(saOporg.getSparentId2());
+			saOpperson.setOrgId("");
+			int b = saOppersonDao.update(saOpperson);
+//			logger.info("update2:"+b);
+		}
+//		logger.info(fID);
+		int a = saOporgService.DeleteByListId(idlist);
+		int b = saOppersonDao.deleteByIds(idlist);
+		int c = saOppersonOproleService.deleteById(idlist);
+		int d = saOporgService.DeleteParentID2(idlist);
+//		logger.info("org:"+a+";person:"+b+";oo:"+c+";org:"+d);
+		json.put("success", true);
+		json.put("message", "成功");
 		return json;
 	}
 

@@ -501,7 +501,7 @@ $(document).ready(function() {
 					type: 'warning'
 				}).then(() => {
 					var _this = this;
-					$.axse("get", "/baas/PC/person/deletePerson", {
+					$.axse("post", "/QST/saOppersonController/deletePerson", {
 							fID: row.sID
 						},
 						function(res) {
@@ -613,7 +613,7 @@ $(document).ready(function() {
 							type: 'warning'
 						}).then(() => {
 							var _this = this;
-							$.axse("get", "/baas/PC/person/deletePerson", {
+							$.axse("post", "/QST/saOppersonController/deletePerson", {
 									fID: delString
 								},
 								function(res) {
