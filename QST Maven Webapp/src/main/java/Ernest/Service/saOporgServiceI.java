@@ -105,4 +105,13 @@ public interface saOporgServiceI {
 	 */
 	int DeleteByListId(List<String> list);
 	
+	/**
+	 * 根据类型获取部门、人员或公司
+	 * @param md5
+	 * @param kind
+	 * @return
+	 */
+	List<SaOporg> getAllDepartment(String md5,String kind);
+	
+	
 }

@@ -17,6 +17,8 @@ import Ernest.Entity.saOprole;
 public interface saOproleServiceI {
 	JSONObject listSaOprole(String md5);
 	
+	List<saOprole> listSaOproles(String md5);
+	
 	JSONObject selectSaOproleList(String md5);
 	
 	saOprole selectSaOprole(String id);

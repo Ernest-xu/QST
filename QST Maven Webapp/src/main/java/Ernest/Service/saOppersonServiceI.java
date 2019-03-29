@@ -8,6 +8,8 @@ import java.util.List;
 import com.alibaba.fastjson.JSONObject;
 
 import Ernest.Entity.SaOpperson;
+import jxl.write.WriteException;
+import jxl.write.biff.RowsExceededException;
 
 /**
  * @author Ernest
@@ -79,4 +81,26 @@ public interface saOppersonServiceI {
 	 * @return
 	 */
 	JSONObject DeletePerson(String fIDs);
+	/**
+	 * 根据md5和部门id导出excel表格
+	 * @param md5
+	 * @param id
+	 * @return
+	 * @throws WriteException 
+	 * @throws RowsExceededException 
+	 */
+	JSONObject ExportExcel(String id,String md5Str);
+	/**
+	 * 读取excel传入的json创建人员
+	 * @param excel
+	 * @param md5Str
+	 * @return
+	 */
+	JSONObject ToLeadExcel(String excel,String md5Str);
+	/**
+	 * 返回说明表路径
+	 * @param md5
+	 * @return
+	 */
+	String Instruction(String md5);
 }

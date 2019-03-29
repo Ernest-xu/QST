@@ -3,6 +3,10 @@
  */
 package Ernest.Service.Imp;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,13 +23,21 @@ import Ernest.Dao.saOppersonDaoI;
 import Ernest.Entity.SaOporg;
 import Ernest.Entity.SaOpperson;
 import Ernest.Entity.SaOppersonOprole;
+import Ernest.Entity.saOprole;
 import Ernest.Service.saOporgServiceI;
 import Ernest.Service.saOppersonOproleServiceI;
 import Ernest.Service.saOppersonServiceI;
 import Ernest.Service.saOproleServiceI;
 import Ernest.until.Head;
+import Ernest.until.ImageBase64Utils;
 import Ernest.until.PasswordUtil;
 import Ernest.until.Pinyin;
+import jxl.Workbook;
+import jxl.write.Label;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
+import jxl.write.WriteException;
+import jxl.write.biff.RowsExceededException;
 
 /**
  * @author Ernest
@@ -486,6 +498,152 @@ public class saOppersonServiceimpl implements saOppersonServiceI {
 		json.put("success", true);
 		json.put("message", "成功");
 		return json;
+	}
+
+
+
+	@Override
+	public JSONObject ExportExcel(String id, String md5Str) {
+		JSONObject json = new JSONObject();
+		String fileName = ImageBase64Utils.getPath("excel")+"人员表.xls";
+		List<SaOpperson> list = saOppersonDao.findPersonList(id);
+		WritableWorkbook wwb = null;
+		DateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		String src1 = Instruction(md5Str);
+		try {
+			File file=new File(fileName);
+			if (!file.exists()) {
+				
+					file.createNewFile();
+				
+			}
+			wwb = Workbook.createWorkbook(file);
+			WritableSheet ws = wwb.createSheet("Test Shee 1", 0);
+            Label labelorgID= new Label(0, 0, "部门");//表示第
+            Label labelroleName= new Label(1, 0, "职位");
+            Label labelName= new Label(2, 0, "人员姓名");
+            Label labelSex= new Label(3, 0, "性别");
+            Label labelPhone  = new Label(4,0,"登录电话号");
+            Label labelPassWord  = new Label(5,0,"密码");
+            Label labelOrgKind  = new Label(6,0,"组织性质(zb或fb)");
+            ws.addCell(labelorgID);
+            ws.addCell(labelroleName);
+            ws.addCell(labelName);
+            ws.addCell(labelSex);
+            ws.addCell(labelPhone);
+            ws.addCell(labelPassWord);
+            ws.addCell(labelOrgKind);
+            int j=1;
+            for(SaOpperson saOpperson:list){
+    			List<Map<String, Object>> list3 = new ArrayList<Map<String,Object>>();
+    			list3=saOproleService.selectJobName(saOpperson.getSid());
+    			String roleIds = "";
+    			for(int i=0;i<list3.size();i++){
+    				if(i==0){
+    					roleIds+=list3.get(i).get("sName");
+    				}else{
+    					roleIds+=","+list3.get(i).get("sName");
+    				}
+    			}
+    			List<String> list2 = new ArrayList<String>();
+    			list2.add(id);
+    			List<SaOporg> list4 = saOporgService.findByListId(list2);
+    			Label labelorgID_i= new Label(0, j, list4.get(0).getSfname());//组织职位
+                Label labelroleName_i= new Label(1, j, roleIds);//角色
+                Label labelName_i= new Label(2, j, saOpperson.getSname());//人员姓名
+                Label labelSex_i= new Label(3, j, saOpperson.getSsex());//性别
+                Label labelPhone_i  = new Label(4,j,saOpperson.getSloginName());//登录电话号
+                Label labelPassWord_i  = new Label(5,j,saOpperson.getSpassword());//密码
+                Label labelOrgKind_i  = new Label(6,j,saOpperson.getSorgKindId());//组织性质(zb或fb)
+                ws.addCell(labelorgID_i);
+                ws.addCell(labelroleName_i);
+                ws.addCell(labelName_i);
+                ws.addCell(labelSex_i);
+                ws.addCell(labelPhone_i);
+                ws.addCell(labelPassWord_i);
+                ws.addCell(labelOrgKind_i);
+    			j++;
+    		}
+            wwb.write();
+            wwb.close();
+            json.put("src", ImageBase64Utils.getUrl("excel")+"人员表.xls");
+			json.put("src1", src1);
+			json.put("success", true);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (RowsExceededException e) {
+			e.printStackTrace();
+		} catch (WriteException e) {
+			e.printStackTrace();
+		} 
+		return json;
+	}
+
+
+	
+	@Override
+	public JSONObject ToLeadExcel(String excel, String md5Str) {
+		return null;
+	}
+
+
+	 
+	@Override
+	public String Instruction(String md5) {
+		String fileName = ImageBase64Utils.getPath("excel")+"说明表.xls";
+		String src = ImageBase64Utils.getUrl("excel")+"说明表.xls";
+		WritableWorkbook wwb = null;
+		try {
+			File file=new File(fileName);
+			if (!file.exists()) {
+					file.createNewFile();
+			}
+			wwb = Workbook.createWorkbook(file);
+            // 创建工作表
+            WritableSheet ws = wwb.createSheet("Test Shee 1", 0);
+            Label labelorgID= new Label(0, 0, "部门");//表示第
+            Label labelroleName= new Label(1, 0, "职位");
+            Label labelName= new Label(2, 0, "说明");
+			ws.addCell(labelorgID);
+			ws.addCell(labelroleName);
+			ws.addCell(labelName);
+			Label labelexplain1= new Label(2, 1, "部门：需要按照左侧部门列表对应的名称进行填写才可以导入到对应的部门中，否则会导入失败或在部门下找不到数据。建议直接复制名称，防止有空格不识别的问题");//表示第
+	        Label labelexplain2= new Label(2, 2, "职位：需要按照左侧对应职位列表对应的名称进行填写才可以导入到对应的职位中，否则会导入失败或导致人员角色功能上存在问题.建议接复制名称，防止有空格不识别的问题");
+	        Label labelexplain3= new Label(2, 3, "职位的格式：可以是单一职位，例：员工；也可以是多职位，例：员工,经理,技术员");
+	        Label labelexplain4= new Label(2, 4, "建议：导入时建议先导出此表保证部门和职位展示的是最新的信息");
+	        Label labelexplain5= new Label(2, 5, "请务必按照以上说明填写");
+	        ws.addCell(labelexplain1);
+	        ws.addCell(labelexplain2);
+	        ws.addCell(labelexplain3);
+	        ws.addCell(labelexplain4);
+	        ws.addCell(labelexplain5);
+	        List<saOprole> saOproleList = saOproleService.listSaOproles(md5);
+	        int number=1;
+			for(saOprole saoprole:saOproleList){
+				String name = saoprole.getSname();//职名
+				Label labelexplain6= new Label(1, number, name);
+		        ws.addCell(labelexplain6);
+				number++;
+			}
+			List<SaOporg> list = saOporgService.getAllDepartment(md5, "per");
+			number=1;
+			for(SaOporg saOporg:list){
+				String name = saOporg.getSfname();//部门名称
+				Label labelexplain7= new Label(0, number, name);
+		        ws.addCell(labelexplain7);
+				number++;
+			}
+			wwb.write();
+			wwb.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (RowsExceededException e) {
+			e.printStackTrace();
+		} catch (WriteException e) {
+			e.printStackTrace();
+		}
+		return src;
 	}
 
 	

@@ -69,6 +69,10 @@ public class saOproleServiceimp implements saOproleServiceI {
 		return json;
 	}
 
+	@Override
+	public List<saOprole> listSaOproles(String md5) {
+		return saOproleDao.findAllBySaOproleSmd5str(md5);
+	}
 	/* (non-Javadoc)
 	 * @see Ernest.Service.saOproleServiceI#selectSaOprole(java.lang.String)
 	 */
@@ -191,6 +195,7 @@ public class saOproleServiceimp implements saOproleServiceI {
 		json.put("message", "成功");
 		return json;
 	}
+
 
 	
 	

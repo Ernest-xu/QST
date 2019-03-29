@@ -250,4 +250,12 @@ public class saOporgServiceimpl implements saOporgServiceI{
 		return saOporgDao.deleteByIds(list);
 	}
 
+
+
+
+	@Override
+	public List<SaOporg> getAllDepartment(String md5, String kind) {
+		return saOporgDao.getAllDepartment(md5, kind);
+	}
+
 }
