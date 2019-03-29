@@ -91,5 +91,11 @@ public interface saOporgDaoI {
 	 * @return
 	 */
 	int DeleteParentID2(List<String> list);
+	/**
+	 * 批量插入
+	 * @param list
+	 * @return
+	 */
+	int batchSaves(List<SaOporg> list);
 	
 }

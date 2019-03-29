@@ -61,4 +61,11 @@ public interface saOppersonDaoI {
 	 * @return
 	 */
 	List<SaOpperson> findListById(String id);
+	
+	/**
+	 * 批量保存
+	 * @param list
+	 * @return
+	 */
+	int batchSaves(List<SaOpperson> list);
 }

@@ -119,5 +119,14 @@ public class saOppersonController {
 		JSONObject json = saOppersonService.ExportExcel(id, md5Str);
 		return json;
 	}
+	@PostMapping("/ToLeadExcel")
+	@ResponseBody
+	public JSONObject ToLeadExcel(String excel,String md5Str) throws RowsExceededException, WriteException{
+		JSONObject json = saOppersonService.ToLeadExcel(excel, md5Str);
+		logger.info(json);
+//		logger.info(excel);
+//		JSONObject json = new JSONObject();
+		return json;
+	}
 	
 }

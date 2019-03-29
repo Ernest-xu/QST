@@ -112,6 +112,10 @@ public interface saOporgServiceI {
 	 * @return
 	 */
 	List<SaOporg> getAllDepartment(String md5,String kind);
-	
-	
+	/**
+	 * 批量插入
+	 * @param list
+	 * @return
+	 */
+	int batchSaves(List<SaOporg> list);
 }

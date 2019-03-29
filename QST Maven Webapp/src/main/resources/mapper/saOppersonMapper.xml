@@ -25,8 +25,7 @@
 			<result column="sparentId" jdbcType="VARCHAR" property="sparentId" />
 		</collection>
 	</resultMap>
-	
-	
+
 	<resultMap type="Ernest.Entity.SaOpperson" id="onlySaOppersonMap">
 		<id column="sid" jdbcType="VARCHAR" property="sid"/>
 		<result column="sname" jdbcType="VARCHAR" property="sname" />
@@ -202,6 +201,40 @@
 			</if>
 			
 		</trim>
+	</insert>
+	
+	<insert id="batchSaves" parameterType="java.util.List">
+ 		insert into sa_opperson  (
+ 		sid,
+ 		sname,
+ 		sloginName,
+ 		smobilePhone,
+ 		ssex,
+ 		spassword,
+ 		smd5str,
+ 		schineseFirstPy,
+ 		smainOrgId,
+ 		sdeptId,
+ 		sorgKindId,
+ 		fimage 
+ 		)values 
+		<foreach collection="list" item="item" index="index" separator=",">
+			<!-- 保证与实体类的字段一致，以对象的关系定义（注：区分大小写） -->
+ 			(
+ 			#{item.sid,jdbcType=VARCHAR},
+ 			#{item.sname,jdbcType=VARCHAR},
+ 			#{item.sloginName,jdbcType=VARCHAR},
+ 			#{item.smobilePhone,jdbcType=VARCHAR},
+ 			#{item.ssex,jdbcType=VARCHAR},
+ 			#{item.spassword,jdbcType=VARCHAR},
+ 			#{item.smd5str,jdbcType=VARCHAR},
+ 			#{item.schineseFirstPy,jdbcType=VARCHAR},
+ 			#{item.smainOrgId,jdbcType=VARCHAR},
+ 			#{item.sdeptId,jdbcType=VARCHAR},
+ 			#{item.sorgKindId,jdbcType=VARCHAR},
+			#{item.fimage,jdbcType=VARCHAR}
+			) 
+		</foreach>
 	</insert>
 	
 	<update id="update" parameterType="Ernest.Entity.SaOpperson">

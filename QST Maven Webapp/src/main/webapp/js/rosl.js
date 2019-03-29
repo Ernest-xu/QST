@@ -453,7 +453,7 @@ $(document).ready(function() {
 					for (var i = 0; i < zzexcel.SheetNames.length; i++) {
 						_this.excelStr += JSON.stringify(XLSX.utils.sheet_to_json(zzexcel.Sheets[zzexcel.SheetNames[i]]));
 					}
-					$.axse("get", "/baas/PC/person/ToLeadExcel", {
+					$.axse("post", "/QST/saOppersonController/ToLeadExcel", {
 							excel: _this.excelStr,
 							md5Str: _this.sMd5Str
 						},

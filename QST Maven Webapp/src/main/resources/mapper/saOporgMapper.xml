@@ -33,6 +33,7 @@
 		where 
 			sMd5Str=#{0} and sNodeKind=#{1} and sMd5Str2 is null
 	</select>
+	
 	<select id="getAllDepartment"   resultMap="SaOporgMap">
 		select 
 			sID ,
@@ -51,6 +52,7 @@
 		where 
 			sMd5Str=#{0} and sNodeKind=#{1} 
 	</select>
+	
 	<select id="findDetail"  parameterType="String" resultMap="SaOporgMap">
 		select 
 			sID ,
@@ -144,6 +146,36 @@
 		</trim>
 	</insert>
 	
+	<insert id="batchSaves" parameterType="java.util.List">
+ 		insert into sa_oporg  (
+ 		sid,
+ 		sname,
+ 		sfname,
+ 		smd5str,
+ 		sorgKindId,
+ 		snodeKind,
+ 		smd5str2,
+ 		sphone,
+ 		sparentId,
+ 		fimage 
+ 		)values 
+		<foreach collection="list" item="item" index="index" separator=",">
+			<!-- 保证与实体类的字段一致，以对象的关系定义（注：区分大小写） -->
+ 			(
+ 			#{item.sid,jdbcType=VARCHAR},
+ 			#{item.sname,jdbcType=VARCHAR},
+ 			#{item.sfname,jdbcType=VARCHAR},
+ 			#{item.smd5str,jdbcType=VARCHAR},
+ 			#{item.sorgKindId,jdbcType=VARCHAR},
+ 			#{item.snodeKind,jdbcType=VARCHAR},
+ 			#{item.smd5str2,jdbcType=VARCHAR},
+ 			#{item.sphone,jdbcType=VARCHAR},
+ 			#{item.sparentId,jdbcType=VARCHAR},
+			#{item.fimage,jdbcType=VARCHAR}
+			) 
+		</foreach>
+	</insert>
+	
 	<update id="updateById" parameterType="Ernest.Entity.SaOporg">
 		update sa_oporg 
 			<trim prefix="set" suffixOverrides=",">
@@ -192,6 +224,7 @@
 		where 
 			sMd5Str=#{md5}
 	</select>
+	
 	<select id="findBysParentID2" parameterType="String" resultType="Ernest.Entity.SaOporg">
 	
 		select 
@@ -205,6 +238,7 @@
 		where 
 			sParentID2=#{sParentID2}
 	</select>
+	
 	<select id="findSubclass" parameterType="String" resultType="Ernest.Entity.SaOporg">
 	
 		select 

@@ -17,6 +17,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
 import Ernest.Dao.saOppersonDaoI;
@@ -29,7 +30,6 @@ import Ernest.Service.saOppersonOproleServiceI;
 import Ernest.Service.saOppersonServiceI;
 import Ernest.Service.saOproleServiceI;
 import Ernest.until.Head;
-import Ernest.until.ImageBase64Utils;
 import Ernest.until.PasswordUtil;
 import Ernest.until.Pinyin;
 import Ernest.until.PropertyUtil;
@@ -584,7 +584,121 @@ public class saOppersonServiceimpl implements saOppersonServiceI {
 	
 	@Override
 	public JSONObject ToLeadExcel(String excel, String md5Str) {
-		return null;
+		JSONObject json = new JSONObject();
+		JSONArray myJsonArray = JSONArray.parseArray(excel);
+		List<SaOporg> listAll =saOporgService.getAllDepartment(md5Str, "dep");
+		List<saOprole> listRole = saOproleService.listSaOproles(md5Str);
+		SaOporg so = saOporgService.findAdmin(md5Str, "orgPer");//获取系统管理员的目录
+		Map<String, String> roleMap = new HashMap<String, String>();
+		Map<String, String> orgMap = new HashMap<String, String>();
+		for(SaOporg saOporg:listAll){
+			logger.info(saOporg.getSfname());
+			logger.info(saOporg.getSid());
+			orgMap.put(saOporg.getSfname(), saOporg.getSid());
+		}
+		for(saOprole saOprole:listRole){
+			roleMap.put(saOprole.getSname(), saOprole.getSid());
+			roleMap.put(saOprole.getSid(), saOprole.getSname());
+		}
+		List<SaOppersonOprole> listSOO = new ArrayList<SaOppersonOprole>();
+		List<SaOporg> listOrg = new ArrayList<SaOporg>();
+		List<SaOpperson> listPerson = new ArrayList<SaOpperson>();		
+		for(int i=0;i<myJsonArray.size();i++){
+			boolean falge = true;
+			String fID = UUID.randomUUID().toString();
+			logger.info(fID);
+			String fImage = Head.getRandomImage();
+			JSONObject onePerson = new JSONObject();
+			onePerson = myJsonArray.getJSONObject(i);
+			String orgName =onePerson.getString("部门");
+			String orgId = orgMap.get(orgName);
+			logger.info(orgId);
+			if(orgMap.get(orgName)==null||orgMap.get(orgName).equals(so.getSparentId())){
+				falge=false;
+				
+			}
+			String roleNames = onePerson.getString("职位");
+			String roleIds = "";
+			
+			String[] names ;
+			if(roleNames!=null||"".equals(roleNames)){
+				names = roleNames.split(",");
+				for(int j=0;j<names.length;j++){
+					if(j==0){
+						roleIds+=roleMap.get(names[j]);	
+					}else{
+						roleIds+=","+roleMap.get(names[j]);
+					}
+				}
+			}
+			String realName = onePerson.getString("人员姓名");//填写的姓名
+			String sex = onePerson.getString("性别");
+			String account = onePerson.getString("登录电话号");
+			String phone = onePerson.getString("登录电话号");
+			String password = onePerson.getString("密码");//密码
+			String sOrgKindID = onePerson.getString("组织性质(zb或fb)");
+			String sChineseFirstPY = Pinyin.getPinYinHeadChar(realName);//姓名首字母
+			String topId = null;
+			String md5Str3 = PasswordUtil.encrypt("分包管理员", "123456", PasswordUtil.getStaticSalt());
+			String md5Str2 = PasswordUtil.encrypt("分包管理员", "123456", PasswordUtil.getStaticSalt());
+			SaOporg saOporg = new SaOporg();
+			SaOpperson saOpperson = new SaOpperson(); 
+			saOporg.setSid(fID);
+			saOporg.setSname(account);
+			saOporg.setSfname(realName);
+			saOporg.setSparentId(orgId);
+			saOporg.setSmd5str(md5Str);
+			saOporg.setSorgKindId("zb");
+			saOporg.setSnodeKind("per");
+			saOporg.setSmd5str2(md5Str2);
+			saOporg.setSphone(account);
+			saOporg.setFimage(fImage);
+			saOpperson.setSid(fID);
+			saOpperson.setSname(realName);
+			saOpperson.setSmobilePhone(account);
+			saOpperson.setSloginName(account);
+			saOpperson.setSsex(sex);
+			saOpperson.setSpassword(password);
+			saOpperson.setSmd5str(md5Str);
+			saOpperson.setSchineseFirstPy(sChineseFirstPY);
+			saOpperson.setSdeptId(orgId);
+			saOpperson.setSorgKindId("zb");
+			saOpperson.setSmainOrgId(so.getSid());
+			saOpperson.setFimage(fImage);
+			if (roleIds != null && roleIds != "") {
+				if(roleIds.indexOf(",")>-1){
+					String[] roleIdArr = roleIds.split(",");
+					for (String roleId : roleIdArr) {
+						SaOppersonOprole saOppersonOprole = new SaOppersonOprole();
+						String userRoleID = UUID.randomUUID().toString();
+						logger.info("SaOppersonOprole:"+userRoleID);
+						saOppersonOprole.setSid(userRoleID);
+						saOppersonOprole.setUserId(fID);
+						saOppersonOprole.setRoleId(roleId);
+						saOppersonOprole.setSmd5str(md5Str3);
+						listSOO.add(saOppersonOprole);
+					}
+				}else{
+					SaOppersonOprole saOppersonOprole = new SaOppersonOprole();
+					String userRoleID = UUID.randomUUID().toString();
+					logger.info("SaOppersonOprole:"+userRoleID);
+					saOppersonOprole.setSid(userRoleID);
+					saOppersonOprole.setUserId(fID);
+					saOppersonOprole.setRoleId(roleIds);
+					saOppersonOprole.setSmd5str(md5Str3);
+					listSOO.add(saOppersonOprole);
+				}
+			}
+			listOrg.add(saOporg);
+			listPerson.add(saOpperson);
+		}
+		int a  = saOppersonOproleService.batchSaves(listSOO);
+		int b = saOppersonDao.batchSaves(listPerson);
+		int c = saOporgService.batchSaves(listOrg);
+		logger.info("a:"+a+";b:"+b+";c:"+c);
+		json.put("success", true);
+		json.put("message", "成功");
+		return json;
 	}
 
 
@@ -626,7 +740,7 @@ public class saOppersonServiceimpl implements saOppersonServiceI {
 		        ws.addCell(labelexplain6);
 				number++;
 			}
-			List<SaOporg> list = saOporgService.getAllDepartment(md5, "per");
+			List<SaOporg> list = saOporgService.getAllDepartment(md5, "dep");
 			number=1;
 			for(SaOporg saOporg:list){
 				String name = saOporg.getSfname();//部门名称

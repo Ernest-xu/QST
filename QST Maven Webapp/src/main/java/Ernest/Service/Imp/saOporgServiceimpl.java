@@ -258,4 +258,11 @@ public class saOporgServiceimpl implements saOporgServiceI{
 		return saOporgDao.getAllDepartment(md5, kind);
 	}
 
+
+	@Override
+	public int batchSaves(List<SaOporg> list) {
+		
+		return saOporgDao.batchSaves(list);
+	}
+
 }
