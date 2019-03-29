@@ -399,15 +399,18 @@ $(document).ready(function() {
 			download() {
 				var _this = this;
 				if (this.fID != "") {
-					$.axse("get", "/baas/PC/person/ExportExcel", {
+					$.axse("post", "/QST/saOppersonController/ExportExcel", {
 							id: this.fID,
 							md5Str: this.sMd5Str
 						},
 						function(res) {
+//							console.info(res.src,res.src1);
 							let arr = [res.src, res.src1]
-							window.location.href = encodeURI(encodeURI(res.src));
+//							window.location.href = encodeURI(encodeURI(res.src));
+							window.location.href = res.src;
 							setTimeout(function() {
-								window.location.href = encodeURI(encodeURI(res.src1));
+//								window.location.href = encodeURI(encodeURI(res.src1));
+								window.location.href =res.src1;
 
 							}, 1000)
 						},

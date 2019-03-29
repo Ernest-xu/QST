@@ -18,13 +18,15 @@ import Ernest.Entity.SaOpperson;
 import Ernest.Service.saOporgServiceI;
 import Ernest.Service.saOppersonServiceI;
 import Ernest.until.TimeUntil;
+import jxl.write.WriteException;
+import jxl.write.biff.RowsExceededException;
 
 /**人员相关功能
  * @author Ernest
  *
  */
 @RestController
-@RequestMapping(value="/saOppersonController")
+@RequestMapping(value="/saOppersonController", produces = {"application/json;charset=UTF-8"})
 public class saOppersonController {
 	private static final Logger logger = Logger.getLogger(saOppersonController.class);
 	@Autowired
@@ -109,6 +111,12 @@ public class saOppersonController {
 	public JSONObject DeleteOpperson(String fID){
 		JSONObject json = saOppersonService.DeletePerson(fID);
 //		logger.info(json);
+		return json;
+	}
+	
+	@PostMapping("/ExportExcel")
+	public JSONObject ExportExcel(String id,String md5Str) throws RowsExceededException, WriteException{
+		JSONObject json = saOppersonService.ExportExcel(id, md5Str);
 		return json;
 	}
 	
