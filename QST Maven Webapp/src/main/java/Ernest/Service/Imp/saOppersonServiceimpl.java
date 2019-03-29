@@ -32,6 +32,7 @@ import Ernest.until.Head;
 import Ernest.until.ImageBase64Utils;
 import Ernest.until.PasswordUtil;
 import Ernest.until.Pinyin;
+import Ernest.until.PropertyUtil;
 import jxl.Workbook;
 import jxl.write.Label;
 import jxl.write.WritableSheet;
@@ -505,7 +506,7 @@ public class saOppersonServiceimpl implements saOppersonServiceI {
 	@Override
 	public JSONObject ExportExcel(String id, String md5Str) {
 		JSONObject json = new JSONObject();
-		String fileName = ImageBase64Utils.getPath("excel")+"人员表.xls";
+		String fileName = PropertyUtil.getProperty("excel.sourcePath")+"人员表.xls";
 		List<SaOpperson> list = saOppersonDao.findPersonList(id);
 		WritableWorkbook wwb = null;
 		DateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -566,7 +567,7 @@ public class saOppersonServiceimpl implements saOppersonServiceI {
     		}
             wwb.write();
             wwb.close();
-            json.put("src", ImageBase64Utils.getUrl("excel")+"人员表.xls");
+            json.put("src", PropertyUtil.getProperty("excel.targetPath")+"人员表.xls");
 			json.put("src1", src1);
 			json.put("success", true);
 		} catch (IOException e) {
@@ -590,8 +591,8 @@ public class saOppersonServiceimpl implements saOppersonServiceI {
 	 
 	@Override
 	public String Instruction(String md5) {
-		String fileName = ImageBase64Utils.getPath("excel")+"说明表.xls";
-		String src = ImageBase64Utils.getUrl("excel")+"说明表.xls";
+		String fileName = PropertyUtil.getProperty("excel.sourcePath")+"说明表.xls";
+		String src = PropertyUtil.getProperty("excel.targetPath")+"说明表.xls";
 		WritableWorkbook wwb = null;
 		try {
 			File file=new File(fileName);

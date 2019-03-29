@@ -25,13 +25,7 @@ import Ernest.Entity.Function;
 
 public class ReadXml {
 	private static String getPath() throws IOException{
-		
-		Properties properties = new Properties();
-	    // 使用InPutStream流读取properties文件
-	    BufferedReader bufferedReader = new BufferedReader(new FileReader("D:/myeclipse/Git/QST Maven Webapp/src/main/resources/conf/jdbc.properties"));
-	    properties.load(bufferedReader);
-	    // 获取key对应的value值
-	    String a= properties.getProperty("allfunction");
+	    String a=PropertyUtil.getProperty("allfunction");
 	    return a;
 		
 	}

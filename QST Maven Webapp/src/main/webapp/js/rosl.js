@@ -404,7 +404,7 @@ $(document).ready(function() {
 							md5Str: this.sMd5Str
 						},
 						function(res) {
-//							console.info(res.src,res.src1);
+							console.info(res.src,res.src1);
 							let arr = [res.src, res.src1]
 //							window.location.href = encodeURI(encodeURI(res.src));
 							window.location.href = res.src;
