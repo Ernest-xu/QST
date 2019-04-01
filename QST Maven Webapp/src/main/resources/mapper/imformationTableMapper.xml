@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Ernest.Dao.informationTableDaoI">
+	<resultMap type="Ernest.Entity.informationTable" id="InformationMap">
+		<id column = "fid" jdbcType="VARCHAR" property="fid"/>
+		<result column="gongxuChange" jdbcType="VARCHAR" property="gongxuChange"/>
+		<result column="fmd5" jdbcType="VARCHAR" property="fmd5"/>
+		<result column="fprojectCode" jdbcType="VARCHAR" property="fprojectCode"/>
+		<result column="fwrtieName" jdbcType="VARCHAR" property="fwrtieName"/>
+		<result column="fwriteId" jdbcType="VARCHAR" property="fwriteId"/>
+		<result column="fno" jdbcType="VARCHAR" property="fno"/>
+		<result column="fprjoectName" jdbcType="VARCHAR" property="fprjoectName"/>
+		<result column="fprojectQuanName" jdbcType="VARCHAR" property="fprojectQuanName"/>
+		<result column="fprojectAddress" jdbcType="VARCHAR" property="fprojectAddress"/>
+		<result column="flongitude" jdbcType="VARCHAR" property="flongitude"/>
+		<result column="flatitude" jdbcType="VARCHAR" property="flatitude"/>
+		<result column="fprojectMessage" jdbcType="VARCHAR" property="fprojectMessage"/>
+		<result column="fproSuperAdminNa" jdbcType="VARCHAR" property="fproSuperAdminNa"/>
+		<result column="fproSuperAdminId" jdbcType="VARCHAR" property="fproSuperAdminId"/>
+		<result column="fwrtietime" jdbcType="DATE" property="fwrtietime"/>
+		<result column="fstateTime" jdbcType="DATE" property="fstateTime"/>
+		<result column="fendTime" jdbcType="DATE" property="fendTime"/>
+		<result column="fsvgzs" jdbcType="VARCHAR" property="fsvgzs"/>
+		<result column="fsvgqd" jdbcType="VARCHAR" property="fsvgqd"/>
+		<result column="fqdgeshu" jdbcType="VARCHAR" property="fqdgeshu"/>
+		<result column="fzhuangshu" jdbcType="VARCHAR" property="fzhuangshu"/>
+		<result column="fpeolistName" jdbcType="VARCHAR" property="fpeolistName"/>
+		<result column="fpeolistId" jdbcType="VARCHAR" property="fpeolistId"/>
+		<result column="fpeolistMd5" jdbcType="VARCHAR" property="fpeolistMd5"/>
+	<!-- 表中无用字段 -->	
+	<!-- 	
+		<result column="fcreateOrgId" jdbcType="VARCHAR" property="fcreateOrgId"/>
+		<result column="fcreateOrgId" jdbcType="VARCHAR" property="fcreateOrgId"/>
+		<result column="fcreateOrgCode" jdbcType="VARCHAR" property="fcreateOrgCode"/>
+		<result column="fcreateDepId" jdbcType="VARCHAR" property="fcreateDepId"/>
+		<result column="fcreateDepName" jdbcType="VARCHAR" property="fcreateDepName"/>
+		<result column="fcreateDepCode" jdbcType="VARCHAR" property="fcreateDepCode"/>
+		<result column="fcreatePosId" jdbcType="VARCHAR" property="fcreatePosId"/>
+		<result column="fcreatePosName" jdbcType="VARCHAR" property="fcreatePosName"/>
+		<result column="fcreatePosCode" jdbcType="VARCHAR" property="fcreatePosCode"/>
+		<result column="fcreatePsmname" jdbcType="VARCHAR" property="fcreatePsmname"/>
+		<result column="fcubeSum" jdbcType="REAL" property="fcubeSum"/>
+		<result column="ftonnageSum" jdbcType="REAL" property="ftonnageSum"/>
+		<result column="fspanSum" jdbcType="REAL" property="fspanSum"/>
+		<result column="fcreatePsmCode" jdbcType="VARCHAR" property="fcreatePsmCode"/>
+		<result column="fcreateDateTime" jdbcType="VARCHAR" property="fcreateDateTime"/>
+		<result column="fupdatePsmName" jdbcType="VARCHAR" property="fupdatePsmName"/>
+		<result column="fupdateDateTime" jdbcType="VARCHAR" property="fupdateDateTime"/>
+		<result column="fprojectType" jdbcType="VARCHAR" property="fprojectType"/>
+		<result column="fprojectVoltage" jdbcType="VARCHAR" property="fprojectVoltage"/>
+		<result column="fprojectTelephone" jdbcType="VARCHAR" property="fprojectTelephone"/>
+		<result column="fprojectState" jdbcType="VARCHAR" property="fprojectState"/>
+		<result column="fstate" jdbcType="VARCHAR" property="fstate"/>
+		<result column="fmsterId" jdbcType="VARCHAR" property="fmsterId"/>
+		<result column="fxmbry" jdbcType="VARCHAR" property="fxmbry"/>
+		<result column="fbs" jdbcType="VARCHAR" property="fbs"/>
+		<result column="fsgbz" jdbcType="VARCHAR" property="fsgbz"/>
+	-->
+	</resultMap>
+	
+	<select id="" parameterType="String" resultType="InformationMap">
+		select 
+			pppi.fID as sID,
+			pppi.fProjectCode,
+			pppi.fMd5,
+			pppi.fPrjoectName as sName,
+			pppi.fProjectQuanName 
+		from 
+			pm_project_project_informationtable pppi 
+		where 
+			pppi.fWriteID =#{writeId}
+	</select>
+	
+	
+</mapper>
