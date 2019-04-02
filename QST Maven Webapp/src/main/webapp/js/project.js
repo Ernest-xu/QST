@@ -135,7 +135,7 @@ $(document).ready(function() {
 			// 请求左边导航 和表格
 			getMainTable: function() {
 				var _this = this;
-				$.axse("get", "/baas/PC/project/SelectProjectList", {
+				$.axse("get", "/QST/informationTableController/SelectProjectList", {
 						UserID: this.token.sID
 					},
 					function(res) {

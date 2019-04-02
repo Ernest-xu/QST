@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Ernest.Dao.informationTableDaoI">
-	<resultMap type="Ernest.Entity.informationTable" id="InformationMap">
+	<resultMap type="Ernest.Entity.InformationTable" id="InformationTableMap">
 		<id column = "fid" jdbcType="VARCHAR" property="fid"/>
 		<result column="gongxuChange" jdbcType="VARCHAR" property="gongxuChange"/>
 		<result column="fmd5" jdbcType="VARCHAR" property="fmd5"/>
@@ -27,8 +27,7 @@
 		<result column="fpeolistName" jdbcType="VARCHAR" property="fpeolistName"/>
 		<result column="fpeolistId" jdbcType="VARCHAR" property="fpeolistId"/>
 		<result column="fpeolistMd5" jdbcType="VARCHAR" property="fpeolistMd5"/>
-	<!-- 表中无用字段 -->	
-	<!-- 	
+		
 		<result column="fcreateOrgId" jdbcType="VARCHAR" property="fcreateOrgId"/>
 		<result column="fcreateOrgId" jdbcType="VARCHAR" property="fcreateOrgId"/>
 		<result column="fcreateOrgCode" jdbcType="VARCHAR" property="fcreateOrgCode"/>
@@ -55,21 +54,20 @@
 		<result column="fxmbry" jdbcType="VARCHAR" property="fxmbry"/>
 		<result column="fbs" jdbcType="VARCHAR" property="fbs"/>
 		<result column="fsgbz" jdbcType="VARCHAR" property="fsgbz"/>
-	-->
 	</resultMap>
 	
-	<select id="" parameterType="String" resultType="InformationMap">
+	<select id="findList" parameterType="String" resultMap="InformationTableMap">
 		select 
-			pppi.fID as sID,
-			pppi.fProjectCode,
-			pppi.fMd5,
-			pppi.fPrjoectName as sName,
-			pppi.fProjectQuanName 
+			fid,
+			fprojectCode,
+			fprjoectName,
+			fprojectQuanName,
+			fmd5     
 		from 
-			pm_project_project_informationtable pppi 
+			pm_project_project_informationtable 
 		where 
-			pppi.fWriteID =#{writeId}
+			fwriteId =#{writeId}
 	</select>
-	
+	 
 	
 </mapper>

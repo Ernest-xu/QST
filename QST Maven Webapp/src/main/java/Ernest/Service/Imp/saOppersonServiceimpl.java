@@ -695,7 +695,6 @@ public class saOppersonServiceimpl implements saOppersonServiceI {
 		int a  = saOppersonOproleService.batchSaves(listSOO);
 		int b = saOppersonDao.batchSaves(listPerson);
 		int c = saOporgService.batchSaves(listOrg);
-		logger.info("a:"+a+";b:"+b+";c:"+c);
 		json.put("success", true);
 		json.put("message", "成功");
 		return json;
