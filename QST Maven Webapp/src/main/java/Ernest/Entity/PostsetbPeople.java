@@ -16,29 +16,30 @@ public class PostsetbPeople implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String fid;
+	private String fid;//
 	private String fno;
-	private String fpostName;
-	private String fpostWriteName;
-	private String fpostWriteId;
+	private String fpostName;//
+	private String fpostWriteName;//
+	private String fpostWriteId;//
 	private String fpostCode;
 	private String fpostId;
 	private String fpostState;
 	private String fpostType;
-	private String fmasterId;
-	private String fcreateTime;
-	private String fprojectName;
-	private String fprojectCode;
-	private String fprojectId;
-	private String froleName;
+	private String fmasterId;//
+	private String fcreateTime;//
+	private String fprojectName;//
+	private String fprojectCode;//
+	private String fprojectId;//
+	private String froleName;//
 	private String froleId;
 	private String fmd5;
-	private String fphone;
+	private String fphone;//
 	private String fpostxmid1;
-	private String fpostxmid2;
-	private String frenyn;
-	private String fimage;
+	private String fpostxmid2;//
+	private String frenyn;//
+	private String fimage;//
 	private PostsetbXm postsetbXm;
+	private SaOpperson saOpperson;
 	// Constructors
 
 	/** default constructor */
@@ -279,4 +280,49 @@ public class PostsetbPeople implements java.io.Serializable {
 		this.fimage = fimage;
 	}
 
+	/**
+	 * @return the postsetbXm
+	 */
+	public PostsetbXm getPostsetbXm() {
+		return postsetbXm;
+	}
+
+	/**
+	 * @param postsetbXm the postsetbXm to set
+	 */
+	public void setPostsetbXm(PostsetbXm postsetbXm) {
+		this.postsetbXm = postsetbXm;
+	}
+
+	/**
+	 * @return the saOpperson
+	 */
+	public SaOpperson getSaOpperson() {
+		return saOpperson;
+	}
+
+	/**
+	 * @param saOpperson the saOpperson to set
+	 */
+	public void setSaOpperson(SaOpperson saOpperson) {
+		this.saOpperson = saOpperson;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "PostsetbPeople [fid=" + fid + ", fno=" + fno + ", fpostName=" + fpostName + ", fpostWriteName="
+				+ fpostWriteName + ", fpostWriteId=" + fpostWriteId + ", fpostCode=" + fpostCode + ", fpostId="
+				+ fpostId + ", fpostState=" + fpostState + ", fpostType=" + fpostType + ", fmasterId=" + fmasterId
+				+ ", fcreateTime=" + fcreateTime + ", fprojectName=" + fprojectName + ", fprojectCode=" + fprojectCode
+				+ ", fprojectId=" + fprojectId + ", froleName=" + froleName + ", froleId=" + froleId + ", fmd5=" + fmd5
+				+ ", fphone=" + fphone + ", fpostxmid1=" + fpostxmid1 + ", fpostxmid2=" + fpostxmid2 + ", frenyn="
+				+ frenyn + ", fimage=" + fimage + ", postsetbXm=" + postsetbXm + ", saOpperson=" + saOpperson + "]";
+	}
+	
+	
+
+	
 }

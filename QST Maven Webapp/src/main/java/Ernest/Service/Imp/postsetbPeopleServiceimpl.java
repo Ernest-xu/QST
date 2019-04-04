@@ -85,4 +85,30 @@ public class postsetbPeopleServiceimpl implements postsetbPeopleServiceI {
 		return json;
 	}
 
+	
+	@Override
+	public JSONObject SelectPerson(String fProjectID, String sMd5Str) {
+		JSONObject json = new JSONObject();
+		List<PostsetbPeople> PPlist = postsetbPeopleDao.findPersonByProjectAndmd5(fProjectID, sMd5Str);
+		List<Map<String,String>> list = new ArrayList<Map<String,String>>();
+		int number=0;
+		for(PostsetbPeople postsetbPeople:PPlist){
+			Map<String ,String> map = new HashMap<String, String>();
+			map.put("fID", postsetbPeople.getSaOpperson().getSid());
+			map.put("sName", postsetbPeople.getSaOpperson().getSname());
+			list.add(map);
+			number++;
+		}
+		if(number>1){
+			json.put("success", true);
+			json.put("message", "成功");
+			json.put("number", number);
+			json.put("data", list);
+		}else{
+			json.put("success", false);
+			json.put("message", "没有未分配岗位的人员");
+		}
+		return json;
+	}
+
 }

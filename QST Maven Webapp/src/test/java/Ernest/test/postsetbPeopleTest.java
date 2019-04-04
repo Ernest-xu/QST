@@ -33,4 +33,11 @@ public class postsetbPeopleTest extends TestBase {
 			logger.info(pp.getFid());
 		}
 	}
+//	@Test
+	public void findlist1(){//
+		List<PostsetbPeople> list = postsetbPeopleDao.findPersonByProjectAndmd5("C82BF43AEBB0000123221B4159871D1F", "a5456473bddfaa1db1f7bd3b29fc8c8a");
+		for(PostsetbPeople pp : list){
+			logger.info(pp.getSaOpperson().getSname());
+		}
+	}
 }

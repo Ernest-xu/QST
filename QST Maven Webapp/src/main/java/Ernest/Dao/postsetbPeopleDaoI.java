@@ -23,4 +23,14 @@ public interface postsetbPeopleDaoI {
 	 */
 	List<PostsetbPeople> findPeopleListByProjectId(String ProjectId);
 	
+	
+	/**
+	 * 查找人员根据项目id和md5
+	 * @param fProjectID
+	 * @param sMd5Str
+	 * @return
+	 */
+	List<PostsetbPeople> findPersonByProjectAndmd5(String fProjectID ,String sMd5Str);
+	
+	
 }

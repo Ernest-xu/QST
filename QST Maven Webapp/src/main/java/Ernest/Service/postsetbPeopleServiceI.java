@@ -17,4 +17,11 @@ public interface postsetbPeopleServiceI {
 	 * @return
 	 */
 	JSONObject findPeopleListByProjectId(String ProjectId);
+	
+	/**
+	 * 查找人员
+	 * @return
+	 */
+	JSONObject SelectPerson(String fProjectID ,String sMd5Str);
+	
 }

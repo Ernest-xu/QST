@@ -32,4 +32,12 @@ public class postsetbPeopleController {
 		return json;
 	}
 	
+	@GetMapping("/SelectPerson")
+	public JSONObject SelectPerson(String fProjectID,String sMd5Str){
+		JSONObject json = new JSONObject();
+		json = postsetbPeopleService.SelectPerson(fProjectID, sMd5Str);
+		return json;
+	}
+	
+	
 }

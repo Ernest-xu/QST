@@ -17,29 +17,30 @@ public class PostsetbXm3gw implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String fid;
-	private String fno;
-	private String fpostName;
-	private String fpostWriteName;
-	private String fpostWriteId;
+	private String fid;//
+	private String fno;//
+	private String fpostName;//
+	private String fpostWriteName;//
+	private String fpostWriteId;//
 	private String fpostCode;
 	private String fpostId;
 	private String fpostState;
-	private String fpostType;
-	private String fmasterId;
-	private String fprojectName;
-	private String fprojectCode;
+	private String fpostType;//
+	private String fmasterId;//
+	private String fprojectName;//
+	private String fprojectCode;//
 	private String froleName;
 	private String froleId;
 	private String fmd5;
-	private String fpostXlb;
+	private String fpostXlb;//
 	private String fteamT;
 	private String fteamleibie;
 	private String fpostxmid;
-	private String fpostxmid2;
-	private String fpostxmid1;
-	private String fysxs1;
+	private String fpostxmid2;//
+	private String fpostxmid1;//
+	private String fysxs1;//
 	private PostsetbXm postsetbXm;
+	private PostsetbXm3gw postsetbXm3gw;
 	// Constructors
 
 	/** default constructor */
@@ -293,10 +294,15 @@ public class PostsetbXm3gw implements java.io.Serializable {
 	public void setFysxs1(String fysxs1) {
 		this.fysxs1 = fysxs1;
 	}
+	
+	public PostsetbXm3gw getPostsetbXm3gw() {
+		return postsetbXm3gw;
+	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
+	public void setPostsetbXm3gw(PostsetbXm3gw postsetbXm3gw) {
+		this.postsetbXm3gw = postsetbXm3gw;
+	}
+
 	@Override
 	public String toString() {
 		return "PostsetbXm3gw [fid=" + fid + ", fno=" + fno + ", fpostName=" + fpostName + ", fpostWriteName="
@@ -305,9 +311,11 @@ public class PostsetbXm3gw implements java.io.Serializable {
 				+ ", fprojectName=" + fprojectName + ", fprojectCode=" + fprojectCode + ", froleName=" + froleName
 				+ ", froleId=" + froleId + ", fmd5=" + fmd5 + ", fpostXlb=" + fpostXlb + ", fteamT=" + fteamT
 				+ ", fteamleibie=" + fteamleibie + ", fpostxmid=" + fpostxmid + ", fpostxmid2=" + fpostxmid2
-				+ ", fpostxmid1=" + fpostxmid1 + ", fysxs1=" + fysxs1 + "]";
+				+ ", fpostxmid1=" + fpostxmid1 + ", fysxs1=" + fysxs1 + ", postsetbXm=" + postsetbXm
+				+ ", postsetbXm3gw=" + postsetbXm3gw + "]";
 	}
 
+	
 	
 
 }

@@ -73,7 +73,30 @@
 		order by xm.fxmbName desc
 	</select>
 	
-	
+	<select id="findPersonByProjectAndmd5" resultMap="postsetbPeopleMap">
+		select 
+			sao.sID as sid,
+			sao.sName as sname  
+		from 
+			sa_opperson sao    
+		where  
+			sao.sMd5Str=#{1} 
+		and 
+			sao.sID  not in 
+			(
+			select 
+				sa.sID 
+			from 
+				sa_opperson sa,
+				pm_project_project_informationtable_postsetb_people pp 
+			where 
+				sa.sID=pp.fPostWriteID 
+			and 
+				sa.sMd5Str=#{1} 
+			and 
+				pp.fProjectID=#{0}
+			)
+	</select>
 	
 	
 </mapper>

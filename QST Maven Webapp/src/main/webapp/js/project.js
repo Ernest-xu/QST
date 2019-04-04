@@ -604,7 +604,7 @@ $(document).ready(function() {
 			//获取未分配人员
 			UnpersonnelFun() {
 				var _this = this;
-				$.axse("get", "/baas/PC/project/SelectPerson", {
+				$.axse("get", "/QST/postsetbPeopleController/SelectPerson", {
 						sMd5Str: this.token.sMd5Str,
 						fProjectID: this.key
 					},
