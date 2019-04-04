@@ -58,5 +58,28 @@ public class postsetbX3gwServiceimpl implements postsetbXm3gwServiceI {
 		
 		return json;
 	}
+	
+	@Override
+	public Map<String, String> findByProjectId(String ProjectId) {
+		List<PostsetbXm3gw> PX3list = postsetbXm3gwDao.findByProjectId(ProjectId);
+		Map<String, String > map = new HashMap<String, String>();
+		for(PostsetbXm3gw px:PX3list){
+			String sName = null;
+			sName =px.getPostsetbXm3gw().getFpostName();
+			String fPostWriteID = null;
+			fPostWriteID=px.getFpostWriteId();
+			if(fPostWriteID==null||"".equals(fPostWriteID)||"null".equals(fPostWriteID)){
+				
+			}else{
+				
+				int index = fPostWriteID.indexOf(",");
+				String[] attrID = fPostWriteID.split(",");
+				for(int i=0;i<attrID.length;i++){
+					map.put(attrID[i], sName);
+				}
+			}
+		}
+		return map;
+	}
 
 }

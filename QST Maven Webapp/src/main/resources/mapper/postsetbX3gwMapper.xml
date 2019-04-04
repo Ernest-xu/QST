@@ -4,11 +4,22 @@
 	<resultMap type="Ernest.Entity.PostsetbXm3gw" id="PostsetbXm3gwMap">
 		<id column="fid" jdbcType="VARCHAR" property="fid"/>
 		<result column="fpostName" jdbcType="VARCHAR" property="fpostName"/>
+		<result column="fpostWriteId" jdbcType="VARCHAR" property="fpostWriteId"/>
+		<result column="fpostxmid" jdbcType="VARCHAR" property="fpostxmid"/>
+		<result column="fpostxmid1" jdbcType="VARCHAR" property="fpostxmid1"/>
 		<result column="fpostxmid2" jdbcType="VARCHAR" property="fpostxmid2"/>
 		<collection  property="postsetbXm"  ofType="Ernest.Entity.PostsetbXm">
 			<id column="px_fid" jdbcType="VARCHAR" property="fid"/>
 			<result column="px_fpostName" jdbcType="VARCHAR" property="fpostName"/>
 		</collection>
+		<collection  property="postsetbXm3gw"  ofType="Ernest.Entity.PostsetbXm3gw">
+			<id column="px3_fid" jdbcType="VARCHAR" property="fid"/>
+			<result column="px3_fPostName" jdbcType="VARCHAR" property="fpostName"/>
+			<result column="px3_fpostxmid" jdbcType="VARCHAR" property="fpostxmid"/>
+		<result column="px3_fpostxmid1" jdbcType="VARCHAR" property="fpostxmid1"/>
+		<result column="px3_fpostxmid2" jdbcType="VARCHAR" property="fpostxmid2"/>
+		</collection>
+		
 	</resultMap>
 	
 	<select id="findByProjectIdAndUser" resultMap="PostsetbXm3gwMap">
@@ -26,5 +37,25 @@
 		and 
 			xm.fMasterID=#{0} and xm.fWriteID=#{1}
 	</select>
+	
+	<select id="findByProjectId" parameterType="String" resultMap="PostsetbXm3gwMap">
+		select 
+			gw.fPostWriteID as fpostWriteId, 
+			gwx.fPostName as px3_fPostName 
+		from 
+			pm_project_project_informationtable_postsetb_xm_3gw gw 
+		left join 
+			pm_project_project_informationtable_postsetb_xm_3gw gwx 
+		on 
+			gw.fPostxmid2 = gwx.fPostxmid1 ,pm_project_project_informationtable_postsetb_xm xm 
+		where 
+			xm.fID=gw.fPostxmid 
+		and 
+			gwx.fPostName is not null 
+		and 
+			xm.fMasterID=#{ProjectId}
+	</select>
+	
+	
 	
 </mapper>

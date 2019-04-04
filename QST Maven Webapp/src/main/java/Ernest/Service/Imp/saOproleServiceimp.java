@@ -90,9 +90,7 @@ public class saOproleServiceimp implements saOproleServiceI {
 	}
 
 
-	/* (non-Javadoc)
-	 * @see Ernest.Service.saOproleServiceI#selectJobName(java.lang.String)
-	 */
+	
 	@Override
 	public List<Map<String, Object>> selectJobName(String id) {
 		List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();

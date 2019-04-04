@@ -141,7 +141,7 @@ $(document).ready(function() {
 					function(res) {
 						//console.log(res)
 						_this.nav = res.list;
-						$.axse("get", "/baas/PC/project/SelectUserList", {
+						$.axse("get", "/QST/postsetbPeopleController/SelectUserList", {
 								id: res.list[0].children[0].id
 							},
 							function(res) {
@@ -198,7 +198,7 @@ $(document).ready(function() {
 			},
 			tableDataONE(id) {
 				var _this = this
-				$.axse("get", "/baas/PC/project/SelectUserList", {
+				$.axse("get", "/QST/postsetbPeopleController/SelectUserList", {
 						id: id
 					},
 					function(res) {

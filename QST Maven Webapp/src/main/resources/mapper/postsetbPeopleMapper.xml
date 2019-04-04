@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Ernest.Dao.postsetbPeopleDaoI">
+	<resultMap type="Ernest.Entity.PostsetbPeople" id="postsetbPeopleMap">
+		<id column="fid" jdbcType="VARCHAR" property="fid"/>
+		<result column="fpostName" jdbcType="VARCHAR" property="fpostName"/>
+		<result column="fpostWriteName" jdbcType="VARCHAR" property="fpostWriteName"/>
+		<result column="fpostWriteId" jdbcType="VARCHAR" property="fpostWriteId"/>
+		<result column="fmasterId" jdbcType="VARCHAR" property="fmasterId"/>
+		<result column="fcreateTime" jdbcType="VARCHAR" property="fcreateTime"/>
+		<result column="fprojectName" jdbcType="VARCHAR" property="fprojectName"/>
+		<result column="fprojectCode" jdbcType="VARCHAR" property="fprojectCode"/>
+		<result column="fprojectId" jdbcType="VARCHAR" property="fprojectId"/>
+		<result column="froleName" jdbcType="VARCHAR" property="froleName"/>
+		<result column="fphone" jdbcType="VARCHAR" property="fphone"/>
+		<result column="fpostxmid2" jdbcType="VARCHAR" property="fpostxmid2"/>
+		<result column="frenyn" jdbcType="VARCHAR" property="frenyn"/>
+		<result column="fimage" jdbcType="VARCHAR" property="fimage"/>
+		<collection property="saOpperson"  ofType="Ernest.Entity.SaOpperson">
+			<id column="sid" jdbcType="VARCHAR" property="sid"/>
+			<result column="sname" jdbcType="VARCHAR" property="sname" />
+			<result column="sidcard" jdbcType="VARCHAR" property="sidcard" />
+			<result column="sSex" jdbcType="VARCHAR" property="ssex" />
+			<result column="sage" jdbcType="INTEGER" property="sage" />
+			<result column="sloginName" jdbcType="VARCHAR" property="sloginName" />
+			<result column="spassword" jdbcType="VARCHAR" property="spassword" />
+			<result column="loginCount" jdbcType="SMALLINT" property="loginCount" />
+			<result column="smd5str" jdbcType="VARCHAR" property="smd5str" />
+			<result column="smainOrgId" jdbcType="VARCHAR" property="smainOrgId" />
+			<result column="sdeptId" jdbcType="VARCHAR" property="sdeptId" />
+			<result column="schineseFirstPy" jdbcType="VARCHAR" property="schineseFirstPy" />
+			<result column="sorgKindId" jdbcType="VARCHAR" property="sorgKindId" />
+			<result column="so_fimage" jdbcType="VARCHAR" property="fimage" />
+			<result column="sjoinDate" jdbcType="TIMESTAMP" property="sjoinDate" />
+			<result column="orgId" jdbcType="VARCHAR" property="orgId" />
+			<collection  property="saOporg"  ofType="Ernest.Entity.SaOporg">
+				<id column="so_id" jdbcType="VARCHAR" property="sid"/>
+				<result column="snodeKind" jdbcType="VARCHAR" property="snodeKind" />
+				<result column="sfname" jdbcType="VARCHAR" property="sfname" />
+				<result column="screateTime" jdbcType="TIMESTAMP" property="screateTime" />
+				<result column="sparentId" jdbcType="VARCHAR" property="sparentId" />
+			</collection>
+		</collection>
+		<collection property="postsetbXm"  ofType="Ernest.Entity.PostsetbXm">
+			<id column="xm_fid" jdbcType="VARCHAR" property="fid"/>
+			<result column="fxmbName" jdbcType="VARCHAR" property="fxmbName"/>
+		</collection>
+	</resultMap>
+	
+	<select id="findPeopleListByProjectId" parameterType="String"   resultMap="postsetbPeopleMap">
+		select 
+			sa.sID as sid,
+			sa.sName as sname,
+			sa.sLoginName as sloginName,
+			sa.sPassword as spassword,
+			sa.sMd5Str as smd5str,
+			b.fID as fid,
+			b.fPostName as fpostName,
+			b.fPostWriteID as fpostWriteId,
+			so.sFName as sfname,
+			xm.fxmbName as fxmbName  
+						  
+		from 
+			sa_opperson sa , pm_project_project_informationtable_postsetb_people b ,sa_oporg so,pm_project_project_informationtable_postsetb_xm xm  
+		where 
+			b.fPostWriteID=sa.sID 
+		and 
+			xm.fID=b.fMasterID 
+		and 
+			sa.sID=so.sID 
+		and 
+			b.fProjectID =#{ProjectId} 
+		order by xm.fxmbName desc
+	</select>
+	
+	
+	
+	
+</mapper>

@@ -3,6 +3,9 @@
  */
 package Ernest.Service;
 
+import java.util.List;
+import java.util.Map;
+
 import com.alibaba.fastjson.JSONObject;
 
 /**
@@ -17,5 +20,12 @@ public interface postsetbXm3gwServiceI {
 	 * @return
 	 */
 	JSONObject findByProjectIdAndUser(String ProjectId,String UserId);
+	
+	/**
+	 *根据项目id查找
+	 * @param ProjectId
+	 * @return
+	 */
+	Map<String,String> findByProjectId(String ProjectId);
 	
 }
