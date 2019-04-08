@@ -24,4 +24,10 @@ public interface postsetbPeopleServiceI {
 	 */
 	JSONObject SelectPerson(String fProjectID ,String sMd5Str);
 	
+	/**
+	 * 删除分配的项目岗位
+	 * @param fID
+	 * @return
+	 */
+	JSONObject DeleteJobPeople(String fID);
 }

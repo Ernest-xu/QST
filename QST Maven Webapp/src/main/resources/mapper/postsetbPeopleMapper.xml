@@ -98,5 +98,11 @@
 			)
 	</select>
 	
+	<delete id="deleteByIds" parameterType="java.util.List">
+		DELETE FROM  pm_project_project_informationtable_postsetb_people where fID in  
+	<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+		#{item}
+	</foreach>
+	</delete>
 	
 </mapper>

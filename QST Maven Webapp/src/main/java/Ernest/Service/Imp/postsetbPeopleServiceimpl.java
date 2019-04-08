@@ -76,6 +76,9 @@ public class postsetbPeopleServiceimpl implements postsetbPeopleServiceI {
                 return n2.compareTo(n1);
             }
         });
+//		for(Map<String ,Object> map:list){
+//			logger.info(map.toString());
+//		}
 		if(!list.isEmpty()){
 			json.put("Data", list);
 			json.put("success", true);
@@ -109,6 +112,13 @@ public class postsetbPeopleServiceimpl implements postsetbPeopleServiceI {
 			json.put("message", "没有未分配岗位的人员");
 		}
 		return json;
+	}
+
+
+	@Override
+	public JSONObject DeleteJobPeople(String fID) {
+		
+		return null;
 	}
 
 }

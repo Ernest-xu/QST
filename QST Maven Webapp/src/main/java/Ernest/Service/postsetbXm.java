@@ -12,7 +12,7 @@ import com.alibaba.fastjson.JSONObject;
  * @author Ernest
  *
  */
-public interface postsetbXm3gwServiceI {
+public interface postsetbXm {
 	/**
 	 * 根据人员和项目id查找岗位
 	 * @param ProjectId

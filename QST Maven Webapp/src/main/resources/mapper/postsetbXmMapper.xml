@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Ernest.Dao.postsetbXmDaoI">
+	<resultMap type="Ernest.Entity.PostsetbXm" id="postsetbXmMap">
+		<id column="fid" jdbcType="VARCHAR" property="fid"/>
+		<result column="fmasterId" jdbcType="VARCHAR" property="fmasterId"/>
+		<result column="fprojectName" jdbcType="VARCHAR" property="fprojectName"/>
+		<result column="fprojectCode" jdbcType="VARCHAR" property="fprojectCode"/>
+		<result column="fxmbType" jdbcType="VARCHAR" property="fxmbType"/>
+		<result column="fxmbName" jdbcType="VARCHAR" property="fxmbName"/>
+		<result column="fmd5" jdbcType="VARCHAR" property="fmd5"/>
+		<result column="fwriteName" jdbcType="VARCHAR" property="fwriteName"/>
+		<result column="fwriteId" jdbcType="VARCHAR" property="fwriteId"/>
+		<result column="fwriteMd5" jdbcType="VARCHAR" property="fwriteMd5"/>
+	</resultMap>
+	
+	<sql id="sqlList">
+		 fid,fmasterId,fprojectName,fprojectCode,fxmbType,fxmbName,fmd5,fwriteId,fwriteName,fwriteMd5 
+	</sql>
+	
+	<select id="findList"  resultMap="postsetbXmMap">
+		select 
+		<include refid="sqlList"/>
+		from pm_project_project_informationtable_postsetb_xm 
+		where fMasterID=#{params.fMasterID} and fWriteID=#{params.fWriteID}
+		
+	
+	</select>
+	<select id="findList2" parameterType="map" resultMap="postsetbXmMap">
+		select 
+		<include refid="sqlList"/>
+		from pm_project_project_informationtable_postsetb_xm 
+		where fMasterID=#{fMasterID} and fWriteID=#{fWriteID}
+		
+	
+	</select>
+	<select id="findList3" parameterType="Map" resultMap="postsetbXmMap">
+		select 
+		<include refid="sqlList"/>
+		from pm_project_project_informationtable_postsetb_xm 
+		where fMasterID=#{fMasterID} and fWriteID=#{fWriteID}
+		
+	
+	</select>
+	<select id="findList4" parameterType="java.util.Map" resultMap="postsetbXmMap">
+		select 
+		<include refid="sqlList"/>
+		from pm_project_project_informationtable_postsetb_xm 
+		where fMasterID=#{fMasterID} and fWriteID=#{fWriteID}
+		
+	
+	</select>
+	
+</mapper>

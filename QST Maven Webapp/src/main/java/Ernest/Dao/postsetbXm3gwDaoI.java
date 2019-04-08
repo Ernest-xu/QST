@@ -22,4 +22,6 @@ public interface postsetbXm3gwDaoI {
 	
 	//根据项目查找
 	List<PostsetbXm3gw> findByProjectId(String ProjectId);
+	/*
+	int save(PostsetbXm3gw postsetbXm3gw);*/
 }

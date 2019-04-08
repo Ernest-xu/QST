@@ -22,26 +22,26 @@ public class PostsetbXm3gw implements java.io.Serializable {
 	private String fpostName;//
 	private String fpostWriteName;//
 	private String fpostWriteId;//
-	private String fpostCode;
-	private String fpostId;
-	private String fpostState;
 	private String fpostType;//
 	private String fmasterId;//
 	private String fprojectName;//
 	private String fprojectCode;//
-	private String froleName;
-	private String froleId;
-	private String fmd5;
 	private String fpostXlb;//
-	private String fteamT;
-	private String fteamleibie;
-	private String fpostxmid;
 	private String fpostxmid2;//
 	private String fpostxmid1;//
 	private String fysxs1;//
 	private PostsetbXm postsetbXm;
 	private PostsetbXm3gw postsetbXm3gw;
-	// Constructors
+
+	private String fpostCode;
+	private String fpostId;
+	private String fpostState;
+	private String froleName;
+	private String froleId;
+	private String fmd5;
+	private String fteamT;
+	private String fteamleibie;
+	private String fpostxmid;
 
 	/** default constructor */
 	public PostsetbXm3gw() {

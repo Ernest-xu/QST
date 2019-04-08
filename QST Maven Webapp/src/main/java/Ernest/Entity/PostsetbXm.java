@@ -16,6 +16,15 @@ public class PostsetbXm implements java.io.Serializable {
 	// Fields
 
 	private String fid;//
+	private String fmasterId;//
+	private String fprojectName;//
+	private String fprojectCode;//
+	private String fxmbType;//
+	private String fxmbName;//
+	private String fmd5;//
+	private String fwriteName;//
+	private String fwriteId;//
+	private String fwriteMd5;//
 	private String fno;
 	private String fpostName;
 	private String fpostWriteName;
@@ -24,18 +33,9 @@ public class PostsetbXm implements java.io.Serializable {
 	private String fpostId;
 	private String fpostState;
 	private String fpostType;
-	private String fmasterId;//
-	private String fprojectName;//
-	private String fprojectCode;//
 	private String froleName;
-	private String fxmbType;//
-	private String fxmbName;//
 	private String froleId;
-	private String fmd5;//
 	private String fpostXlb;
-	private String fwriteName;//
-	private String fwriteId;//
-	private String fwriteMd5;//
 	
 	// Constructors
 
