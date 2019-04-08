@@ -40,7 +40,9 @@
 	
 	<select id="findByProjectId" parameterType="String" resultMap="PostsetbXm3gwMap">
 		select 
+			gw.fID as fid,
 			gw.fPostWriteID as fpostWriteId, 
+			gwx.fID as px3_fid,
 			gwx.fPostName as px3_fPostName 
 		from 
 			pm_project_project_informationtable_postsetb_xm_3gw gw 
