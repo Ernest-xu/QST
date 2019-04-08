@@ -69,6 +69,124 @@
 			xm.fMasterID=#{ProjectId}
 	</select>
 	
+	<insert id="save" parameterType="Ernest.Entity.PostsetbXm3gw">
+		insert into pm_project_project_informationtable_postsetb_xm_3gw 
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="fid != null">
+				fid,
+			</if>
+			<if test="fno != null">
+				fno,
+			</if>
+			<if test="fpostName != null">
+				fpostName,
+			</if>
+			<if test="fpostWriteName != null">
+				fpostWriteName,
+			</if>
+			<if test="fpostWriteId != null">
+				fpostWriteId,
+			</if>
+			<if test="fpostType != null">
+				fpostType,
+			</if>
+			<if test="fmasterId != null">
+				fmasterId,
+			</if>
+			<if test="fprojectName != null">
+				fprojectName,
+			</if>
+			<if test="fprojectCode != null">
+				fprojectCode,
+			</if>
+			<if test="fpostXlb != null">
+				fpostXlb,
+			</if>
+			<if test="fpostxmid2 != null">
+				fpostxmid2,
+			</if>
+			<if test="fpostxmid1 != null">
+				fpostxmid1,
+			</if>
+			<if test="fysxs1 != null">
+				fysxs1,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="fid != null">
+				#{fid,jdbcType=VARCHAR},
+			</if>
+			<if test="fno != null">
+				#{fno,jdbcType=VARCHAR},
+			</if>
+			<if test="fpostName != null">
+				#{fpostName,jdbcType=VARCHAR},
+			</if>
+			<if test="fpostWriteName != null">
+				#{fpostWriteName,jdbcType=VARCHAR},
+			</if>
+			<if test="fpostWriteId != null">
+				#{fpostWriteId,jdbcType=VARCHAR},
+			</if>
+			<if test="fpostType != null">
+				#{fpostType,jdbcType=VARCHAR},
+			</if>
+			<if test="fmasterId != null">
+				#{fmasterId,jdbcType=VARCHAR},
+			</if>
+			<if test="fprojectName != null">
+				#{fprojectName,jdbcType=VARCHAR},
+			</if>
+			<if test="fprojectCode != null">
+				#{fprojectCode,jdbcType=VARCHAR},
+			</if>
+			<if test="fpostXlb != null">
+				#{fpostXlb,jdbcType=VARCHAR},
+			</if>
+			<if test="fpostxmid2 != null">
+				#{fpostxmid2,jdbcType=VARCHAR},
+			</if>
+			<if test="fpostxmid1 != null">
+				#{fpostxmid1,jdbcType=VARCHAR},
+			</if>
+			<if test="fysxs1 != null">
+				#{fysxs1,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<insert id="batchSaves" parameterType="java.util.List">
+ 		insert into pm_project_project_informationtable_postsetb_xm_3gw   (
+ 		fid,
+ 		fpostName,
+ 		fysxs1,
+ 		fno,
+ 		fpostxmid,
+ 		fpostxmid1,
+ 		fpostxmid2,
+ 		fpostXlb,
+ 		fpostType,
+ 		fmasterId,
+ 		fpostCode
+ 		
+ 		)values 
+		<foreach collection="list" item="item" index="index" separator=",">
+			<!-- 保证与实体类的字段一致，以对象的关系定义（注：区分大小写） -->
+ 			(
+ 			#{item.fid,jdbcType=VARCHAR},
+ 			#{item.fpostName,jdbcType=VARCHAR},
+ 			#{item.fysxs1,jdbcType=VARCHAR},
+ 			#{item.fno,jdbcType=VARCHAR},
+ 			#{item.fpostxmid,jdbcType=VARCHAR},
+ 			#{item.fpostxmid1,jdbcType=VARCHAR},
+ 			#{item.fpostxmid2,jdbcType=VARCHAR},
+ 			#{item.fpostXlb,jdbcType=VARCHAR},
+ 			#{item.fpostType,jdbcType=VARCHAR},
+ 			#{item.fmasterId,jdbcType=VARCHAR},
+ 			#{item.fpostCode,jdbcType=VARCHAR}
+			) 
+		</foreach>
+	</insert>
 	
 	
 	

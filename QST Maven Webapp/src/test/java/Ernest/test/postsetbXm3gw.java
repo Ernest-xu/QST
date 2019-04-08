@@ -21,10 +21,19 @@ public class postsetbXm3gw extends TestBase {
 		private static final Logger logger = Logger.getLogger(postsetbXm3gw.class);
 		@Autowired
 		private postsetbXm3gwDaoI postsetbXm3gwDao;
-//		@Before
+		@Before
 		public void init(){
 			postsetbXm3gwDao = super.getContext().getBean("postsetbXm3gwDaoI",postsetbXm3gwDaoI.class);
 		}
+		
+		@Test
+		public void save(){
+			PostsetbXm3gw postsetbXm3gw = new PostsetbXm3gw();
+			postsetbXm3gw.setFid("aaabbb");
+			int a = postsetbXm3gwDao.save(postsetbXm3gw);
+			logger.info(a);
+		}
+		
 		
 //		@Test
 		public void select(){
