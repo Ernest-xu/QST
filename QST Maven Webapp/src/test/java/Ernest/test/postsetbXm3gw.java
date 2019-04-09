@@ -3,6 +3,7 @@
  */
 package Ernest.test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -26,11 +27,24 @@ public class postsetbXm3gw extends TestBase {
 			postsetbXm3gwDao = super.getContext().getBean("postsetbXm3gwDaoI",postsetbXm3gwDaoI.class);
 		}
 		
-		@Test
+//		@Test
 		public void save(){
 			PostsetbXm3gw postsetbXm3gw = new PostsetbXm3gw();
 			postsetbXm3gw.setFid("aaabbb");
 			int a = postsetbXm3gwDao.save(postsetbXm3gw);
+			logger.info(a);
+		}
+		
+		@Test
+		public void batchSaves(){
+			PostsetbXm3gw postsetbXm3gw = new PostsetbXm3gw();
+			postsetbXm3gw.setFid("aaabbb");
+			PostsetbXm3gw postsetbXm3gw2 = new PostsetbXm3gw();
+			postsetbXm3gw2.setFid("aaabbb2");
+			List<PostsetbXm3gw> list = new ArrayList<PostsetbXm3gw>();
+			list.add(postsetbXm3gw);
+			list.add(postsetbXm3gw2);
+			int a = postsetbXm3gwDao.batchSaves(list);
 			logger.info(a);
 		}
 		
