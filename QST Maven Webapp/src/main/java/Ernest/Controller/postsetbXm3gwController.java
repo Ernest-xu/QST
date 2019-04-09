@@ -42,6 +42,7 @@ public class postsetbXm3gwController {
 	public JSONObject AddJobList(String Class,String fID,String UserID,String fPostName){
 		
 		JSONObject json = new JSONObject();
+		json =  postsetbXm3gwService.insertProjectPost(Class, fID, UserID, fPostName);
 		return json;
 	}
 }

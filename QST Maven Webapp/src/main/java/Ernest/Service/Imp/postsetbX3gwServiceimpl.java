@@ -16,8 +16,10 @@ import org.springframework.stereotype.Service;
 import com.alibaba.fastjson.JSONObject;
 
 import Ernest.Dao.postsetbXm3gwDaoI;
+import Ernest.Entity.PostsetbXm;
 import Ernest.Entity.PostsetbXm3gw;
 import Ernest.Service.postsetbXm3gwServiceI;
+import Ernest.Service.postsetbXmServiceI;
 
 /**
  * @author Ernest
@@ -28,6 +30,9 @@ public class postsetbX3gwServiceimpl implements postsetbXm3gwServiceI {
 	private static final Logger logger = Logger.getLogger(postsetbX3gwServiceimpl.class);
 	@Autowired
 	private postsetbXm3gwDaoI postsetbXm3gwDao;
+	@Autowired
+	private postsetbXmServiceI postsetbXmService;
+	
 	@Override
 	public JSONObject findByProjectIdAndUser(String ProjectId, String UserId) {
 		JSONObject json = new JSONObject();
@@ -103,8 +108,12 @@ public class postsetbX3gwServiceimpl implements postsetbXm3gwServiceI {
 			falge = false;
 			message = "新增班组";
 		}
-		int fysxs1 = 2;
-		int fNo = 7;
+		List<PostsetbXm> PXlist = postsetbXmService.findByProjectIdAndUser(fID, UserID);
+		List<PostsetbXm3gw> PX3list = new ArrayList<PostsetbXm3gw>();
+		String fID4 = PXlist.get(0).getFid();
+		String fMasterID =  PXlist.get(0).getFmasterId();
+		String fysxs1 = "2";
+		String fNo = "7";
 		String fPostxmid1 = UUID.randomUUID().toString();//主键
 		String fPostXlb = "fbs";
 		String fPostType = "项目部";
@@ -115,10 +124,68 @@ public class postsetbX3gwServiceimpl implements postsetbXm3gwServiceI {
 		String fID1 = UUID.randomUUID().toString();
 		String fID2 = UUID.randomUUID().toString();
 		String fID3 = UUID.randomUUID().toString();
+		int num = 0;
+		if(fID4!=null&&!"".equals(fID4)&&!"null".equals(fID4)){
+			PostsetbXm3gw postsetbXm3gw = new PostsetbXm3gw();
+			postsetbXm3gw.setFid(fID1);
+			postsetbXm3gw.setFpostName(fPostName);
+			postsetbXm3gw.setFysxs1(fysxs1);
+			postsetbXm3gw.setFno(fNo);
+			postsetbXm3gw.setFpostxmid(fID4);
+			postsetbXm3gw.setFpostxmid1(fPostxmid1);
+			postsetbXm3gw.setFpostXlb(fPostXlb);
+			postsetbXm3gw.setFpostType(fPostType);
+			postsetbXm3gw.setFmasterId(fMasterID);
+			postsetbXm3gw.setFpostCode(UUID.randomUUID().toString());
+			if(falge){
+				postsetbXm3gw.setFpostxmid2(fPostxmid2);
+				PX3list.add(postsetbXm3gw);
+			}else{
+				PostsetbXm3gw postsetbXm3gw2 = new PostsetbXm3gw();
+				PostsetbXm3gw postsetbXm3gw3 = new PostsetbXm3gw();
+				Map<String, Object> inm2 = new HashMap<String, Object>();
+				Map<String, Object> inm3 = new HashMap<String, Object>();
+				fysxs1="1";
+				fNo="8";
+				fPostType="班组";
+				
+				postsetbXm3gw2.setFid(fID2);
+				postsetbXm3gw2.setFpostName("施工班长");
+				postsetbXm3gw2.setFysxs1(fysxs1);
+				postsetbXm3gw2.setFno(fNo);
+				postsetbXm3gw2.setFpostxmid(fID4);
+				postsetbXm3gw2.setFpostxmid2(fPostxmid2);
+				postsetbXm3gw2.setFpostXlb(fPostXlb);
+				postsetbXm3gw2.setFpostType(fPostType);
+				postsetbXm3gw2.setFmasterId(fMasterID);
+				postsetbXm3gw2.setFpostCode(UUID.randomUUID().toString());
+				
+				postsetbXm3gw3.setFid(fID3);
+				postsetbXm3gw3.setFpostName("班组人员");
+				postsetbXm3gw3.setFysxs1(fysxs1);
+				postsetbXm3gw3.setFno(fNo);
+				postsetbXm3gw3.setFpostxmid(fID4);
+				postsetbXm3gw3.setFpostxmid2(fPostxmid2);
+				postsetbXm3gw3.setFpostXlb(fPostXlb);
+				postsetbXm3gw3.setFpostType(fPostType);
+				postsetbXm3gw3.setFmasterId(fMasterID);
+				postsetbXm3gw3.setFpostCode(UUID.randomUUID().toString());
+				PX3list.add(postsetbXm3gw2);
+				PX3list.add(postsetbXm3gw3);
+			}
+			num = postsetbXm3gwDao.batchSaves(PX3list);
+		}else{
+			message ="项目部不存在不允许添加添加";
+		}
 		
-		//Select x.fID,x.fMasterID from pm_project_project_informationtable_postsetb_xm x where  x.fMasterID=? and x.fWriteID=
 		
-		
+		if(num>0){
+			json.put("success", true);
+			json.put("message", message+"成功");
+		}else{
+			json.put("success", false);
+			json.put("message", message+"失败");
+		}
 		return json;
 	}
 

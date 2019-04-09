@@ -6,20 +6,23 @@ package Ernest.Service;
 import java.util.List;
 import java.util.Map;
 
-import com.alibaba.fastjson.JSONObject;
+import org.springframework.stereotype.Service;
+
+import Ernest.Entity.PostsetbXm;
 
 /**
  * @author Ernest
  *
  */
-public interface postsetbXm {
+@Service
+public interface postsetbXmServiceI {
 	/**
 	 * 根据人员和项目id查找岗位
 	 * @param ProjectId
 	 * @param UserId
 	 * @return
 	 */
-	JSONObject findByProjectIdAndUser(String ProjectId,String UserId);
+	List<PostsetbXm> findByProjectIdAndUser(String ProjectId,String UserId);
 	
 	/**
 	 *根据项目id查找
@@ -29,6 +32,5 @@ public interface postsetbXm {
 	Map<String,String> findByProjectId(String ProjectId);
 	
 	
-	JSONObject insertProjectPost(String Class,String fID,String UserID ,String fPostName);
 	
 }
