@@ -214,4 +214,47 @@ public class postsetbX3gwServiceimpl implements postsetbXm3gwServiceI {
 		return json;
 	}
 
+	
+	@Override
+	public JSONObject DeleteJobList(String fID) {
+		JSONObject json = new JSONObject();
+		List<PostsetbXm3gw> px3list = postsetbXm3gwDao.findChildById(fID);
+		List<String> list = new ArrayList<String>();
+		boolean falge = true; 
+		if(!px3list.isEmpty()){
+			String fPostWriteID = px3list.get(0).getFpostWriteId();
+			if(fPostWriteID==null||"".equals(fPostWriteID)||"null".equals(fPostWriteID)){
+				list.add(fID);
+			}else{
+				falge=false;
+			}
+			if(falge){
+				for(PostsetbXm3gw postsetbXm3gw:px3list){
+					String px3fID =postsetbXm3gw.getPostsetbXm3gw().getFid();
+					String pxfPostWriteID =postsetbXm3gw.getPostsetbXm3gw().getFpostWriteId();
+					list.add(px3fID);
+					if(pxfPostWriteID==null||"".equals(pxfPostWriteID)||"null".equals(pxfPostWriteID)){
+						
+					}else{
+						falge=false;
+					}
+				}
+			}
+		}
+		if(falge){
+			int a = postsetbXm3gwDao.batchDelete(list);
+			if(a>0){
+				json.put("message", "删除成功");
+				json.put("success", true);
+			}else{
+				json.put("message", "该岗位不存在");
+				json.put("success", false);
+			}
+		}else{
+			json.put("message", "该岗位下已分配人员");
+			json.put("success", false);
+		}
+		return json;
+	}
+
 }

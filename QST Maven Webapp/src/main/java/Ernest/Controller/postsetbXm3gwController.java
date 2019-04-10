@@ -46,4 +46,12 @@ public class postsetbXm3gwController {
 		json =  postsetbXm3gwService.insertProjectPost(Class, fID, UserID, fPostName);
 		return json;
 	}
+	
+	@PostMapping("/DeleteJobList")
+	public JSONObject DeleteJobList(String fID){
+		JSONObject json = new JSONObject();
+		json = postsetbXm3gwService.DeleteJobList(fID);
+		return json;
+		
+	}
 }

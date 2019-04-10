@@ -31,4 +31,10 @@ public interface postsetbXm3gwDaoI {
 	
 	//一条修改
 	int UpdateById(PostsetbXm3gw postsetbXm3gw);
+	
+	//删除多条
+	int batchDelete(List<String> list);
+	
+	//查找所有子类id和fPostWriteID
+	List<PostsetbXm3gw> findChildById(String fID);
 }

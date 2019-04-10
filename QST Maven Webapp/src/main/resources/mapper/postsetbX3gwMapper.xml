@@ -22,6 +22,8 @@
 		</collection>
 		<collection  property="postsetbXm3gw"  ofType="Ernest.Entity.PostsetbXm3gw">
 			<id column="px3_fid" jdbcType="VARCHAR" property="fid"/>
+			<result column="px3_fpostWriteId" jdbcType="VARCHAR" property="fpostWriteId"/>
+			<result column="px3_fpostWriteName" jdbcType="VARCHAR" property="fpostWriteName"/>
 			<result column="px3_fPostName" jdbcType="VARCHAR" property="fpostName"/>
 			<result column="px3_fpostxmid" jdbcType="VARCHAR" property="fpostxmid"/>
 		<result column="px3_fpostxmid1" jdbcType="VARCHAR" property="fpostxmid1"/>
@@ -67,6 +69,20 @@
 			gwx.fPostName is not null 
 		and 
 			xm.fMasterID=#{ProjectId}
+	</select>
+	
+	<select id="findChildById" parameterType="String" resultMap="PostsetbXm3gwMap">
+		select 
+		gw.fPostWriteID as fpostWriteId,
+		gwx.fID as  px3_fid,
+		gwx.fPostWriteID as px3_fpostWriteId  
+		from 
+			pm_project_project_informationtable_postsetb_xm_3gw gw ,
+			pm_project_project_informationtable_postsetb_xm_3gw gwx 
+		where 
+			gw.fPostxmid1=gwx.fPostxmid2 
+		and 
+			gw.fID=#{fID}
 	</select>
 	
 	<insert id="save" parameterType="Ernest.Entity.PostsetbXm3gw">
@@ -227,5 +243,11 @@
 			fID=#{fid,jdbcType=VARCHAR}
 	</update>
 	
+	<delete id="batchDelete" parameterType="java.util.List">
+		DELETE FROM  pm_project_project_informationtable_postsetb_xm_3gw where fID in 
+	<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+		#{item}
+	</foreach>
+	</delete>
 	
 </mapper>

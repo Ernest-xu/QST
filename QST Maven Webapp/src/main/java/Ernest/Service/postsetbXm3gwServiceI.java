@@ -46,4 +46,11 @@ public interface postsetbXm3gwServiceI {
 	 */
 	JSONObject updateProjectPost(String fID,String fPostName);
 	
+	
+	/**
+	 * 删除项目岗位
+	 * @param fID
+	 * @return
+	 */
+	JSONObject DeleteJobList(String fID);
 }

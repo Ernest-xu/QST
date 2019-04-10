@@ -706,7 +706,7 @@ $(document).ready(function() {
 							
 						}
 						if (mode == 'delete') {
-							$.axse("get", "/baas/PC/project/DeleteJobList", {
+							$.axse("post", "/QST/postsetbXm3gwController/DeleteJobList", {
 									fID: data
 								},
 								function(res) {
