@@ -108,10 +108,17 @@ public class postsetbX3gwServiceimpl implements postsetbXm3gwServiceI {
 			falge = false;
 			message = "新增班组";
 		}
+		logger.info("fID:"+fID+",UserID:"+UserID+",Class:"+Class+",fPostName:"+fPostName);
 		List<PostsetbXm> PXlist = postsetbXmService.findByProjectIdAndUser(fID, UserID);
+		logger.info("数量:"+PXlist.size());
 		List<PostsetbXm3gw> PX3list = new ArrayList<PostsetbXm3gw>();
-		String fID4 = PXlist.get(0).getFid();
-		String fMasterID =  PXlist.get(0).getFmasterId();
+		String fID4 =null;
+		String fMasterID = null;		
+		if(PXlist.size()>0){
+			fID4 =PXlist.get(0).getFid();
+			fMasterID = PXlist.get(0).getFmasterId();
+			
+		}
 		String fysxs1 = "2";
 		String fNo = "7";
 		String fPostxmid1 = UUID.randomUUID().toString();//主键
@@ -185,6 +192,24 @@ public class postsetbX3gwServiceimpl implements postsetbXm3gwServiceI {
 		}else{
 			json.put("success", false);
 			json.put("message", message+"失败");
+		}
+		return json;
+	}
+
+
+	@Override
+	public JSONObject updateProjectPost(String fID, String fPostName) {
+		JSONObject json = new JSONObject();
+		PostsetbXm3gw postsetbXm3gw = new PostsetbXm3gw();
+		postsetbXm3gw.setFid(fID);
+		postsetbXm3gw.setFpostName(fPostName);
+		int a = postsetbXm3gwDao.UpdateById(postsetbXm3gw);
+		if(a>0){
+			json.put("success", true);
+			json.put("message", "修改成功");
+		}else{
+			json.put("success", false);
+			json.put("message", "修改失败");
 		}
 		return json;
 	}

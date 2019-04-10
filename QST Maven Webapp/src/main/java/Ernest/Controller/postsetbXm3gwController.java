@@ -35,6 +35,7 @@ public class postsetbXm3gwController {
 	public JSONObject UpdateJobList(String fID,String fPostName){
 		
 		JSONObject json = new JSONObject();
+		json = postsetbXm3gwService.updateProjectPost(fID, fPostName);
 		return json;
 	}
 	

@@ -21,7 +21,7 @@ public class saOppersonOproleDaoTest2 extends TestBase{
 	private static final Logger logger = Logger.getLogger(saOppersonOproleDaoTest2.class);
 	@Autowired
 	private saOppersonOproleDaoI saOppersonOproleDao;
-	@Before
+//	@Before
 	public void init(){
 		saOppersonOproleDao = super.getContext().getBean("saOppersonOproleDaoI",saOppersonOproleDaoI.class);
 	}

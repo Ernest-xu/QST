@@ -23,7 +23,12 @@ public interface postsetbXm3gwDaoI {
 	//根据项目查找
 	List<PostsetbXm3gw> findByProjectId(String ProjectId);
 	
+	//一条新增
 	int save(PostsetbXm3gw postsetbXm3gw);
 	
+	//多条新增
 	int batchSaves(List<PostsetbXm3gw> list);
+	
+	//一条修改
+	int UpdateById(PostsetbXm3gw postsetbXm3gw);
 }

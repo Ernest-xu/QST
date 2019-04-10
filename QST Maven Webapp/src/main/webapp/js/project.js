@@ -638,10 +638,11 @@ $(document).ready(function() {
 								return _this.$message.error("添加职位不能为空~");
 							}
 							//console.log(_this.key,_this.radio,data.fPostName)
-							$.axse("get", "/baas/PC/project/AddJobList", {
+							$.axse("post", "/QST/postsetbXm3gwController/AddJobList", {
 									fID: _this.key,
 									Class: _this.radio,
 									fPostName: data.fPostName,
+									UserID:_this.token.sID
 								},
 								function(res) {
 									//console.log("add",res)
@@ -677,7 +678,7 @@ $(document).ready(function() {
 							if (data.fPostName == "") {
 								return _this.$message.error("修改职位不能为空~");
 							}
-							$.axse("get", "/baas/PC/project/UpdateJobList", {
+							$.axse("post", "/QST/postsetbXm3gwController/UpdateJobList", {
 									fID: data.fID,
 									fPostName: data.fPostName
 								},

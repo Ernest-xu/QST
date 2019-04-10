@@ -188,6 +188,44 @@
 		</foreach>
 	</insert>
 	
+	<update id="UpdateById" parameterType="Ernest.Entity.PostsetbXm3gw">
+		update pm_project_project_informationtable_postsetb_xm_3gw 
+			<trim prefix="set" suffixOverrides=",">
+				<if test=" fpostName != null">
+					fpostName=#{fpostName,jdbcType=VARCHAR},
+				</if>
+				<if test=" fysxs1 != null">
+					fysxs1=#{fysxs1,jdbcType=VARCHAR},
+				</if>
+				<if test=" fno != null">
+					fno=#{fno,jdbcType=VARCHAR},
+				</if>
+				<if test=" fpostxmid != null">
+					fpostxmid=#{fpostxmid,jdbcType=VARCHAR},
+				</if>
+				<if test=" fpostxmid1 != null">
+					fpostxmid1=#{fpostxmid1,jdbcType=VARCHAR},
+				</if>
+				<if test=" fpostxmid2 != null">
+					fpostxmid2=#{fpostxmid2,jdbcType=VARCHAR},
+				</if>
+				<if test=" fpostXlb != null">
+					fpostXlb=#{fpostXlb,jdbcType=VARCHAR},
+				</if>
+				<if test=" fpostType != null">
+					fpostType=#{fpostType,jdbcType=VARCHAR},
+				</if>
+				<if test=" fmasterId != null">
+					fmasterId=#{fmasterId,jdbcType=VARCHAR},
+				</if>
+				<if test=" fpostCode != null">
+					fpostCode=#{fpostCode,jdbcType=VARCHAR},
+				</if>
+				
+			</trim>
+		where 
+			fID=#{fid,jdbcType=VARCHAR}
+	</update>
 	
 	
 </mapper>

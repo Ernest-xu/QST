@@ -28,7 +28,22 @@ public interface postsetbXm3gwServiceI {
 	 */
 	Map<String,String> findByProjectId(String ProjectId);
 	
-	
+	/**
+	 * 添加项目岗位
+	 * @param Class
+	 * @param fID
+	 * @param UserID
+	 * @param fPostName
+	 * @return
+	 */
 	JSONObject insertProjectPost(String Class,String fID,String UserID ,String fPostName);
+	
+	/**
+	 * 修改项目名称
+	 * @param fID
+	 * @param fPostName
+	 * @return
+	 */
+	JSONObject updateProjectPost(String fID,String fPostName);
 	
 }

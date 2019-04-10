@@ -24,12 +24,12 @@ public class postsetbXmTest extends TestBase {
 	@Autowired
 	private postsetbXmDaoI postsetbXmDao;
 	
-	@Before
+//	@Before
 	public void init(){
 		postsetbXmDao = super.getContext().getBean("postsetbXmDaoI",postsetbXmDaoI.class);
 	}
 	
-	@Test
+//	@Test
 	public void selectbymd5(){
 		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("fMasterID", "C82BF43AEBB0000123221B4159871D1F");

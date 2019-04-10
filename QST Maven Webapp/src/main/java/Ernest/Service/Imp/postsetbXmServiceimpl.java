@@ -9,6 +9,7 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import Ernest.Dao.postsetbXmDaoI;
 import Ernest.Entity.PostsetbXm;
@@ -18,6 +19,7 @@ import Ernest.Service.postsetbXmServiceI;
  * @author Ernest
  *
  */
+@Service
 public class postsetbXmServiceimpl implements postsetbXmServiceI {
 
 	private static final Logger logger = Logger.getLogger(postsetbXmServiceimpl.class);

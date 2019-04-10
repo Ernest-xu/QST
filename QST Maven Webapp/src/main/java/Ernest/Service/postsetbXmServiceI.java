@@ -14,7 +14,7 @@ import Ernest.Entity.PostsetbXm;
  * @author Ernest
  *
  */
-@Service
+
 public interface postsetbXmServiceI {
 	/**
 	 * 根据人员和项目id查找岗位
