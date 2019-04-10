@@ -257,4 +257,17 @@ public class postsetbX3gwServiceimpl implements postsetbXm3gwServiceI {
 		return json;
 	}
 
+	
+	@Override
+	public List<PostsetbXm3gw> findById(String fID) {
+		return postsetbXm3gwDao.findById(fID);
+	}
+
+	
+	@Override
+	public int UpdateById(PostsetbXm3gw postsetbXm3gw) {
+		
+		return postsetbXm3gwDao.UpdateById(postsetbXm3gw);
+	}
+
 }

@@ -15,21 +15,21 @@ public class Pkrenyuan implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String fid;
+	private String fid;//
+	private String fmd5;//
+	private String fprojectName;//
+	private String fprojectCode;//
+	private String fprojectId;//
+	private String fwriteName;//
+	private String fwriteCode;//
+	private String fwriteId;//
+	private Timestamp fwriteTime;//
 	private Integer fno;
-	private String fmd5;
 	private String fyqlb;
-	private String fprojectName;
-	private String fprojectCode;
-	private String fprojectId;
 	private String fwriteType;
 	private String fwriteJiB;
-	private String fwriteName;
 	private String fwriteGang;
-	private String fwriteCode;
-	private String fwriteId;
 	private String fwriteMd5;
-	private Timestamp fwriteTime;
 	private String fmasterid;
 
 	// Constructors
@@ -211,5 +211,15 @@ public class Pkrenyuan implements java.io.Serializable {
 	public void setFmasterid(String fmasterid) {
 		this.fmasterid = fmasterid;
 	}
+
+	@Override
+	public String toString() {
+		return "Pkrenyuan [fid=" + fid + ", fmd5=" + fmd5 + ", fprojectName=" + fprojectName + ", fprojectCode="
+				+ fprojectCode + ", fprojectId=" + fprojectId + ", fwriteName=" + fwriteName + ", fwriteCode="
+				+ fwriteCode + ", fwriteId=" + fwriteId + ", fwriteTime=" + fwriteTime + ", fno=" + fno + ", fyqlb="
+				+ fyqlb + ", fwriteType=" + fwriteType + ", fwriteJiB=" + fwriteJiB + ", fwriteGang=" + fwriteGang
+				+ ", fwriteMd5=" + fwriteMd5 + ", fmasterid=" + fmasterid + "]";
+	}
+	
 
 }

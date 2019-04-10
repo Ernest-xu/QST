@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Ernest.Dao.pkrenyuanDaoI">
+	<resultMap type="Ernest.Entity.Pkrenyuan" id="PkrenyuanMap">
+		<id	column="fid" jdbcType="VARCHAR" property="fid"/>
+		<result column="fmd5" jdbcType="VARCHAR" property="fmd5"/>
+		<result column="fprojectName" jdbcType="VARCHAR" property="fprojectName"/>
+		<result column="fprojectCode" jdbcType="VARCHAR" property="fprojectCode"/>
+		<result column="fprojectId" jdbcType="VARCHAR" property="fprojectId"/>
+		<result column="fwriteName" jdbcType="VARCHAR" property="fwriteName"/>
+		<result column="fwriteCode" jdbcType="VARCHAR" property="fwriteCode"/>
+		<result column="fwriteId" jdbcType="VARCHAR" property="fwriteId"/>
+		<result column="fwriteTime" jdbcType="TIMESTAMP" property="fwriteTime"/>
+	</resultMap>
+	
+	<insert id="save" parameterType="Ernest.Entity.Pkrenyuan">
+		insert into pm_project_project_pkrenyuan1 
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="fid !=null">
+				fid,
+			</if>
+			<if test="fmd5 !=null">
+				fmd5,
+			</if>
+			<if test="fprojectName !=null">
+				fprojectName,
+			</if>
+			<if test="fprojectId !=null">
+				fprojectId,
+			</if>
+			<if test="fwriteName !=null">
+				fwriteName,
+			</if>
+			<if test="fwriteCode !=null">
+				fwriteCode,
+			</if>
+			<if test="fwriteId !=null">
+				fwriteId,
+			</if>
+			<if test="fwriteTime !=null">
+				fwriteTime,
+			</if>
+			
+		</trim>
+		<trim prefix="value(" suffix=")" suffixOverrides=",">
+			<if test="fid !=null">
+				#{fid,jdbcType=VARCHAR},
+			</if>
+			<if test="fmd5 !=null">
+				#{fmd5,jdbcType=VARCHAR},
+			</if>
+			<if test="fprojectName !=null">
+				#{fprojectName,jdbcType=VARCHAR},
+			</if>
+			<if test="fprojectId !=null">
+				#{fprojectId,jdbcType=VARCHAR},
+			</if>
+			<if test="fwriteName !=null">
+				#{fwriteName,jdbcType=VARCHAR},
+			</if>
+			<if test="fwriteCode !=null">
+				#{fwriteCode,jdbcType=VARCHAR},
+			</if>
+			<if test="fwriteId !=null">
+				#{fwriteId,jdbcType=VARCHAR},
+			</if>
+			<if test="fwriteTime !=null">
+				#{fwriteTime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	
+	<insert id="batchSaves" parameterType="java.util.List">
+ 		insert into pm_project_project_pkrenyuan1  (
+	 		fid,
+	 		fmd5,
+	 		fprojectName,
+	 		fprojectCode,
+	 		fprojectId,
+	 		fwriteName,
+	 		fwriteCode,
+	 		fwriteId,
+	 		fwriteTime 
+ 		)values 
+	<foreach collection="list" item="item" index="index" separator=",">
+			<!-- 保证与实体类的字段一致，以对象的关系定义（注：区分大小写） -->
+ 		(
+ 			#{item.fid,jdbcType=VARCHAR},
+ 			#{item.fmd5,jdbcType=VARCHAR},
+ 			#{item.fprojectName,jdbcType=VARCHAR},
+ 			#{item.fprojectCode,jdbcType=VARCHAR},
+ 			#{item.fprojectId,jdbcType=VARCHAR},
+ 			#{item.fwriteName,jdbcType=VARCHAR},
+ 			#{item.fwriteCode,jdbcType=VARCHAR},
+ 			#{item.fwriteId,jdbcType=VARCHAR},
+ 			#{item.fwriteTime,jdbcType=TIMESTAMP}
+		) 
+	</foreach>
+	</insert>
+	
+</mapper>

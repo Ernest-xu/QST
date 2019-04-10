@@ -38,4 +38,10 @@ public interface postsetbPeopleDaoI {
 	 * @return
 	 */
 	int deleteByIds(List<String> list);
+	
+	
+	int batchSaves(List<PostsetbPeople> list);
+	
+	int save(PostsetbPeople postsetbPeople);
+	
 }

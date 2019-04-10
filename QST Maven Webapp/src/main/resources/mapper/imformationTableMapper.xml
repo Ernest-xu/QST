@@ -69,5 +69,20 @@
 			fwriteId =#{writeId}
 	</select>
 	 
+	<select id="findById" parameterType="String" resultMap="InformationTableMap">
+		select 
+			ppi.fID as fid,
+			ppi.fMd5 as fmd5,
+			ppi.fProjectCode as fprojectCode,
+			ppi.fWrtieName as fwrtieName,
+			ppi.fWriteID as fwriteId,
+			ppi.fPrjoectName as fprjoectName,
+			ppi.fProjectQuanName as fprojectQuanName,
+			ppi.fpeolistMd5	as fpeolistMd5	
+		from 
+			pm_project_project_informationtable  ppi
+		where 
+			fID=#{fid}
+	</select> 
 	
 </mapper>

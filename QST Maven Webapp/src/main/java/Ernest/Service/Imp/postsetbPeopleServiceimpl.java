@@ -3,12 +3,15 @@
  */
 package Ernest.Service.Imp;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +20,18 @@ import org.springframework.stereotype.Service;
 import com.alibaba.fastjson.JSONObject;
 
 import Ernest.Dao.postsetbPeopleDaoI;
+import Ernest.Entity.InformationTable;
+import Ernest.Entity.Pkrenyuan;
 import Ernest.Entity.PostsetbPeople;
+import Ernest.Entity.PostsetbXm3gw;
 import Ernest.Entity.SaOpperson;
+import Ernest.Service.informationTableServiceI;
+import Ernest.Service.pkrenyuanServiceI;
 import Ernest.Service.postsetbPeopleServiceI;
 import Ernest.Service.postsetbXm3gwServiceI;
+import Ernest.Service.saOppersonServiceI;
 import Ernest.Service.saOproleServiceI;
+import Ernest.until.TimeUntil;
 
 /**
  * @author Ernest
@@ -33,10 +43,15 @@ public class postsetbPeopleServiceimpl implements postsetbPeopleServiceI {
 	@Autowired
 	private postsetbPeopleDaoI postsetbPeopleDao;
 	@Autowired
+	private saOppersonServiceI saOppersonService;
+	@Autowired
 	private saOproleServiceI saOproleService;
 	@Autowired
 	private postsetbXm3gwServiceI postsetbXm3gwService;
-	
+	@Autowired
+	private pkrenyuanServiceI pkrenyuanService;
+	@Autowired
+	private informationTableServiceI informationTableService; 
 	@Override
 	public JSONObject findPeopleListByProjectId(String ProjectId) {
 		JSONObject json  = new JSONObject();
@@ -119,6 +134,185 @@ public class postsetbPeopleServiceimpl implements postsetbPeopleServiceI {
 	public JSONObject DeleteJobPeople(String fID) {
 		
 		return null;
+	}
+
+
+	
+	@Override
+	public int getAddPeople(String fID, String BumchfID, String fProjectID, String fProjectCode, String fProjectName,
+			String md5, String sMd5Str) {
+		int a = 0;
+		List<PostsetbXm3gw> list = postsetbXm3gwService.findById(fID);
+		Date date = new Date();
+		Timestamp screateTime = new Timestamp(date.getTime());
+		String Time = TimeUntil.TimestampToString(screateTime);
+		List<PostsetbPeople> PPlist = new ArrayList<PostsetbPeople>();
+		List<Pkrenyuan> Plist = new ArrayList<Pkrenyuan>();
+		if(!list.isEmpty()){
+			PostsetbXm3gw postsetbXm3gw = new PostsetbXm3gw();
+			postsetbXm3gw.setFysxs1("2");
+			postsetbXm3gw.setFid(fID);
+			String BumchName ="";
+			
+			if(BumchfID==null||"".equals(BumchfID)||"null".equals(BumchfID)){
+				
+			}else{
+				String[] StrID = BumchfID.split(",");
+				for(int i=0;i<StrID.length;i++){
+					String UUId = UUID.randomUUID().toString();
+					List<SaOpperson> SOlist = saOppersonService.findListById(StrID[i]);
+					PostsetbPeople  postsetbPeople = new PostsetbPeople();
+					if(!SOlist.isEmpty()){
+						String UserName = SOlist.get(0).getSname();
+						if(i>0){
+							BumchName += ","+UserName;
+						}else{
+							BumchName += UserName;
+						}
+						postsetbPeople.setFid(UUId);
+						postsetbPeople.setFpostWriteName(UserName);
+						postsetbPeople.setFpostWriteId(StrID[i]);
+						postsetbPeople.setFmasterId(list.get(0).getFpostxmid());
+						postsetbPeople.setFcreateTime(Time);
+						postsetbPeople.setFpostName(list.get(0).getFpostName());
+						postsetbPeople.setFimage(SOlist.get(0).getFimage());
+						postsetbPeople.setFphone(SOlist.get(0).getSmobilePhone());
+						postsetbPeople.setFprojectName(fProjectName);
+						postsetbPeople.setFprojectCode(fProjectCode);
+						postsetbPeople.setFprojectId(fProjectID);
+						postsetbPeople.setFpostxmid2(list.get(0).getFpostxmid2());
+						postsetbPeople.setFroleName(SOlist.get(0).getSworkType());
+						String str  ="";
+						if("8".equals(list.get(0).getFysxs1())){
+							str  = "是";
+						}else{
+							str  = "否";
+						}
+						postsetbPeople.setFrenyn(str);
+						PPlist.add(postsetbPeople);
+						Pkrenyuan pkrenyuan = new Pkrenyuan();
+						String uuid = UUID.randomUUID().toString();
+						pkrenyuan.setFid(uuid);
+						pkrenyuan.setFwriteTime(screateTime);;
+						pkrenyuan.setFmd5(md5);
+						pkrenyuan.setFprojectName(fProjectName);
+						pkrenyuan.setFprojectId(fProjectID);
+						pkrenyuan.setFprojectCode(fProjectCode);
+						pkrenyuan.setFwriteName(UserName);
+						pkrenyuan.setFwriteId(StrID[i]);
+						pkrenyuan.setFwriteMd5(sMd5Str);
+						Plist.add(pkrenyuan);
+					}
+				}
+				
+			}
+			String ifID=list.get(0).getFpostWriteId();
+			String ifName = list.get(0).getFpostWriteName();
+			if(ifID==null||"".equals(ifID)||"null".equals(ifID)){
+				
+			}else{
+				BumchName+=","+ifName;
+				BumchfID+=","+ifID;
+			}
+			postsetbXm3gw.setFpostWriteId(BumchfID);
+			postsetbXm3gw.setFpostWriteName(BumchName);
+			pkrenyuanService.batchSave(Plist);
+			postsetbPeopleDao.batchSaves(PPlist);
+			a=postsetbXm3gwService.UpdateById(postsetbXm3gw);
+		}
+		
+		return a;
+	}
+
+
+	
+	@Override
+	public JSONObject AddJobPeople(String BumchfID1, String BumchfID2, String fID, String fProjectID, String Class) {
+		JSONObject json = new JSONObject();
+		int a = 0;
+		int b = 0;
+		boolean falge = true;
+		if("岗位".equals(Class)){
+			falge = false;
+		}else if("班组".equals(Class)){
+			falge = true;
+		}
+			List<InformationTable> list = informationTableService.findById(fProjectID);
+			if(!list.isEmpty()){
+				InformationTable informationTable = new InformationTable();
+				informationTable = list.get(0);
+				if(falge){
+					Map<String,String> mapGroup = new HashMap<String, String>();
+					List<PostsetbXm3gw> PX3list = postsetbXm3gwService.findById(fID);
+					for(PostsetbXm3gw postsetbXm3gw:PX3list){
+						mapGroup.put(postsetbXm3gw.getFpostName(), postsetbXm3gw.getFid());
+					}
+					if(BumchfID1==null||"".equals(BumchfID1)||"null".equals(BumchfID1)){
+						
+					}else{
+						String fID1 = mapGroup.get("施工班长");
+						if(fID1==null||"".equals(fID1)||"null".equals(fID1)){
+						}else{
+							a=getAddPeople(fID1, BumchfID1,  fProjectID, informationTable.getFprojectCode(), informationTable.getFprjoectName(),informationTable.getFmd5(),informationTable.getFpeolistMd5());
+						}
+						
+					}
+					if(BumchfID2==null||"".equals(BumchfID2)||"null".equals(BumchfID2)){
+						
+					}else{
+						String fID2 = mapGroup.get("班组人员");
+						if(fID2==null||"".equals(fID2)||"null".equals(fID2)){
+						}else{
+							b=getAddPeople( fID2, BumchfID2,  fProjectID, informationTable.getFprojectCode(), informationTable.getFprjoectName(),informationTable.getFmd5(),informationTable.getFpeolistMd5());
+						}
+						
+					}
+				}else{
+					if(BumchfID1==null||"".equals(BumchfID1)||"null".equals(BumchfID1)){
+						
+					}else{
+						if(fID==null||"".equals(fID)||"null".equals(fID)){
+						}else{
+							a=getAddPeople( fID, BumchfID1,  fProjectID, informationTable.getFprojectCode(), informationTable.getFprjoectName(),informationTable.getFmd5(),informationTable.getFpeolistMd5());					
+						}
+						
+					}
+					if(BumchfID2==null||"".equals(BumchfID2)||"null".equals(BumchfID2)){
+						
+					}else{
+						if(fID==null||"".equals(fID)||"null".equals(fID)){
+						}else{
+							b=getAddPeople( fID, BumchfID2,  fProjectID, informationTable.getFprojectCode(), informationTable.getFprjoectName(),informationTable.getFmd5(),informationTable.getFpeolistMd5());					
+						}
+						
+					}
+				}
+				
+				if(a>0){
+					if(b>0){
+						json.put("success", true);
+						json.put("message", "分配成功");
+					}else{
+						json.put("success", true);
+						json.put("message", "班长分配成功");
+					}
+					
+				}else{
+					if(b>0){
+						json.put("success", true);
+						json.put("message", "队员分配成功");
+					}else{
+						json.put("success", false);
+						json.put("message", "分配人员失败");
+					}
+				}
+			}else{
+				json.put("success", false);
+				json.put("message", "项目id不正确");
+			}
+			
+		
+		return json;
 	}
 
 }

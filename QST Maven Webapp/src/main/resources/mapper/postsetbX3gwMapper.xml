@@ -3,6 +3,7 @@
 <mapper namespace="Ernest.Dao.postsetbXm3gwDaoI">
 	<resultMap type="Ernest.Entity.PostsetbXm3gw" id="PostsetbXm3gwMap">
 		<id column="fid" jdbcType="VARCHAR" property="fid"/>
+		
 		<result column="fno" jdbcType="VARCHAR" property="fno"/>
 		<result column="fpostName" jdbcType="VARCHAR" property="fpostName"/>
 		<result column="fpostWriteName" jdbcType="VARCHAR" property="fpostWriteName"/>
@@ -32,8 +33,18 @@
 		
 	</resultMap>
 	
-
+	<sql id="sqllist">
+		fid,fno,fpostName,fpostWriteName,fpostWriteId,fpostType,fmasterId,fprojectName,fprojectCode,fpostXlb,fpostxmid,fpostxmid1,fpostxmid2,fysxs1
+	</sql>
 	
+	<select id="findById" parameterType="String" resultMap="PostsetbXm3gwMap">
+		select 
+		<include refid="sqllist"/>
+		from 
+			pm_project_project_informationtable_postsetb_xm_3gw 
+		where
+			 fId=#{fID}
+	</select>
 	
 	<select id="findByProjectIdAndUser" resultMap="PostsetbXm3gwMap">
 		select 

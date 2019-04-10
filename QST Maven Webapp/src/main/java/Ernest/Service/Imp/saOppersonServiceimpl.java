@@ -760,6 +760,12 @@ public class saOppersonServiceimpl implements saOppersonServiceI {
 		return src;
 	}
 
+
+	@Override
+	public List<SaOpperson> findListById(String id) {
+		return saOppersonDao.findListById(id);
+	}
+
 	
 	
 	

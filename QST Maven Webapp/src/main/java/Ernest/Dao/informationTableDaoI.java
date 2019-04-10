@@ -16,7 +16,18 @@ import Ernest.Entity.InformationTable;
 @Repository
 public interface informationTableDaoI {
 
-	
+	/**
+	 * 查找该人员创建的项目
+	 * @param writeId
+	 * @return
+	 */
 	List<InformationTable> findList(String writeId);
+	
+	/**
+	 * 查找项目信息
+	 * @param fID
+	 * @return
+	 */
+	List<InformationTable> findById(String fID);
 	
 }

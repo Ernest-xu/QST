@@ -47,4 +47,11 @@ public class postsetbPeopleController {
 		return json;
 	}
 	
+	@PostMapping("/AddJobPeople")
+	public JSONObject AddJobPeople(String BumchfID1,String BumchfID2,String fID,String fProjectID,String Class){
+		JSONObject json = new JSONObject();
+		json = postsetbPeopleService.AddJobPeople(BumchfID1, BumchfID2, fID, fProjectID, Class);
+		return json;
+	}
+	
 }

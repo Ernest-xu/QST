@@ -103,4 +103,11 @@ public interface saOppersonServiceI {
 	 * @return
 	 */
 	String Instruction(String md5);
+	
+	/**
+	 * 根据id查找内容
+	 * @param id
+	 * @return
+	 */
+	List<SaOpperson> findListById(String id);
 }

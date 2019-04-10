@@ -72,4 +72,11 @@ public class informationTableServiceimpl implements informationTableServiceI {
 		return json;
 	}
 
+	
+	@Override
+	public List<InformationTable> findById(String fID) {
+		List<InformationTable> list=  informationTableDao.findById(fID);
+		return list;
+	}
+
 }

@@ -105,4 +105,136 @@
 	</foreach>
 	</delete>
 	
+	<insert id="save" parameterType="Ernest.Entity.PostsetbPeople">
+		insert into pm_project_project_informationtable_postsetb_people  
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="fid != null">
+				fid,
+			</if>
+			<if test="fpostName != null">
+				fpostName,
+			</if>
+			<if test="fpostWriteName != null">
+				fpostWriteName,
+			</if>
+			<if test="fpostWriteId != null">
+				fpostWriteId,
+			</if>
+			<if test="fmasterId != null">
+				fmasterId,
+			</if>
+			<if test="fcreateTime != null">
+				fcreateTime,
+			</if>
+			<if test="fprojectName != null">
+				fprojectName,
+			</if>
+			<if test="fprojectCode != null">
+				fprojectCode,
+			</if>
+			<if test="fprojectId != null">
+				fprojectId,
+			</if>
+			<if test="froleName != null">
+				froleName,
+			</if>
+			<if test="fphone != null">
+				fphone,
+			</if>
+			<if test="fpostxmid2 != null">
+				fpostxmid2,
+			</if>
+			<if test="frenyn != null">
+				frenyn,
+			</if>
+			<if test="fimage != null">
+				fimage,
+			</if>
+		</trim>
+	
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="fid != null">
+				#{fid,jdbcType=VARCHAR},
+			</if>
+			<if test="fpostName != null">
+				#{fpostName,jdbcType=VARCHAR},
+			</if>
+			<if test="fpostWriteName != null">
+				#{fpostWriteName,jdbcType=VARCHAR},
+			</if>
+			<if test="fpostWriteId != null">
+				#{fpostWriteId,jdbcType=VARCHAR},
+			</if>
+			<if test="fmasterId != null">
+				#{fmasterId,jdbcType=VARCHAR},
+			</if>
+			<if test="fcreateTime != null">
+				#{fcreateTime,jdbcType=VARCHAR},
+			</if>
+			<if test="fprojectName != null">
+				#{fprojectName,jdbcType=VARCHAR},
+			</if>
+			<if test="fprojectCode != null">
+				#{fprojectCode,jdbcType=VARCHAR},
+			</if>
+			<if test="fprojectId != null">
+				#{fprojectId,jdbcType=VARCHAR},
+			</if>
+			<if test="froleName != null">
+				#{froleName,jdbcType=VARCHAR},
+			</if>
+			<if test="fphone != null">
+				#{fphone,jdbcType=VARCHAR},
+			</if>
+			<if test="fpostxmid2 != null">
+				#{fpostxmid2,jdbcType=VARCHAR},
+			</if>
+			<if test="frenyn != null">
+				#{frenyn,jdbcType=VARCHAR},
+			</if>
+			<if test="fimage != null">
+				#{fimage,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<insert id="batchSaves" parameterType="java.util.List">
+ 		insert into pm_project_project_informationtable_postsetb_people   (
+ 			fid,
+			fpostName,
+			fpostWriteName,
+			fpostWriteId,
+			fmasterId,
+			fcreateTime,
+			fprojectName,
+			fprojectCode,
+			fprojectId,
+			froleName,
+			fphone,
+			fpostxmid2,
+			frenyn,
+			fimage
+ 		
+ 		)values 
+		<foreach collection="list" item="item" index="index" separator=",">
+			<!-- 保证与实体类的字段一致，以对象的关系定义（注：区分大小写） -->
+ 			(
+ 			#{item.fid,jdbcType=VARCHAR},
+ 			#{item.fpostName,jdbcType=VARCHAR},
+ 			#{item.fpostWriteName,jdbcType=VARCHAR},
+ 			#{item.fpostWriteId,jdbcType=VARCHAR},
+ 			#{item.fmasterId,jdbcType=VARCHAR},
+ 			#{item.fcreateTime,jdbcType=VARCHAR},
+ 			#{item.fprojectName,jdbcType=VARCHAR},
+ 			#{item.fprojectCode,jdbcType=VARCHAR},
+ 			#{item.fprojectId,jdbcType=VARCHAR},
+ 			#{item.froleName,jdbcType=VARCHAR},
+ 			#{item.fphone,jdbcType=VARCHAR},
+ 			#{item.fpostxmid2,jdbcType=VARCHAR},
+ 			#{item.frenyn,jdbcType=VARCHAR},
+ 			#{item.fimage,jdbcType=VARCHAR}
+			) 
+		</foreach>
+	</insert>
+	
 </mapper>

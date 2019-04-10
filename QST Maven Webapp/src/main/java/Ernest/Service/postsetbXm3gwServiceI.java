@@ -8,6 +8,8 @@ import java.util.Map;
 
 import com.alibaba.fastjson.JSONObject;
 
+import Ernest.Entity.PostsetbXm3gw;
+
 /**
  * @author Ernest
  *
@@ -53,4 +55,19 @@ public interface postsetbXm3gwServiceI {
 	 * @return
 	 */
 	JSONObject DeleteJobList(String fID);
+	
+	/**
+	 * 根据id查找内容
+	 * @param fID
+	 * @return
+	 */
+	List<PostsetbXm3gw> findById(String fID);
+	
+	/**
+	 * 修改
+	 * @param postsetbXm3gw
+	 * @return
+	 */
+	int UpdateById(PostsetbXm3gw postsetbXm3gw);
+	
 }

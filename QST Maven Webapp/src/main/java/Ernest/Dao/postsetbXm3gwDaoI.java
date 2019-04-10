@@ -37,4 +37,8 @@ public interface postsetbXm3gwDaoI {
 	
 	//查找所有子类id和fPostWriteID
 	List<PostsetbXm3gw> findChildById(String fID);
+	
+	//根据id查找内容
+	List<PostsetbXm3gw> findById(String fID);
+	
 }
