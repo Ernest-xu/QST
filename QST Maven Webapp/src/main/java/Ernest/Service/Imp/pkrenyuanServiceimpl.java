@@ -35,4 +35,18 @@ public class pkrenyuanServiceimpl implements pkrenyuanServiceI {
 		return b;
 	}
 
+
+	
+	@Override
+	public int deletByIds(List<String> list) {
+		return pkrenyuanDao.deletByIds(list);
+	}
+
+
+	
+	@Override
+	public int deleteByProjectAndUser(String ProjectId, String fWriteID) {
+		return pkrenyuanDao.deleteByProjectAndUser(ProjectId, fWriteID);
+	}
+
 }

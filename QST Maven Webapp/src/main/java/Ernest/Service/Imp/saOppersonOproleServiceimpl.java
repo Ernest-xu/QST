@@ -103,9 +103,6 @@ public class saOppersonOproleServiceimpl implements saOppersonOproleServiceI {
 	}
 
 
-	/* (non-Javadoc)
-	 * @see Ernest.Service.saOppersonOproleServiceI#deleteByUserIds(java.util.List)
-	 */
 	@Override
 	public int deleteByUserIds(List<String> list) {
 		
@@ -113,18 +110,12 @@ public class saOppersonOproleServiceimpl implements saOppersonOproleServiceI {
 	}
 
 
-	/* (non-Javadoc)
-	 * @see Ernest.Service.saOppersonOproleServiceI#batchSaves(java.util.List)
-	 */
 	@Override
 	public int batchSaves(List<SaOppersonOprole> list) {
 		return saOODao.batchSaves(list);
 	}
 
 
-	/* (non-Javadoc)
-	 * @see Ernest.Service.saOppersonOproleServiceI#deleteById(java.util.List)
-	 */
 	@Override
 	public int deleteById(List<String> list) {
 		

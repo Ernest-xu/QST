@@ -37,6 +37,18 @@
 		fid,fno,fpostName,fpostWriteName,fpostWriteId,fpostType,fmasterId,fprojectName,fprojectCode,fpostXlb,fpostxmid,fpostxmid1,fpostxmid2,fysxs1
 	</sql>
 	
+	<select id="findfPostxmid2AndfPostName"  resultMap="PostsetbXm3gwMap">
+		Select
+		<include refid="sqllist"/>
+		from
+		 	pm_project_project_informationtable_postsetb_xm_3gw 
+		where 
+			fPostxmid2=#{0}
+	 	and 
+	 		fPostName=#{1}
+	</select>
+	
+	
 	<select id="findById" parameterType="String" resultMap="PostsetbXm3gwMap">
 		select 
 		<include refid="sqllist"/>

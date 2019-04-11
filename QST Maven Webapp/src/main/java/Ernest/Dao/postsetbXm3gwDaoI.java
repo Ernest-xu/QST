@@ -41,6 +41,16 @@ public interface postsetbXm3gwDaoI {
 	//根据id查找内容
 	List<PostsetbXm3gw> findById(String fID);
 	
+	//以子类为主
 	List<PostsetbXm3gw> findByChildId(String fID);
+	
+	/**
+	 * 
+	 * @param fPostxmid2
+	 * @param fPostName
+	 * @return
+	 */
+	List<PostsetbXm3gw> findfPostxmid2AndfPostName(String fPostxmid2,String fPostName);
+	
 	
 }

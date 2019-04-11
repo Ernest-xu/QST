@@ -5,6 +5,7 @@ package Ernest.Service.Imp;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -18,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.mysql.fabric.xmlrpc.base.Array;
 
 import Ernest.Dao.postsetbPeopleDaoI;
 import Ernest.Entity.InformationTable;
@@ -136,8 +138,86 @@ public class postsetbPeopleServiceimpl implements postsetbPeopleServiceI {
 
 	@Override
 	public JSONObject DeleteJobPeople(String fID) {
+		JSONObject json = new JSONObject(); 
+		List<PostsetbPeople> PPlist = postsetbPeopleDao.findById(fID);
+		int a = 0;
+		int b = 0;
+		int c = 0;
 		
-		return null;
+		if(!PPlist.isEmpty()){
+			logger.info("PPlist:"+PPlist.size());
+			PostsetbPeople postsetbPeople = PPlist.get(0);
+			logger.info(postsetbPeople.toString());
+			List<PostsetbXm3gw> PX3list = postsetbXm3gwService.findfPostxmid2AndfPostName(postsetbPeople.getFpostxmid2(), postsetbPeople.getFpostName());
+			String peopleName = postsetbPeople.getFpostWriteName();
+			String peopleID = postsetbPeople.getFpostWriteId();
+			PostsetbXm3gw postsetbXm3gw = PX3list.get(0);
+			PostsetbXm3gw postsetbXm3gw2 = new PostsetbXm3gw();
+			postsetbXm3gw2.setFid(postsetbXm3gw.getFid());
+			String fPostWriteID =postsetbXm3gw.getFpostWriteId();
+			String fPostWriteName =postsetbXm3gw.getFpostWriteName();
+			String IDs="";
+			String Names="";
+			if(fPostWriteID==null||"".equals(fPostWriteID)||"null".equals(fPostWriteID)){
+			}else{
+				if(fPostWriteID.indexOf(",")>-1){
+					String[] arr1 =  fPostWriteID.split(",");
+					String[] arr2 = fPostWriteName.split(",");
+					List<String> list1 = Arrays.asList(arr1);
+					List<String> list2 = Arrays.asList(arr2);
+					List<String> arrayList1=new ArrayList<String>(list1);//转换为ArrayLsit调用相关的remove方法
+					List<String> arrayList2=new ArrayList<String>(list2);
+					if(arrayList1.contains(peopleID)){
+						arrayList1.remove(peopleID);
+					}
+					if(arrayList2.contains(peopleName)){
+						arrayList2.remove(peopleName);
+					}
+					int i =0 ;
+					for(String str1:arrayList1 ){
+			           if(i>0){
+			        	   IDs+=","+str1;
+			        	  
+			           }else{
+			        	   IDs+=str1;
+			           }
+			           i++;
+			        }
+					i=0;
+					for(String str1:arrayList2 ){
+						if(i>0){
+							Names+=","+str1;
+							
+						}else{
+							Names+=str1;
+						}
+						i++;  
+			        }
+					postsetbXm3gw2.setFpostWriteId(IDs);
+					postsetbXm3gw2.setFpostWriteName(Names);
+				}else{
+					postsetbXm3gw2.setFpostWriteId("");
+					postsetbXm3gw2.setFpostWriteName("");
+					
+				}
+				postsetbXm3gwService.UpdateById(postsetbXm3gw2);
+			}
+			List<String> ppids = new ArrayList<String>();
+			ppids.add(fID);
+			a = postsetbPeopleDao.deleteByIds(ppids);
+			b = pkrenyuanService.deleteByProjectAndUser(postsetbPeople.getFprojectId(), postsetbPeople.getFpostWriteId());
+			logger.info("a:"+a+",b:"+b);
+		}
+		if(a>0){
+			json.put("success", true);
+			json.put("message", "删除成功");
+		}else{
+			json.put("success", false);
+			json.put("message", "删除失败");
+		}
+		
+		
+		return json;
 	}
 
 

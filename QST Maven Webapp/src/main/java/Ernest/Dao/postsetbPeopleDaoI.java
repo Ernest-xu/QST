@@ -32,6 +32,9 @@ public interface postsetbPeopleDaoI {
 	 */
 	List<PostsetbPeople> findPersonByProjectAndmd5(String fProjectID ,String sMd5Str);
 	
+	
+	List<PostsetbPeople> findById(String fID);
+	
 	/**
 	 * 根据id列表删除
 	 * @param list

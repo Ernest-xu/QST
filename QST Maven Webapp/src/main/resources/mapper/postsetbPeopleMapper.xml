@@ -47,6 +47,30 @@
 		</collection>
 	</resultMap>
 	
+	
+	<select id="findById" parameterType="String" resultMap="postsetbPeopleMap">
+		select 
+			fid,
+			fpostName,
+			fpostWriteName,
+			fpostWriteId,
+			fmasterId,
+			fcreateTime,
+			fprojectName,
+			fprojectCode,
+			fprojectId,
+			froleName,
+			fphone,
+			fpostxmid2,
+			frenyn,
+			fimage 
+		from 
+			pm_project_project_informationtable_postsetb_people 
+		where  
+			fID=#{fID}
+	</select>
+	
+	
 	<select id="findPeopleListByProjectId" parameterType="String"   resultMap="postsetbPeopleMap">
 		select 
 			sa.sID as sid,

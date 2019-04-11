@@ -74,5 +74,8 @@ public interface postsetbXm3gwServiceI {
 	
 	List<PostsetbXm3gw> findByChildId(String fID);
 	
+	List<PostsetbXm3gw> findfPostxmid2AndfPostName(String fPostxmid2,String fPostName);
+	
+	int save(PostsetbXm3gw postsetbXm3gw);
 	
 }

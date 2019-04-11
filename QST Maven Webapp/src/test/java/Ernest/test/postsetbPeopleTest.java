@@ -14,7 +14,6 @@ import com.alibaba.fastjson.JSONObject;
 
 import Ernest.Dao.postsetbPeopleDaoI;
 import Ernest.Entity.PostsetbPeople;
-import Ernest.Service.postsetbPeopleServiceI;
 import Ernest.Service.Imp.postsetbPeopleServiceimpl;
 
 /**
@@ -33,11 +32,17 @@ public class postsetbPeopleTest extends TestBase {
 	public void init() {
 		postsetbPeopleDao = super.getContext().getBean("postsetbPeopleDaoI",postsetbPeopleDaoI.class);
 	}
-	@Before
+//	@Before
 	public void init1() {
 		postsetbPeopleService = super.getContext().getBean("postsetbPeopleServiceimpl",postsetbPeopleServiceimpl.class);
 	}
 	
+//	@Test
+	public void delete() {
+		String fID = "6a300c81-d6d4-4d8a-93a9-d6e00396e4be";
+		JSONObject json = postsetbPeopleService.DeleteJobPeople(fID);
+		logger.info(json.toString());
+	}
 //	@Test
 	public void add() {
 		String BumchfID1="66fb26ee-0e9a-40fb-bbe7-20bc06586623";

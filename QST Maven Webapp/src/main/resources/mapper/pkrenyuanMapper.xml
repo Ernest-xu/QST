@@ -98,4 +98,18 @@
 	</foreach>
 	</insert>
 	
+	<delete id="deletByIds" parameterType="java.util.List">
+		DELETE FROM  pm_project_project_pkrenyuan1 where sID fid 
+	<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+		#{item}
+	</foreach>
+	</delete>
+	
+	<delete id="deleteByProjectAndUser" >
+		DELETE FROM  
+			pm_project_project_pkrenyuan1 
+		where
+			fProjectID=#{0} and  fWriteID=#{1}
+	</delete>
+	
 </mapper>

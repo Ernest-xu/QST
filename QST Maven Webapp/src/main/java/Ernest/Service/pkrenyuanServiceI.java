@@ -27,4 +27,21 @@ public interface pkrenyuanServiceI {
 	 */
 	int batchSave(List<Pkrenyuan> list);
 	
+	/**
+	 * 删除
+	 * @param list
+	 * @return
+	 */
+	
+	int deletByIds(List<String> list);
+	
+	
+	/**
+	 * 删除
+	 * @param ProjectId
+	 * @param fWriteID
+	 * @return
+	 */
+	int deleteByProjectAndUser(String ProjectId ,String fWriteID );
+	
 }

@@ -145,7 +145,7 @@ $(document).ready(function() {
 								id: res.list[0].children[0].id
 							},
 							function(res) {
-								
+								console.info("人员",res.Data);
 								_this.tableData = res.Data;
 								for(let i in _this.tableData){
 									_this.tableData[i].hidePass = "* * * * * *" ;
@@ -303,7 +303,7 @@ $(document).ready(function() {
 				if (setRemoval == false) {
 					this.$message.error("相同人员不能重复选择~~");
 				} else {
-					$.axse("get", "/baas/PC/project/AddJobPeople", {
+					$.axse("post", "/QST/postsetbPeopleController/AddJobPeople", {/*****/
 							fID: this.getTeamStr,
 							BumchfID1: this.getBzStrArry,
 							BumchfID2: this.getSgryStrArry,
@@ -384,7 +384,7 @@ $(document).ready(function() {
 					}
 
 				}
-				$.axse("get", "/baas/PC/project/AddJobPeople", {
+				$.axse("post", "/QST/postsetbPeopleController/AddJobPeople", {/*****/
 						fID: this.getPostStr,
 						BumchfID1: this.setAddPositionStr,
 						BumchfID2: "",
@@ -467,7 +467,7 @@ $(document).ready(function() {
 					type: 'warning'
 				}).then(() => {
 					var _this = this;
-					$.axse("get", "/baas/PC/project/DeleteJobPeople", {
+					$.axse("post", "/QST/postsetbPeopleController/DeleteJobPeople", {/*****/
 							fID: row.fID
 						},
 						function(res) {
