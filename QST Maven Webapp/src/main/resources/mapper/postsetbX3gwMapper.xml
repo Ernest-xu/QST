@@ -67,7 +67,7 @@
 			gw.fID as fid,
 			gw.fPostWriteID as fpostWriteId, 
 			gwx.fID as px3_fid,
-			gwx.fPostName as px3_fPostName 
+			gwx.fPostName as px3_fPostName  
 		from 
 			pm_project_project_informationtable_postsetb_xm_3gw gw 
 		left join 
@@ -84,9 +84,25 @@
 	
 	<select id="findChildById" parameterType="String" resultMap="PostsetbXm3gwMap">
 		select 
+		gw.fID as fid,
 		gw.fPostWriteID as fpostWriteId,
 		gwx.fID as  px3_fid,
-		gwx.fPostWriteID as px3_fpostWriteId  
+		gwx.fPostWriteID as px3_fpostWriteId ,
+		gwx.fPostName as px3_fpostName 
+		from 
+			pm_project_project_informationtable_postsetb_xm_3gw gw ,
+			pm_project_project_informationtable_postsetb_xm_3gw gwx 
+		where 
+			gw.fPostxmid1=gwx.fPostxmid2 
+		and 
+			gw.fID=#{fID}
+	</select>
+	
+	<select id="findByChildId" parameterType="String" resultMap="PostsetbXm3gwMap">
+		select 
+		gw.fID as px3_fid,
+		gwx.fID as  fid,
+		gwx.fPostName as fpostName 
 		from 
 			pm_project_project_informationtable_postsetb_xm_3gw gw ,
 			pm_project_project_informationtable_postsetb_xm_3gw gwx 
@@ -220,6 +236,12 @@
 			<trim prefix="set" suffixOverrides=",">
 				<if test=" fpostName != null">
 					fpostName=#{fpostName,jdbcType=VARCHAR},
+				</if>
+				<if test=" fpostWriteName != null">
+					fpostWriteName=#{fpostWriteName,jdbcType=VARCHAR},
+				</if>
+				<if test=" fpostWriteId != null">
+					fpostWriteId=#{fpostWriteId,jdbcType=VARCHAR},
 				</if>
 				<if test=" fysxs1 != null">
 					fysxs1=#{fysxs1,jdbcType=VARCHAR},

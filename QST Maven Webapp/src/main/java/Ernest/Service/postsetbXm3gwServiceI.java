@@ -70,4 +70,9 @@ public interface postsetbXm3gwServiceI {
 	 */
 	int UpdateById(PostsetbXm3gw postsetbXm3gw);
 	
+	List<PostsetbXm3gw> findChildById(String fID);
+	
+	List<PostsetbXm3gw> findByChildId(String fID);
+	
+	
 }

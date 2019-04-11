@@ -56,6 +56,7 @@ public class postsetbPeopleServiceimpl implements postsetbPeopleServiceI {
 	public JSONObject findPeopleListByProjectId(String ProjectId) {
 		JSONObject json  = new JSONObject();
 		Map<String, String> orgMap= postsetbXm3gwService.findByProjectId(ProjectId); 
+//		logger.info("orgmap:"+orgMap.toString());
 		List<PostsetbPeople> PPlist = postsetbPeopleDao.findPeopleListByProjectId(ProjectId);
 		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
 		for(PostsetbPeople postsetbPeople : PPlist){
@@ -69,6 +70,7 @@ public class postsetbPeopleServiceimpl implements postsetbPeopleServiceI {
 			map.put("sPassword", saOpperson.getSpassword());//密码
 			map.put("fID", postsetbPeople.getFid());//岗位
 			map.put("fPostName", postsetbPeople.getFpostName());//项目名称
+//			logger.info(saOpperson.getSname()+","+saOpperson.getSid());
 			map.put("sFName", orgMap.get( saOpperson.getSid()));//部门
 			map.put("fxmbName", postsetbPeople.getPostsetbXm().getFxmbName());//分包商
 			List<Map<String, Object>> SOlist = saOproleService.selectJobName(postsetbPeople.getSaOpperson().getSid());
@@ -110,14 +112,16 @@ public class postsetbPeopleServiceimpl implements postsetbPeopleServiceI {
 		List<PostsetbPeople> PPlist = postsetbPeopleDao.findPersonByProjectAndmd5(fProjectID, sMd5Str);
 		List<Map<String,String>> list = new ArrayList<Map<String,String>>();
 		int number=0;
+//		logger.info("数量:"+PPlist.size());
 		for(PostsetbPeople postsetbPeople:PPlist){
 			Map<String ,String> map = new HashMap<String, String>();
 			map.put("fID", postsetbPeople.getSaOpperson().getSid());
 			map.put("sName", postsetbPeople.getSaOpperson().getSname());
+//			logger.info(map.toString());
 			list.add(map);
 			number++;
 		}
-		if(number>1){
+		if(number>0){
 			json.put("success", true);
 			json.put("message", "成功");
 			json.put("number", number);
@@ -169,6 +173,8 @@ public class postsetbPeopleServiceimpl implements postsetbPeopleServiceI {
 						}else{
 							BumchName += UserName;
 						}
+//						logger.info("PostsetbPeople:"+list.get(0).toString());
+//						logger.info("SaOpperson:"+SOlist.get(0).toString());
 						postsetbPeople.setFid(UUId);
 						postsetbPeople.setFpostWriteName(UserName);
 						postsetbPeople.setFpostWriteId(StrID[i]);
@@ -208,12 +214,14 @@ public class postsetbPeopleServiceimpl implements postsetbPeopleServiceI {
 			}
 			String ifID=list.get(0).getFpostWriteId();
 			String ifName = list.get(0).getFpostWriteName();
+//			logger.info(ifID+","+ifName);
 			if(ifID==null||"".equals(ifID)||"null".equals(ifID)){
 				
 			}else{
 				BumchName+=","+ifName;
 				BumchfID+=","+ifID;
 			}
+//			logger.info("BumchName:"+BumchName+",BumchfID:"+BumchfID+",id:"+postsetbXm3gw.getFid());
 			postsetbXm3gw.setFpostWriteId(BumchfID);
 			postsetbXm3gw.setFpostWriteName(BumchName);
 			pkrenyuanService.batchSave(Plist);
@@ -243,7 +251,7 @@ public class postsetbPeopleServiceimpl implements postsetbPeopleServiceI {
 				informationTable = list.get(0);
 				if(falge){
 					Map<String,String> mapGroup = new HashMap<String, String>();
-					List<PostsetbXm3gw> PX3list = postsetbXm3gwService.findById(fID);
+					List<PostsetbXm3gw> PX3list = postsetbXm3gwService.findByChildId(fID);
 					for(PostsetbXm3gw postsetbXm3gw:PX3list){
 						mapGroup.put(postsetbXm3gw.getFpostName(), postsetbXm3gw.getFid());
 					}

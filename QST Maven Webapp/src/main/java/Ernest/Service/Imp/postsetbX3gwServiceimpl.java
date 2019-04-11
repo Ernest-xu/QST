@@ -80,7 +80,7 @@ public class postsetbX3gwServiceimpl implements postsetbXm3gwServiceI {
 //			logger.info("进入"+fPostWriteID);
 			
 			if(fPostWriteID==null||"".equals(fPostWriteID)||"null".equals(fPostWriteID)){
-				
+				logger.info("进入");
 			}else{
 				
 				int index = fPostWriteID.indexOf(",");
@@ -268,6 +268,17 @@ public class postsetbX3gwServiceimpl implements postsetbXm3gwServiceI {
 	public int UpdateById(PostsetbXm3gw postsetbXm3gw) {
 		
 		return postsetbXm3gwDao.UpdateById(postsetbXm3gw);
+	}
+
+	
+	@Override
+	public List<PostsetbXm3gw> findChildById(String fID) {
+		return postsetbXm3gwDao.findChildById(fID);
+	}
+
+	@Override
+	public List<PostsetbXm3gw> findByChildId(String fID) {
+		return postsetbXm3gwDao.findByChildId(fID);
 	}
 
 }
