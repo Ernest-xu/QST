@@ -14,9 +14,17 @@
 		<result column="fgxid" jdbcType="VARCHAR" property="fgxid"/>
 	</resultMap>
 	
-	
-	<select id="">
-	
+	<sql id="all">
+		fid,fno,fbasicName,fbasicType,fbasicCode,fbasicState,fbz,fmasterId,fonlyOne,fgxid 
+	</sql>
+	<select id="findbyfMasterIdAndfBz" resultMap="basicDetailGongMap">
+		select 
+		<include refid="all"/>
+		from 
+			pm_project_basic_detail_gong
+		where 
+			fMasterID=#{0}  and fBz=#{1}
+		 order by fNo
 	</select>
 	
 </mapper>

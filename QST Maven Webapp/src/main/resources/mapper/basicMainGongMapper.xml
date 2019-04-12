@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Ernest.Dao.basicMainGongDaoI">
-	<resultMap type="Ernest.Entity.BasicDetailGong" id="basicDetailGongMap">
+	<resultMap type="Ernest.Entity.BasicMainGong" id="basicMainGongMap">
 		<id column="fid" jdbcType="VARCHAR" property="fid"/>
 		<result column="fno" jdbcType="VARCHAR" property="fno"/>
 		<result column="fprojectId" jdbcType="VARCHAR" property="fprojectId"/>
@@ -9,13 +9,23 @@
 		<result column="fbasicCode" jdbcType="VARCHAR" property="fbasicCode"/>
 		<result column="fbasicState" jdbcType="VARCHAR" property="fbasicState"/>
 		<result column="fbz" jdbcType="VARCHAR" property="fbz"/>
-		<result column="fmasterId" jdbcType="VARCHAR" property="fmasterId"/>
-		<result column="fonlyOne" jdbcType="VARCHAR" property="fonlyOne"/>
 		<result column="fgxfId" jdbcType="VARCHAR" property="fgxfId"/>
 		<result column="fmasterId" jdbcType="VARCHAR" property="fmasterId"/>
 		<result column="fprojectName" jdbcType="VARCHAR" property="fprojectName"/>
 		<result column="fprojectCode" jdbcType="VARCHAR" property="fprojectCode"/>
 	</resultMap>
 	
+	<sql id="all">
+		fid,fno,fprojectId,fbasicType,fbasicCode,fbasicState,fbz,fgxfId,fmasterId,fprojectName,fprojectCode 
+	</sql>
+	<select id = "findByfMasterId" parameterType="String" resultMap="basicMainGongMap">
+		select  
+		<include refid="all"/>
+		from 
+			pm_project_basic_main_gong 
+		where
+			fMasterID=#{fMasterID}
+		order by fBz
+	</select>
 	
 </mapper>
