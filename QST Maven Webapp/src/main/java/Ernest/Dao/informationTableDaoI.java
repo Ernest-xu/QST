@@ -4,6 +4,7 @@
 package Ernest.Dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
@@ -30,4 +31,10 @@ public interface informationTableDaoI {
 	 */
 	List<InformationTable> findById(String fID);
 	
+	/**
+	 * 
+	 * @param informationTable
+	 * @return
+	 */
+	int updateByMapId(InformationTable informationTable);
 }

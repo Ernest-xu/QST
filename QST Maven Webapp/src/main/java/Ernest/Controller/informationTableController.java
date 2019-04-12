@@ -3,8 +3,10 @@
  */
 package Ernest.Controller;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,7 +21,7 @@ import Ernest.Service.informationTableServiceI;
 @RestController
 @RequestMapping("/informationTableController")
 public class informationTableController {
-
+	private static final Logger logger = Logger.getLogger(informationTableController.class);
 	@Autowired
 	private informationTableServiceI informationTableService;
 	
@@ -29,5 +31,26 @@ public class informationTableController {
 		return json;
 	}
 	
+	
+	@GetMapping("/SelectProjectGrid")
+	public JSONObject SelectProjectGrid(String UserID){
+		JSONObject json = new JSONObject();
+		json = informationTableService.findProjectGrid(UserID);
+		return json;
+	}
+	
+	@GetMapping("/ProjectDetail")
+	public JSONObject ProjectDetail(String fProjectID){
+		JSONObject json = new JSONObject();
+		json = informationTableService.findProjectNote(fProjectID);
+		return json;
+	}
+	
+	@PostMapping("/updateProjectDetail")
+	public JSONObject updateProjectDetail(String fID,String fPrjoectName,String fProjectQuanName,String fProjectAddress,String fProjectMessage,String fStateTime,String fEndTime){
+		JSONObject json = new JSONObject();
+		informationTableService.updateProjectDetail(fID, fPrjoectName, fProjectQuanName, fProjectAddress, fProjectMessage, fStateTime, fEndTime);
+		return json;
+	}
 	
 }

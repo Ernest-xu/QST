@@ -46,7 +46,7 @@ $(document).ready(function() {
 			// 请求左边导航 和表格
 			getMainTable: function() {
 				var _this = this
-				$.axse("get", "/baas/PC/project/SelectProjectGrid", {
+				$.axse("get", "/QST/informationTableController/SelectProjectGrid", {
 						UserID: this.token.sID
 					},
 					function(res) {
@@ -172,7 +172,7 @@ $(document).ready(function() {
 			//项目信息
 			projectMsgFUN(fProjectID) {
 				var _this = this;
-				$.axse("get", "/baas/PC/project/ProjectDetail", {
+				$.axse("get", "/QST/informationTableController/ProjectDetail", {
 						fProjectID: fProjectID
 					},
 					function(res) {
@@ -468,7 +468,7 @@ $(document).ready(function() {
 					return;
 				}
 				var _this = this;
-				$.axse("get", "/baas/PC/project/updateProjectDetail", {
+				$.axse("post", "/QST/informationTableController/updateProjectDetail", {
 						fID: this.projectId,
 						fPrjoectName: this.projectMsg.fPrjoectName,
 						fProjectQuanName: this.projectMsg.fProjectQuanName,
@@ -478,7 +478,7 @@ $(document).ready(function() {
 						fEndTime: this.fEndTime,
 					},
 					function(res) {
-						$.axse("get", "/baas/PC/project/SelectProjectGrid", {
+						$.axse("get", "/QST/informationTableController/SelectProjectGrid", {
 								UserID: _this.token.sID
 							},
 							function(data) {

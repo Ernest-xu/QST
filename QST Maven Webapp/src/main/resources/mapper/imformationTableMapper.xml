@@ -78,11 +78,97 @@
 			ppi.fWriteID as fwriteId,
 			ppi.fPrjoectName as fprjoectName,
 			ppi.fProjectQuanName as fprojectQuanName,
-			ppi.fpeolistMd5	as fpeolistMd5	
+			ppi.fpeolistMd5	as fpeolistMd5	,
+			ppi.fprojectAddress as fprojectAddress,
+			ppi.fProjectMessage as fprojectMessage,
+			ppi.fstateTime as fstateTime,
+			ppi.fendTime as fendTime 
 		from 
 			pm_project_project_informationtable  ppi
 		where 
 			fID=#{fid}
 	</select> 
+	
+	<update id="updateByMapId" parameterType="Ernest.Entity.InformationTable">
+		update  pm_project_project_informationtable  
+		<trim prefix="set" suffixOverrides=",">
+				<if test=" fprjoectName != null">
+					fprjoectName=#{fprjoectName,jdbcType=VARCHAR},
+				</if>
+				<if test=" fprojectQuanName != null">
+					fprojectQuanName=#{fprojectQuanName,jdbcType=VARCHAR},
+				</if>
+				<if test=" fprojectAddress != null">
+					fprojectAddress=#{fprojectAddress,jdbcType=VARCHAR},
+				</if>
+				<if test=" fprojectMessage != null">
+					fprojectMessage=#{fprojectMessage,jdbcType=VARCHAR},
+				</if>
+				<if test=" fstateTime != null">
+					fstateTime=#{fstateTime,jdbcType=DATE},
+				</if>
+				<if test=" fendTime != null">
+					fendTime=#{fendTime,jdbcType=DATE},
+				</if>
+				
+				<if test=" gongxuChange != null">
+					gongxuChange=#{gongxuChange,jdbcType=VARCHAR},
+				</if>
+				<if test=" fmd5 != null">
+					fmd5=#{fmd5,jdbcType=VARCHAR},
+				</if>
+				<if test=" fprojectCode != null">
+					fprojectCode=#{fprojectCode,jdbcType=VARCHAR},
+				</if>
+				<if test=" fwrtieName != null">
+					fwrtieName=#{fwrtieName,jdbcType=VARCHAR},
+				</if>
+				<if test=" fwriteId != null">
+					fwriteId=#{fwriteId,jdbcType=VARCHAR},
+				</if>
+				<if test=" fno != null">
+					fno=#{fno,jdbcType=VARCHAR},
+				</if>
+				<if test=" flongitude != null">
+					flongitude=#{flongitude,jdbcType=VARCHAR},
+				</if>
+				<if test=" flatitude != null">
+					flatitude=#{flatitude,jdbcType=VARCHAR},
+				</if>
+				<if test=" fproSuperAdminNa != null">
+					fproSuperAdminNa=#{fproSuperAdminNa,jdbcType=VARCHAR},
+				</if>
+				<if test=" fproSuperAdminId != null">
+					fproSuperAdminId=#{fproSuperAdminId,jdbcType=VARCHAR},
+				</if>
+				<if test=" fwrtietime != null">
+					fwrtietime=#{fwrtietime,jdbcType=DATE},
+				</if>
+				<if test=" fsvgzs != null">
+					fsvgzs=#{fsvgzs,jdbcType=VARCHAR},
+				</if>
+				<if test=" fsvgqd != null">
+					fsvgqd=#{fsvgqd,jdbcType=VARCHAR},
+				</if>
+				<if test=" fqdgeshu != null">
+					fqdgeshu=#{fqdgeshu,jdbcType=VARCHAR},
+				</if>
+				<if test=" fzhuangshu != null">
+					fzhuangshu=#{fzhuangshu,jdbcType=VARCHAR},
+				</if>
+				<if test=" fpeolistName != null">
+					fpeolistName=#{fpeolistName,jdbcType=VARCHAR},
+				</if>
+				<if test=" fpeolistId != null">
+					fpeolistId=#{fpeolistId,jdbcType=VARCHAR},
+				</if>
+				<if test=" fpeolistMd5 != null">
+					fpeolistMd5=#{fpeolistMd5,jdbcType=VARCHAR},
+				</if>
+				
+			</trim>
+		where 
+			fid=#{fid,jdbcType=VARCHAR}
+	</update>
 	
 </mapper>
