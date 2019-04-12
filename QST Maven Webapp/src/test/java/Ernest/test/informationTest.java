@@ -68,7 +68,6 @@ public class informationTest extends TestBase {
 			informationTable.setFstateTime(sdf.parse(fStateTime));
 			informationTable.setFendTime(sdf.parse(fEndTime));
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
