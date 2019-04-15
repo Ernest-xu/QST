@@ -78,7 +78,7 @@ $(document).ready(function() {
 			//项目区段信息
 			sectionMsg(fProjectID) {
 				var _this = this;
-				$.axse("get", "/baas/PC/project/SelectZoneList", {
+				$.axse("get", "/QST/postinformationtabQuduanController/SelectZoneList", {
 						fProjectID: fProjectID
 					},
 					function(res) {
@@ -196,7 +196,7 @@ $(document).ready(function() {
 			//项目工序
 			procedure(fProjectID) {
 				var _this = this;
-				$.axse("get", "/baas/PC/project/SelectProcess", {
+				$.axse("get", "/QST/basicMainGongController/SelectProcess", {
 						fProjectID: fProjectID
 					},
 					function(res) {
