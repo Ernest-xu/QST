@@ -15,7 +15,20 @@
 		<result column="fzhuangJdzuta" jdbcType="REAL" property="fzhuangJdzuta"/>
 	</resultMap>
 	
-	<sql id="all">
+	<sql id="all" >
 		fid,fprojectCode,fmsterId,fpostName,fpostId,fpointCut,fcubeSum,ftonnageSum,fspanSum,fzhuangJdjichu,fzhuangJdzuta
 	</sql>
+	
+	<select id="findListByListMasterIds" parameterType="java.util.List" resultMap="PostinformationtabMap">
+		select
+		<include refid="all"/>
+		from 
+			pm_project_project_postinformationtab 
+		where 
+			fMsterID in 
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+		#{item}
+		</foreach>
+	</select>
+	
 </mapper>

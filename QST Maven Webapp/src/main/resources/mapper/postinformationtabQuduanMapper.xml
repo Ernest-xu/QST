@@ -19,4 +19,14 @@
 	<sql id="all">
 		fid,fstate,fmsterId,fpostName,fpostNameState,fpostNameEnd,fpostId,fpointCut,basicsSubPageState,fspanSum,fzhuangJdjiaxian
 	</sql>
+	
+	
+	<select id="findListByfMsterID" parameterType="String" resultMap="PostinformationtabQuduanMap">
+		select
+		<include refid="all"/>
+		from 
+			pm_project_project_postinformationtab_quduan1 
+		where fMsterID=#{fMsterID}
+	</select>
+	
 </mapper>
