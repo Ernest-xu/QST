@@ -8,7 +8,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import Ernest.Entity.SaOpperson;
-import Ernest.Entity.SaOppersonOprole;
+
 
 /**
  * @author Ernest

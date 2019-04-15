@@ -10,7 +10,17 @@ public class PostinformationtabQuduan implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String fid;
+	private String fid;//
+	private String fstate;//
+	private String fmsterId;//
+	private String fpostName;//
+	private String fpostNameState;//
+	private String fpostNameEnd;//
+	private String fpostId;//
+	private Float fspanSum;//
+	private String fpointCut;//
+	private String basicsSubPageState;//
+	private Float fzhuangJdjiaxian;//
 	private String fcreateOrgId;
 	private String fcreateOrgname;
 	private String fcreateOrgCode;
@@ -32,20 +42,11 @@ public class PostinformationtabQuduan implements java.io.Serializable {
 	private String fwrtieName;
 	private String fwriteCode;
 	private Date fwrtietime;
-	private String fstate;
 	private String ftype;
-	private String fmsterId;
-	private String fpostName;
-	private String fpostNameState;
-	private String fpostNameEnd;
-	private String fpostId;
 	private Float fcubeSum;
 	private Float ftonnageSum;
-	private Float fspanSum;
 	private String fzhuangState;
-	private String fpointCut;
 	private String basicsSubPageName;
-	private String basicsSubPageState;
 	private String towerSubPageName;
 	private String towerSubPageState;
 	private String stringingSubPageName;
@@ -59,7 +60,6 @@ public class PostinformationtabQuduan implements java.io.Serializable {
 	private String fmd5;
 	private Float fzhuangJdjichu;
 	private Float fzhuangJdzuta;
-	private Float fzhuangJdjiaxian;
 
 	// Constructors
 
@@ -591,27 +591,13 @@ public class PostinformationtabQuduan implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "PostinformationtabQuduan [fid=" + fid + ", fcreateOrgId=" + fcreateOrgId + ", fcreateOrgname="
-				+ fcreateOrgname + ", fcreateOrgCode=" + fcreateOrgCode + ", fcreateDepId=" + fcreateDepId
-				+ ", fcreateDepName=" + fcreateDepName + ", fcreateDepCode=" + fcreateDepCode + ", fcreatePosId="
-				+ fcreatePosId + ", fcreatePosName=" + fcreatePosName + ", fcreatePosCode=" + fcreatePosCode
-				+ ", fcreatePsmId=" + fcreatePsmId + ", fcreatePsmname=" + fcreatePsmname + ", fcreatePsmCode="
-				+ fcreatePsmCode + ", fcreateDateTime=" + fcreateDateTime + ", fupdateDateTime=" + fupdateDateTime
-				+ ", fupdatePsmName=" + fupdatePsmName + ", fprjoectName=" + fprjoectName + ", fprojectCode="
-				+ fprojectCode + ", fno=" + fno + ", fwrtieName=" + fwrtieName + ", fwriteCode=" + fwriteCode
-				+ ", fwrtietime=" + fwrtietime + ", fstate=" + fstate + ", ftype=" + ftype + ", fmsterId=" + fmsterId
-				+ ", fpostName=" + fpostName + ", fpostNameState=" + fpostNameState + ", fpostNameEnd=" + fpostNameEnd
-				+ ", fpostId=" + fpostId + ", fcubeSum=" + fcubeSum + ", ftonnageSum=" + ftonnageSum + ", fspanSum="
-				+ fspanSum + ", fzhuangState=" + fzhuangState + ", fpointCut=" + fpointCut + ", basicsSubPageName="
-				+ basicsSubPageName + ", basicsSubPageState=" + basicsSubPageState + ", towerSubPageName="
-				+ towerSubPageName + ", towerSubPageState=" + towerSubPageState + ", stringingSubPageName="
-				+ stringingSubPageName + ", stringingSubPageState=" + stringingSubPageState + ", basicsSubPageId="
-				+ basicsSubPageId + ", towerSubPageId=" + towerSubPageId + ", stringingSubPageId=" + stringingSubPageId
-				+ ", fbasicsSubPlanSum=" + fbasicsSubPlanSum + ", ftowerSubPlanSum=" + ftowerSubPlanSum
-				+ ", fstringingSubPlanSum=" + fstringingSubPlanSum + ", fmd5=" + fmd5 + ", fzhuangJdjichu="
-				+ fzhuangJdjichu + ", fzhuangJdzuta=" + fzhuangJdzuta + ", fzhuangJdjiaxian=" + fzhuangJdjiaxian + "]";
+		return "PostinformationtabQuduan [fid=" + fid + ", fstate=" + fstate + ", fmsterId=" + fmsterId + ", fpostName="
+				+ fpostName + ", fpostNameState=" + fpostNameState + ", fpostNameEnd=" + fpostNameEnd + ", fpostId="
+				+ fpostId + ", fspanSum=" + fspanSum + ", fpointCut=" + fpointCut + ", basicsSubPageState="
+				+ basicsSubPageState + ", fzhuangJdjiaxian=" + fzhuangJdjiaxian + "]";
 	}
 
+	
 	
 	
 	

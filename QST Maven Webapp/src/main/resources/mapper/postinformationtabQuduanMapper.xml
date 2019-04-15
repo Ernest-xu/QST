@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Ernest.Dao.postinformationtabQuduanDaoI">
+	<resultMap type="Ernest.Entity.PostinformationtabQuduan" id="PostinformationtabQuduanMap">
+		<id column="fid" jdbcType="VARCHAR" property="fid"/>
+		<result column="fstate" jdbcType="VARCHAR" property="fstate"/>
+		<result column="fmsterId" jdbcType="VARCHAR" property="fmsterId"/>
+		<result column="fpostName" jdbcType="VARCHAR" property="fpostName"/>
+		<result column="fpostNameState" jdbcType="VARCHAR" property="fpostNameState"/>
+		<result column="fpostNameEnd" jdbcType="VARCHAR" property="fpostNameEnd"/>
+		<result column="fpostId" jdbcType="VARCHAR" property="fpostId"/>
+		<result column="fpointCut" jdbcType="VARCHAR" property="fpointCut"/>
+		<result column="basicsSubPageState" jdbcType="VARCHAR" property="basicsSubPageState"/>
+		<result column="fspanSum" jdbcType="REAL" property="fspanSum"/>
+		<result column="fzhuangJdjiaxian" jdbcType="REAL" property="fzhuangJdjiaxian"/>
+	
+	</resultMap>
+	
+	<sql id="all">
+		fid,fstate,fmsterId,fpostName,fpostNameState,fpostNameEnd,fpostId,fpointCut,basicsSubPageState,fspanSum,fzhuangJdjiaxian
+	</sql>
+</mapper>

@@ -15,7 +15,18 @@ public class Postinformationtab implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	// Fields
 
-	private String fid;
+	private String fid;//
+	private String fprojectCode;//
+	private String fmsterId;//
+	private String fpostName;//
+	private String fpostId;//
+	private Float fcubeSum;//
+	private Float ftonnageSum;//
+	private Float fspanSum;//
+	private String fpointCut;//
+	private Float fzhuangJdjichu;//
+	private Float fzhuangJdzuta;//
+	
 	private String fcreateOrgId;
 	private String fcreateOrgname;
 	private String fcreateOrgCode;
@@ -32,21 +43,13 @@ public class Postinformationtab implements java.io.Serializable {
 	private String fupdateDateTime;
 	private String fupdatePsmName;
 	private String fprjoectName;
-	private String fprojectCode;
 	private String fno;
 	private String fwrtieName;
 	private String fwriteCode;
 	private Date fwrtietime;
 	private String fstate;
 	private String ftype;
-	private String fmsterId;
-	private String fpostName;
-	private String fpostId;
-	private Float fcubeSum;
-	private Float ftonnageSum;
-	private Float fspanSum;
 	private String fzhuangState;
-	private String fpointCut;
 	private String basicsSubPageName;
 	private String basicsSubPageState;
 	private String towerSubPageName;
@@ -60,8 +63,6 @@ public class Postinformationtab implements java.io.Serializable {
 	private Integer ftowerSubPlanSum;
 	private Integer fstringingSubPlanSum;
 	private String fmd5;
-	private Float fzhuangJdjichu;
-	private Float fzhuangJdzuta;
 	private Float fzhuangJdjiaxian;
 
 	// Constructors
@@ -574,27 +575,13 @@ public class Postinformationtab implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "Postinformationtab [fid=" + fid + ", fcreateOrgId=" + fcreateOrgId + ", fcreateOrgname="
-				+ fcreateOrgname + ", fcreateOrgCode=" + fcreateOrgCode + ", fcreateDepId=" + fcreateDepId
-				+ ", fcreateDepName=" + fcreateDepName + ", fcreateDepCode=" + fcreateDepCode + ", fcreatePosId="
-				+ fcreatePosId + ", fcreatePosName=" + fcreatePosName + ", fcreatePosCode=" + fcreatePosCode
-				+ ", fcreatePsmId=" + fcreatePsmId + ", fcreatePsmname=" + fcreatePsmname + ", fcreatePsmCode="
-				+ fcreatePsmCode + ", fcreateDateTime=" + fcreateDateTime + ", fupdateDateTime=" + fupdateDateTime
-				+ ", fupdatePsmName=" + fupdatePsmName + ", fprjoectName=" + fprjoectName + ", fprojectCode="
-				+ fprojectCode + ", fno=" + fno + ", fwrtieName=" + fwrtieName + ", fwriteCode=" + fwriteCode
-				+ ", fwrtietime=" + fwrtietime + ", fstate=" + fstate + ", ftype=" + ftype + ", fmsterId=" + fmsterId
+		return "Postinformationtab [fid=" + fid + ", fprojectCode=" + fprojectCode + ", fmsterId=" + fmsterId
 				+ ", fpostName=" + fpostName + ", fpostId=" + fpostId + ", fcubeSum=" + fcubeSum + ", ftonnageSum="
-				+ ftonnageSum + ", fspanSum=" + fspanSum + ", fzhuangState=" + fzhuangState + ", fpointCut=" + fpointCut
-				+ ", basicsSubPageName=" + basicsSubPageName + ", basicsSubPageState=" + basicsSubPageState
-				+ ", towerSubPageName=" + towerSubPageName + ", towerSubPageState=" + towerSubPageState
-				+ ", stringingSubPageName=" + stringingSubPageName + ", stringingSubPageState=" + stringingSubPageState
-				+ ", basicsSubPageId=" + basicsSubPageId + ", towerSubPageId=" + towerSubPageId
-				+ ", stringingSubPageId=" + stringingSubPageId + ", fbasicsSubPlanSum=" + fbasicsSubPlanSum
-				+ ", ftowerSubPlanSum=" + ftowerSubPlanSum + ", fstringingSubPlanSum=" + fstringingSubPlanSum
-				+ ", fmd5=" + fmd5 + ", fzhuangJdjichu=" + fzhuangJdjichu + ", fzhuangJdzuta=" + fzhuangJdzuta
-				+ ", fzhuangJdjiaxian=" + fzhuangJdjiaxian + "]";
+				+ ftonnageSum + ", fspanSum=" + fspanSum + ", fpointCut=" + fpointCut + ", fzhuangJdjichu="
+				+ fzhuangJdjichu + ", fzhuangJdzuta=" + fzhuangJdzuta + "]";
 	}
 
+	
 	
 	
 	

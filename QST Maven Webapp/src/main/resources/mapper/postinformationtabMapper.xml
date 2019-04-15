@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Ernest.Dao.postinformationtabDaoI">
+	<resultMap type="Ernest.Entity.Postinformationtab" id="PostinformationtabMap">
+		<id column="fid" jdbcType="VARCHAR" property="fid"/>
+		<result column="fprojectCode" jdbcType="VARCHAR" property="fprojectCode"/>
+		<result column="fmsterId" jdbcType="VARCHAR" property="fmsterId"/>
+		<result column="fpostName" jdbcType="VARCHAR" property="fpostName"/>
+		<result column="fpostId" jdbcType="VARCHAR" property="fpostId"/>
+		<result column="fpointCut" jdbcType="VARCHAR" property="fpointCut"/>
+		<result column="fcubeSum" jdbcType="REAL" property="fcubeSum"/>
+		<result column="ftonnageSum" jdbcType="REAL" property="ftonnageSum"/>
+		<result column="fspanSum" jdbcType="REAL" property="fspanSum"/>
+		<result column="fzhuangJdjichu" jdbcType="REAL" property="fzhuangJdjichu"/>
+		<result column="fzhuangJdzuta" jdbcType="REAL" property="fzhuangJdzuta"/>
+	</resultMap>
+	
+	<sql id="all">
+		fid,fprojectCode,fmsterId,fpostName,fpostId,fpointCut,fcubeSum,ftonnageSum,fspanSum,fzhuangJdjichu,fzhuangJdzuta
+	</sql>
+</mapper>
