@@ -23,4 +23,12 @@ public interface postinformationtabDaoI {
 	 */
 	List<Postinformationtab> findListByListMasterIds(List<String> list);
 	
+	
+	/**
+	 * 根据实体类主键修改
+	 * @param postinformationtab
+	 * @return
+	 */
+	int UpdateById(Postinformationtab postinformationtab);
+	
 }

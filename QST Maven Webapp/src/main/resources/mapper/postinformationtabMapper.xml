@@ -31,4 +31,46 @@
 		</foreach>
 	</select>
 	
+	<update id="updateById"  parameterType="Ernest.Entity.Postinformationtab">
+		update pm_project_project_postinformationtab 
+		<trim prefix="set" suffixOverrides=",">
+				<if test=" fprojectCode != null">
+					fprojectCode=#{fprojectCode,jdbcType=VARCHAR},
+				</if>
+				<if test=" fpostName != null">
+					fpostName=#{fpostName,jdbcType=VARCHAR},
+				</if>
+				<if test=" fpostId != null">
+					fpostId=#{fpostId,jdbcType=VARCHAR},
+				</if>
+				<if test=" fmsterId != null">
+					fmsterId=#{fmsterId,jdbcType=VARCHAR},
+				</if>
+				<if test=" fpointCut != null">
+					fpointCut=#{fpointCut,jdbcType=VARCHAR},
+				</if>
+				<if test=" fcubeSum != null">
+					fcubeSum=#{fcubeSum,jdbcType=REAL},
+				</if>
+				<if test=" ftonnageSum != null">
+					ftonnageSum=#{ftonnageSum,jdbcType=REAL},
+				</if>
+				<if test=" fspanSum != null">
+					fspanSum=#{fspanSum,jdbcType=REAL},
+				</if>
+				<if test=" fzhuangJdjichu != null">
+					fzhuangJdjichu=#{fzhuangJdjichu,jdbcType=REAL},
+				</if>
+				<if test=" fzhuangJdzuta != null">
+					fzhuangJdzuta=#{fzhuangJdzuta,jdbcType=REAL},
+				</if>
+				
+				
+			</trim>
+		where 
+			fID=#{fid,jdbcType=VARCHAR}
+	</update>
+	
+	
+	
 </mapper>
