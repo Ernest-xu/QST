@@ -4,6 +4,7 @@
 package Ernest.test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -25,7 +26,7 @@ public class postinformationtabTest extends TestBase {
 	private postinformationtabDaoI postinformationtabDao;
 	
 	
-//	@Before
+	@Before
 	public void init(){
 		postinformationtabDao = super.getContext().getBean("postinformationtabDaoI",postinformationtabDaoI.class);
 	}
@@ -41,6 +42,16 @@ public class postinformationtabTest extends TestBase {
 		for(Postinformationtab postinformationtab :list){
 			logger.info(postinformationtab.getFid()+","+postinformationtab.getFmsterId());
 		}
+	}
+	
+	@Test
+	public void findsum(){
+//		String fid1 = "C82BF43AEBB0000123221B4159871D1F";
+//		HashMap<String,Object> map= postinformationtabDao.findMapByProjectId(fid1);
+//		logger.info(map.toString());
+		String MasterId = "C837DECABAA000017EBA78F018E754B0";
+		HashMap<String,Object> map =  postinformationtabDao.findMapByMasterId(MasterId);
+		logger.info(map.toString());
 	}
 	
 }

@@ -29,4 +29,9 @@
 		where fMsterID=#{fMsterID}
 	</select>
 	
+	<update id="">
+		
+	</update>
+	
+	
 </mapper>

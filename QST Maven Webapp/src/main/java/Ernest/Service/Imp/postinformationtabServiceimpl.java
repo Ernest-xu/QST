@@ -3,6 +3,7 @@
  */
 package Ernest.Service.Imp;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,6 +67,20 @@ public class postinformationtabServiceimpl implements postinformationtabServiceI
 	public int UpdateById(Postinformationtab postinformationtab) {
 		
 		return postinformationtabDao.UpdateById(postinformationtab);
+	}
+
+
+	
+	@Override
+	public HashMap<String, Object> findMapByProjectId(String ProjectId) {
+		return postinformationtabDao.findMapByProjectId(ProjectId);
+	}
+
+
+
+	@Override
+	public HashMap<String, Object> findMapByMasterId(String MasterId) {
+		return postinformationtabDao.findMapByMasterId(MasterId);
 	}
 
 }

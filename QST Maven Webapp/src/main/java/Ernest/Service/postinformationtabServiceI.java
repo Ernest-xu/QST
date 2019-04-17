@@ -3,6 +3,7 @@
  */
 package Ernest.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.alibaba.fastjson.JSONObject;
@@ -43,4 +44,19 @@ public interface postinformationtabServiceI {
 	 * @return
 	 */
 	int UpdateById(Postinformationtab postinformationtab);
+	
+	/**
+	 * 根据id统计数量
+	 * @param ProjectId
+	 * @return
+	 */
+	HashMap<String ,Object> findMapByProjectId(String ProjectId);
+	
+	
+	/**
+	 * 根据materid统计
+	 * @param MasterId
+	 * @return
+	 */
+	HashMap<String , Object> findMapByMasterId(String MasterId);
 }

@@ -72,5 +72,24 @@
 	</update>
 	
 	
+	<select id="findMapByProjectId" parameterType="String" resultType="java.util.HashMap">
+		select 
+			count(fID) as num,
+			sum(ifnull(fSpanSum,0)) as zdsum  
+		from 
+			pm_project_project_postinformationtab 
+		where 
+			fProjectCode =#{ProjectId} 
+	</select>
+	
+	<select id="findMapByMasterId" parameterType="String" resultType="java.util.HashMap">
+		select 
+			sum(ifnull(fSpanSum,0)) as num  
+		from 
+			pm_project_project_postinformationtab 
+		where 
+			fMsterID = #{MasterId}
+	
+	</select>
 	
 </mapper>

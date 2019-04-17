@@ -3,6 +3,7 @@
  */
 package Ernest.Dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -31,4 +32,17 @@ public interface postinformationtabDaoI {
 	 */
 	int UpdateById(Postinformationtab postinformationtab);
 	
+	/**
+	 * 根据项目id统计数量
+	 * @param ProjectId
+	 * @return
+	 */
+	HashMap<String ,Object> findMapByProjectId(String ProjectId);
+	
+	/**
+	 * 根据materid统计
+	 * @param MasterId
+	 * @return
+	 */
+	HashMap<String , Object> findMapByMasterId(String MasterId);
 }
