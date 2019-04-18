@@ -16,8 +16,7 @@ import Ernest.Service.pmDocStakeClassServiceI;
  * @author Ernest
  *
  */
-@Service
-public class pmDocStakeClassServiceimpl implements pmDocStakeClassServiceI {
+@Service class pmDocStakeClassServiceimpl implements pmDocStakeClassServiceI {
 
 	@Autowired
 	private pmDocStakeClassDaoI pmDocStakeClassDao;
