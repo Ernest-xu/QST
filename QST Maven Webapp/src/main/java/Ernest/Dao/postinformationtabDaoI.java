@@ -45,4 +45,5 @@ public interface postinformationtabDaoI {
 	 * @return
 	 */
 	HashMap<String , Object> findMapByMasterId(String MasterId);
+	
 }

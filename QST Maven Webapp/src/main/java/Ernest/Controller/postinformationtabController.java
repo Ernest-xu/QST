@@ -27,7 +27,7 @@ public class postinformationtabController {
 	@PostMapping("/updateZhuang")
 	public JSONObject updateZhuang(String fID,String fMsterID,String fProjectCode,String fPostName ,Float fCubeSum,Float fTonnageSum ,Float fSpanSum){
 		JSONObject json = new JSONObject();
-		
+		json = postinformationtabService.updateZhuang(fID, fMsterID, fProjectCode, fPostName, fCubeSum, fTonnageSum, fSpanSum);
 		return json;
 	}
 	

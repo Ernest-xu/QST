@@ -31,7 +31,7 @@
 		</foreach>
 	</select>
 	
-	<update id="updateById"  parameterType="Ernest.Entity.Postinformationtab">
+	<update id="UpdateById"  parameterType="Ernest.Entity.Postinformationtab">
 		update pm_project_project_postinformationtab 
 		<trim prefix="set" suffixOverrides=",">
 				<if test=" fprojectCode != null">

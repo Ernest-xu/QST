@@ -109,4 +109,12 @@ public class postinformationtabQuduanServiceimpl implements postinformationtabQu
 		return json;
 	}
 
+
+	
+	@Override
+	public int UpdateByfID(PostinformationtabQuduan postinformationtabQuduan) {
+		// 
+		return postinformationtabQuduanDao.UpdateByfID(postinformationtabQuduan);
+	}
+
 }

@@ -22,4 +22,11 @@ public interface postinformationtabQuduanDaoI {
 	 * @return
 	 */
 	List<PostinformationtabQuduan> findListByfMsterID(String fMsterID) ; 
+	
+	/**
+	 * 区段修改
+	 * @param PostinformationtabQuduan
+	 * @return
+	 */
+	int UpdateByfID(PostinformationtabQuduan PostinformationtabQuduan);
 }

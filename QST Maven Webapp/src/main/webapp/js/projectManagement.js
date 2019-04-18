@@ -142,7 +142,7 @@ $(document).ready(function() {
 					return;
 				}
 				var _this = this;
-				$.axse("get", "/baas/PC/project/updateZhuang", {
+				$.axse("post", "/QST/postinformationtabController/updateZhuang", {
 						fID: fID,
 						fMsterID: fMsterID,
 						fProjectCode: fProjectCode,

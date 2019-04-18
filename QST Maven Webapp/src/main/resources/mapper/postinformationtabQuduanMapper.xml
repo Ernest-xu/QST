@@ -29,8 +29,42 @@
 		where fMsterID=#{fMsterID}
 	</select>
 	
-	<update id="">
+	<update id="UpdateByfID" parameterType="Ernest.Entity.PostinformationtabQuduan"  >
+		update pm_project_project_postinformationtab_quduan1 
+		<trim prefix="set" suffixOverrides=",">
+			<if test="fstate != null">
+				fstate=#{fstate,jdbcType=VARCHAR},
+			</if>
+			<if test="fmsterId != null">
+				fmsterId=#{fmsterId,jdbcType=VARCHAR},
+			</if>
+			<if test="fpostName != null">
+				fpostName=#{fpostName,jdbcType=VARCHAR},
+			</if>
+			<if test="fpostNameState != null">
+				fpostNameState=#{fpostNameState,jdbcType=VARCHAR},
+			</if>
+			<if test="fpostNameEnd != null">
+				fpostNameEnd=#{fpostNameEnd,jdbcType=VARCHAR},
+			</if>
+			<if test="fpostId != null">
+				fpostId=#{fpostId,jdbcType=VARCHAR},
+			</if>
+			<if test="fpointCut != null">
+				fpointCut=#{fpointCut,jdbcType=VARCHAR},
+			</if>
+			<if test="basicsSubPageState != null">
+				basicsSubPageState=#{basicsSubPageState,jdbcType=VARCHAR},
+			</if>
+			<if test="fspanSum != null">
+				fspanSum=#{fspanSum,jdbcType=REAL},
+			</if>
+			<if test="fzhuangJdjiaxian != null">
+				fzhuangJdjiaxian=#{fzhuangJdjiaxian,jdbcType=REAL},
+			</if>
 		
+		</trim>
+		where fid = #{fid,jdbcType=VARCHAR}
 	</update>
 	
 	

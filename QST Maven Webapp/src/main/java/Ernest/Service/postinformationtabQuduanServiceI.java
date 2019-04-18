@@ -30,4 +30,12 @@ public interface postinformationtabQuduanServiceI {
 	 */
 	JSONObject SelectZoneList(String fProjectID);
 	
+	
+	/**
+	 * 区段修改
+	 * @param PostinformationtabQuduan
+	 * @return
+	 */
+	int UpdateByfID(PostinformationtabQuduan postinformationtabQuduan);
+	
 }

@@ -56,4 +56,11 @@ public interface informationTableServiceI {
 	 * @return
 	 */
 	JSONObject updateProjectDetail(String fID,String fPrjoectName,String fProjectQuanName,String fProjectAddress,String fProjectMessage,String fStateTime,String fEndTime);
+
+	/**
+	 * 修改项目信息
+	 * @param informationTable
+	 * @return
+	 */
+	int updateByMapId(InformationTable informationTable);
 }

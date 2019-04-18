@@ -190,4 +190,11 @@ public class informationTableServiceimpl implements informationTableServiceI {
 		return json;
 	}
 
+
+	
+	@Override
+	public int updateByMapId(InformationTable informationTable) {
+		return informationTableDao.updateByMapId(informationTable);
+	}
+
 }
