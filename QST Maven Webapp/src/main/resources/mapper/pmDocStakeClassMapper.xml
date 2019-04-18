@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Ernest.Dao.pmDocStakeClassDaoI">
+	<resultMap type="Ernest.Entity.PmDocStakeClass" id="PmDocStakeClassMap">
+		<id column="fid" jdbcType="VARCHAR" property="fid"/>
+		<result column="fpostId" jdbcType="VARCHAR" property="fpostId"/>
+		<result column="fpostName" jdbcType="VARCHAR" property="fpostName"/>
+		<result column="fprojectCode" jdbcType="VARCHAR" property="fprojectCode"/>
+		<result column="fprjoectName" jdbcType="VARCHAR" property="fprjoectName"/>
+		<result column="fparntClassId" jdbcType="VARCHAR" property="fparntClassId"/>
+		<result column="delectStatus" jdbcType="INTEGER" property="delectStatus"/>
+		<result column="fmd5" jdbcType="VARCHAR" property="fmd5"/>
+		<result column="fcreateUserId" jdbcType="VARCHAR" property="fcreateUserId"/>
+		<result column="fcreateDateTime" jdbcType="VARCHAR" property="fcreateDateTime"/>
+		<result column="fupdateDateTime" jdbcType="VARCHAR" property="fupdateDateTime"/>
+		<result column="fupdateUserId" jdbcType="VARCHAR" property="fupdateUserId"/>
+		<result column="fstate" jdbcType="VARCHAR" property="fstate"/>
+		<result column="fmsterId" jdbcType="VARCHAR" property="fmsterId"/>
+	</resultMap>
+	
+	<insert id="saveById" parameterType="Ernest.Entity.PmDocStakeClass" >
+		insert into pm_doc_stake_class 
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="fid != null">
+				 fid,
+			</if>
+			<if test="fpostId != null">
+				 fpostId,
+			</if>
+			<if test="fpostName != null">
+				 fpostName,
+			</if>
+			<if test="fprojectCode != null">
+				 fprojectCode,
+			</if>
+			<if test="fprjoectName != null">
+				 fprjoectName,
+			</if>
+			<if test="fparntClassId != null">
+				 fparntClassId,
+			</if>
+			<if test="delectStatus != null">
+				 delectStatus,
+			</if>
+			<if test="fmd5 != null">
+				 fmd5,
+			</if>
+			<if test="fcreateUserId != null">
+				 fcreateUserId,
+			</if>
+			<if test="fcreateDateTime != null">
+				 fcreateDateTime,
+			</if>
+			<if test="fupdateDateTime != null">
+				 fupdateDateTime,
+			</if>
+			<if test="fupdateUserId != null">
+				 fupdateUserId,
+			</if>
+			<if test="fstate != null">
+				 fstate,
+			</if>
+			<if test="fmsterId != null">
+				 fmsterId,
+			</if>
+		</trim>
+		<trim prefix=" values (" suffix=")" suffixOverrides=",">
+			<if test="fid != null">
+				 #{fid,jdbcType=VARCHAR},
+			</if>
+			<if test="fpostId != null">
+				 #{fpostId,jdbcType=VARCHAR},
+			</if>
+			<if test="fpostName != null">
+				 #{fpostName,jdbcType=VARCHAR},
+			</if>
+			<if test="fprojectCode != null">
+				 #{fprojectCode,jdbcType=VARCHAR},
+			</if>
+			<if test="fprjoectName != null">
+				 #{fprjoectName,jdbcType=VARCHAR},
+			</if>
+			<if test="fparntClassId != null">
+				 #{fparntClassId,jdbcType=VARCHAR},
+			</if>
+			<if test="delectStatus != null">
+				 #{delectStatus,jdbcType=INTEGER},
+			</if>
+			<if test="fmd5 != null">
+				 #{fmd5,jdbcType=VARCHAR},
+			</if>
+			<if test="fcreateUserId != null">
+				 #{fcreateUserId,jdbcType=VARCHAR},
+			</if>
+			<if test="fcreateDateTime != null">
+				 #{fcreateDateTime,jdbcType=VARCHAR},
+			</if>
+			<if test="fupdateDateTime != null">
+				 #{fupdateDateTime,jdbcType=VARCHAR},
+			</if>
+			<if test="fupdateUserId != null">
+				 #{fupdateUserId,jdbcType=VARCHAR},
+			</if>
+			<if test="fstate != null">
+				 #{fstate,jdbcType=VARCHAR},
+			</if>
+			<if test="fmsterId != null">
+				 #{fmsterId,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	
+</mapper>

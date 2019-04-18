@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import Ernest.Entity.BasicDetailGong;
 
 /**
+ * 
  * @author Ernest
  *
  */
