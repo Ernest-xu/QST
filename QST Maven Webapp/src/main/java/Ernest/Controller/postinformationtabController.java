@@ -31,4 +31,12 @@ public class postinformationtabController {
 		return json;
 	}
 	
+	@PostMapping("/insertZhuang")
+	public JSONObject insertZhuang(String fMsterID,String fProjectCode,String fPostName ,Float fCubeSum,Float fTonnageSum ,Float fSpanSum){
+		JSONObject json = new JSONObject();
+		
+		return json;
+	}
+	
+	
 }

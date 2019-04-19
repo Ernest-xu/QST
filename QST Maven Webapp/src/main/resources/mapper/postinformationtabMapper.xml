@@ -92,4 +92,98 @@
 	
 	</select>
 	
+	<insert id="saveById" parameterType="Ernest.Entity.Postinformationtab">
+	insert into pm_project_project_postinformationtab 
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="fid != null">
+				 fid,
+			</if>
+			<if test="fprojectCode != null">
+				 fprojectCode,
+			</if>
+			<if test="fmsterId != null">
+				 fmsterId,
+			</if>
+			<if test="fpostName != null">
+				 fpostName,
+			</if>
+			<if test="fpostId != null">
+				 fpostId,
+			</if>
+			<if test="fpointCut != null">
+				 fpointCut,
+			</if>
+			<if test="fcubeSum != null">
+				 fcubeSum,
+			</if>
+			<if test="ftonnageSum != null">
+				 ftonnageSum,
+			</if>
+			<if test="fspanSum != null">
+				 fspanSum,
+			</if>
+			<if test="fzhuangJdjichu != null">
+				 fzhuangJdjichu,
+			</if>
+			<if test="fupdateDateTime != null">
+				 fupdateDateTime,
+			</if>
+			<if test="fzhuangJdzuta != null">
+				 fzhuangJdzuta,
+			</if>
+			
+		</trim>
+		<trim prefix=" values (" suffix=")" suffixOverrides=",">
+			<if test="fid != null">
+				 #{fid,jdbcType=VARCHAR},
+			</if>
+			<if test="fprojectCode != null">
+				 #{fprojectCode,jdbcType=VARCHAR},
+			</if>
+			<if test="fmsterId != null">
+				 #{fmsterId,jdbcType=VARCHAR},
+			</if>
+			<if test="fpostName != null">
+				 #{fpostName,jdbcType=VARCHAR},
+			</if>
+			<if test="fpostId != null">
+				 #{fpostId,jdbcType=VARCHAR},
+			</if>
+			<if test="fpointCut != null">
+				 #{fpointCut,jdbcType=REAL},
+			</if>
+			<if test="ftonnageSum != null">
+				 #{ftonnageSum,jdbcType=REAL},
+			</if>
+			<if test="fspanSum != null">
+				 #{fspanSum,jdbcType=REAL},
+			</if>
+			<if test="fzhuangJdjichu != null">
+				 #{fzhuangJdjichu,jdbcType=REAL},
+			</if>
+			<if test="fzhuangJdzuta != null">
+				 #{fzhuangJdzuta,jdbcType=REAL},
+			</if>
+			
+		</trim>
+	</insert>
+	
+	<insert id="beachSave" parameterMap="java.until.List">
+		insert into pm_project_project_postinformationtab 
+		(fID,fMsterID,fProjectCode,fPostName,fCubeSum,fTonnageSum,fSpanSum)values 
+		<foreach collection="list" item="item" index="index" separator=",">
+ 			(
+ 			#{item.fid,jdbcType=VARCHAR},
+ 			#{item.fmsterId,jdbcType=VARCHAR},
+			#{item.fprojectCode,jdbcType=VARCHAR},
+			#{item.fpostName,jdbcType=VARCHAR},
+			#{item.fcubeSum,jdbcType=REAL},
+			#{item.ftonnageSum,jdbcType=REAL},
+			#{item.fspanSum,jdbcType=REAL}
+			) 
+		</foreach>
+	</insert>
+	
+	
+	
 </mapper>

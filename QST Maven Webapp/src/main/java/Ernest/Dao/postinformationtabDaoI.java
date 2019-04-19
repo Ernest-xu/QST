@@ -46,4 +46,20 @@ public interface postinformationtabDaoI {
 	 */
 	HashMap<String , Object> findMapByMasterId(String MasterId);
 	
+	
+	/**
+	 * 批量插入桩号
+	 * @param list
+	 * @return
+	 */
+	int beachSave(List<Postinformationtab> list);
+	
+	
+	/**
+	 * 插入桩号
+	 * @param postinformationtab
+	 * @return
+	 */
+	int saveById(Postinformationtab postinformationtab);
+	
 }

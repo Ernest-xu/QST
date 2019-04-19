@@ -104,4 +104,18 @@ public class postinformationtabServiceimpl implements postinformationtabServiceI
 		return postinformationtabDao.findMapByMasterId(MasterId);
 	}
 
+
+	
+	@Override
+	public int beachSave(List<Postinformationtab> list) {
+		return postinformationtabDao.beachSave(list);
+	}
+
+
+	
+	@Override
+	public int saveById(Postinformationtab postinformationtab) {
+		return postinformationtabDao.saveById(postinformationtab);
+	}
+
 }

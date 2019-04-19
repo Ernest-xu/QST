@@ -3,6 +3,8 @@
  */
 package Ernest.Dao;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import Ernest.Entity.PmDocStakeClass;
@@ -20,4 +22,7 @@ public interface pmDocStakeClassDaoI {
 	 * @return
 	 */
 	int saveById(PmDocStakeClass pmDocStakeClass) ;
+	
+	
+	
 }

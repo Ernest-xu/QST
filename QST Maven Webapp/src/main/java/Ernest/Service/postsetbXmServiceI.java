@@ -5,9 +5,6 @@ package Ernest.Service;
 
 import java.util.List;
 import java.util.Map;
-
-import org.springframework.stereotype.Service;
-
 import Ernest.Entity.PostsetbXm;
 
 /**
