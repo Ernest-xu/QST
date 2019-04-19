@@ -66,7 +66,7 @@ public interface postinformationtabServiceI {
 	 * @param list
 	 * @return
 	 */
-	int beachSave(List<Postinformationtab> list);
+	int batchSave(List<Postinformationtab> list);
 	
 	
 	/**
@@ -75,5 +75,45 @@ public interface postinformationtabServiceI {
 	 * @return
 	 */
 	int saveById(Postinformationtab postinformationtab);
+	
+	/**
+	 * 根据id删除桩
+	 * @param fID 主键id
+	 * @return
+	 */
+	int deleteById(String fID);
+	
+	/**
+	 * 根据id列表删除桩
+	 * @param list id列表
+	 * @return
+	 */
+	int batchDelete(List<String> list);
+	
+	
+	/**
+	 * 新建桩号 
+	 * 同时修改项目和区段的档距
+	 * 同时创建图片关联表信息
+	 * @param fMsterID 区段id
+	 * @param fProjectCode 项目id
+	 * @param fPostName 桩号名称
+	 * @param fCubeSum 方量
+	 * @param fTonnageSum 吨位
+	 * @param fSpanSum 档距
+	 * @return
+	 */
+	JSONObject insertZhuang(String fMsterID,String fProjectCode,String fPostName ,Float fCubeSum,Float fTonnageSum ,Float fSpanSum);
+	
+	
+	/**
+	 * 删除桩号
+	 * 同时修改项目和区段的档距
+	 * @param fID 桩号id
+	 * @param fMsterID 区段id
+	 * @param fProjectCode 项目id
+	 * @return
+	 */
+	JSONObject deleteZhuang(String fID,String fMsterID,String fProjectCode );
 	
 }

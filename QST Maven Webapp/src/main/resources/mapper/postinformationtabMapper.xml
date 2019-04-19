@@ -24,7 +24,7 @@
 		<include refid="all"/>
 		from 
 			pm_project_project_postinformationtab 
-		where 
+		WHERE 
 			fMsterID in 
 		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
 		#{item}
@@ -67,7 +67,7 @@
 				
 				
 			</trim>
-		where 
+		WHERE 
 			fID=#{fid,jdbcType=VARCHAR}
 	</update>
 	
@@ -78,7 +78,7 @@
 			sum(ifnull(fSpanSum,0)) as zdsum  
 		from 
 			pm_project_project_postinformationtab 
-		where 
+		WHERE 
 			fProjectCode =#{ProjectId} 
 	</select>
 	
@@ -87,7 +87,7 @@
 			sum(ifnull(fSpanSum,0)) as num  
 		from 
 			pm_project_project_postinformationtab 
-		where 
+		WHERE 
 			fMsterID = #{MasterId}
 	
 	</select>
@@ -168,7 +168,7 @@
 		</trim>
 	</insert>
 	
-	<insert id="beachSave" parameterMap="java.until.List">
+	<insert id="batchSave" parameterMap="java.until.List">
 		insert into pm_project_project_postinformationtab 
 		(fID,fMsterID,fProjectCode,fPostName,fCubeSum,fTonnageSum,fSpanSum)values 
 		<foreach collection="list" item="item" index="index" separator=",">
@@ -184,6 +184,22 @@
 		</foreach>
 	</insert>
 	
+	<delete id="deleteById" parameterType="String">
+		DELETE FROM 
+			pm_project_project_postinformationtab 
+		WHERE 
+			fid=#{fID}
+	
+	</delete>
+	
+	<delete id="batchDelete" parameterMap="java.util.List">
+		DELETE FROM
+			pm_project_project_postinformationtab 
+		WHERE fid in 
+			<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+	</delete>
 	
 	
 </mapper>

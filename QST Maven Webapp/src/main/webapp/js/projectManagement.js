@@ -369,7 +369,7 @@ $(document).ready(function() {
 						type: 'error'
 					});
 				}
-				$.axse("get", "/baas/PC/project/insertZhuang", {
+				$.axse("post", "/QST/postinformationtabController/insertZhuang", {
 						fMsterID: this.addPileObj.fMsterID,
 						fProjectCode: this.projectId,
 						fPostName: this.zhfPostName,
@@ -426,7 +426,7 @@ $(document).ready(function() {
 					cancelButtonText: '取消',
 					type: 'warning'
 				}).then(() => {
-					$.axse("get", "/baas/PC/project/deleteZhuang", {
+					$.axse("post", "/QST/postinformationtabController/deleteZhuang", {
 							fID: fID,
 							fMsterID: fMsterID,
 							fProjectCode: fProjectCode,

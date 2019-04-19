@@ -34,7 +34,14 @@ public class postinformationtabController {
 	@PostMapping("/insertZhuang")
 	public JSONObject insertZhuang(String fMsterID,String fProjectCode,String fPostName ,Float fCubeSum,Float fTonnageSum ,Float fSpanSum){
 		JSONObject json = new JSONObject();
-		
+		json = postinformationtabService.insertZhuang(fMsterID, fProjectCode, fPostName, fCubeSum, fTonnageSum, fSpanSum);
+		return json;
+	}
+	
+	@PostMapping("/deleteZhuang")
+	public JSONObject deleteZhuang(String fID,String fMsterID,String fProjectCode ){
+		JSONObject json = new JSONObject();
+		json = postinformationtabService.deleteZhuang(fID, fMsterID, fProjectCode);
 		return json;
 	}
 	

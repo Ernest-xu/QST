@@ -52,7 +52,7 @@ public interface postinformationtabDaoI {
 	 * @param list
 	 * @return
 	 */
-	int beachSave(List<Postinformationtab> list);
+	int batchSave(List<Postinformationtab> list);
 	
 	
 	/**
@@ -61,5 +61,19 @@ public interface postinformationtabDaoI {
 	 * @return
 	 */
 	int saveById(Postinformationtab postinformationtab);
+	
+	/**
+	 * 根据id删除桩
+	 * @param fID 主键id
+	 * @return
+	 */
+	int deleteById(String fID);
+	
+	/**
+	 * 根据id列表删除桩
+	 * @param list id列表
+	 * @return
+	 */
+	int batchDelete(List<String> list);
 	
 }
