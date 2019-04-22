@@ -259,7 +259,7 @@ $(document).ready(function() {
 						type: 'error'
 					});
 				}
-				$.axse("get", "/baas/PC/project/updateZone", {
+				$.axse("get", "/baas/PC/project/updateZone", {/*****/
 						fID: this.sectionRowID,
 						fPostName: this.MsgPostName,
 						fPostNameState: this.MsgPostNameState,
@@ -610,7 +610,7 @@ $(document).ready(function() {
 					cancelButtonText: '取消',
 					type: 'warning'
 				}).then(() => {
-					$.axse("get", "/baas/PC/project/deleteZone", {
+					$.axse("post", "/QST/postinformationtabQuduanController/deleteZone", {
 							fProjectID: this.projectId,
 							fID: row.fID,
 						},
@@ -696,7 +696,7 @@ $(document).ready(function() {
 					});
 				}
 				 
-				$.axse("get", "/baas/PC/project/CreateProjectgx", {
+				$.axse("get", "/baas/PC/project/CreateProjectgx", {/*****/
 						UserID: this.token.sID,
 						md5Str: this.token.sMd5Str,
 						UserName: this.token.sName,
@@ -751,7 +751,7 @@ $(document).ready(function() {
 					cancelButtonText: '取消',
 					type: 'warning'
 				}).then(() => {
-					$.axse("get", "/baas/PC/project/delectProjectgx", {
+					$.axse("get", "/baas/PC/project/delectProjectgx", {/*****/
 							fProjectID: this.projectId
 						},
 						function(res) {

@@ -28,7 +28,7 @@ public interface postinformationtabDaoI {
 	/**
 	 * 根据实体类主键修改
 	 * @param postinformationtab
-	 * @return
+	 * @return 返回影响数据条数
 	 */
 	int UpdateById(Postinformationtab postinformationtab);
 	
@@ -50,7 +50,7 @@ public interface postinformationtabDaoI {
 	/**
 	 * 批量插入桩号
 	 * @param list
-	 * @return
+	 * @return 返回影响数据条数
 	 */
 	int batchSave(List<Postinformationtab> list);
 	
@@ -58,22 +58,30 @@ public interface postinformationtabDaoI {
 	/**
 	 * 插入桩号
 	 * @param postinformationtab
-	 * @return
+	 * @return 返回影响数据条数
 	 */
 	int saveById(Postinformationtab postinformationtab);
 	
 	/**
 	 * 根据id删除桩
 	 * @param fID 主键id
-	 * @return
+	 * @return 返回影响数据条数
 	 */
 	int deleteById(String fID);
 	
 	/**
 	 * 根据id列表删除桩
 	 * @param list id列表
-	 * @return
+	 * @return 返回影响数据条数
 	 */
 	int batchDelete(List<String> list);
+	
+	
+	/**
+	 * 根据区段id删除
+	 * @param fMasterId 区段id
+	 * @return 返回影响数据条数
+	 */
+	int deleteByfMasterId(String fMasterId);
 	
 }

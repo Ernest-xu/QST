@@ -25,6 +25,7 @@ import Ernest.Service.postinformationtabServiceI;
 import Ernest.until.RecursiveHierarchy;
 
 /**
+ * 区段表实现类
  * @author Ernest
  *
  */
@@ -158,6 +159,40 @@ public class postinformationtabQuduanServiceimpl implements postinformationtabQu
 	@Override
 	public int saveById(PostinformationtabQuduan postinformationtabQuduan) {
 		return postinformationtabQuduanDao.saveById(postinformationtabQuduan);
+	}
+
+
+	
+	@Override
+	public JSONObject deleteZone(String fID, String fProjectID) {
+		JSONObject json = new JSONObject();
+		int a = postinformationtabQuduanDao.deleteById(fID);
+		if(a>0){
+			int b = postinformationtabService.deleteByfMasterId(fID);
+			if(b>0){
+				int c = postinformationtabQuduanDao.findByfMasterId(fProjectID);
+				String fqdgeshu = b+"";
+				InformationTable informationTable = new InformationTable();
+				informationTable.setFid(fProjectID);
+				informationTable.setFqdgeshu(fqdgeshu);
+				informationTableService.updateByMapId(informationTable);
+			}
+			json.put("success", true);
+			json.put("message", "删除成功");
+		}else{
+			json.put("success", false);
+			json.put("message", "删除失败");
+		}
+		
+		
+		return json;
+	}
+
+
+	
+	@Override
+	public int deleteById(String fID) {
+		return postinformationtabQuduanDao.deleteById(fID);
 	}
 
 }

@@ -24,6 +24,7 @@ import Ernest.Service.postinformationtabQuduanServiceI;
 import Ernest.Service.postinformationtabServiceI;
 
 /**
+ * 桩号表实现类
  * @author Ernest
  *
  */
@@ -210,6 +211,12 @@ public class postinformationtabServiceimpl implements postinformationtabServiceI
 	@Override
 	public int batchDelete(List<String> list) {
 		return postinformationtabDao.batchDelete(list);
+	}
+
+
+	@Override
+	public int deleteByfMasterId(String fMasterId) {
+		return postinformationtabDao.deleteByfMasterId(fMasterId);
 	}
 
 }

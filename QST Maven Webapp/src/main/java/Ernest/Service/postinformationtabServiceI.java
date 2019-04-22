@@ -116,4 +116,17 @@ public interface postinformationtabServiceI {
 	 */
 	JSONObject deleteZhuang(String fID,String fMsterID,String fProjectCode );
 	
+	
+	
+	/**
+	 * 根据区段id删除
+	 * @param fMasterId 区段id
+	 * @return 返回影响数据条数
+	 */
+	int deleteByfMasterId(String fMasterId);
+	
+	
+	
+	
+	
 }

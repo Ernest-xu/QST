@@ -58,4 +58,24 @@ public interface postinformationtabQuduanServiceI {
 	 */
 	int saveById(PostinformationtabQuduan postinformationtabQuduan);
 	
+	
+	/**
+	 * 删除区段
+	 * 删除区段下的桩号
+	 * 修改项目档距
+	 * @param fID
+	 * @param fProjectID
+	 * @return
+	 */
+	JSONObject deleteZone(String fID,String fProjectID);
+	
+	
+	
+	/**
+	 * 根据区段id删除区段
+	 * @param fID
+	 * @return 返回影响数据条数
+	 */
+	int deleteById(String fID);
+	
 }

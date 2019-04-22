@@ -191,6 +191,14 @@
 	
 	</delete>
 	
+	<delete id="deleteByfMasterId" parameterType="String">
+		DELETE FROM 
+			pm_project_project_postinformationtab 
+		WHERE 
+			fMsterID=#{fMasterId}
+	
+	</delete>
+	
 	<delete id="batchDelete" parameterMap="java.util.List">
 		DELETE FROM
 			pm_project_project_postinformationtab 

@@ -147,7 +147,14 @@
 	
 	
 	<select id="findByfMasterId" parameterType="String" resultType="Integer">
-		select count(*) num from fMasterId=#{fMasterId}
+		select count(*) num from pm_project_project_postinformationtab_quduan1 where fMasterId=#{fMasterId}
 	</select>
+	
+	
+	<delete id="deleteById" parameterType="String">
+		DELETE FROM pm_project_project_postinformationtab_quduan1 WHERE fID=#{fID}
+	</delete>
+	
+	
 	
 </mapper>
