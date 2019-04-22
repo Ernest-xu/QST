@@ -557,7 +557,7 @@ $(document).ready(function() {
 					});
 				}
 //				console.log(this.projectId, this.qdfPostName, this.qdfPostNameState, this.qdfPostNameEnd, )
-				$.axse("get", "/baas/PC/project/insertZone", {
+				$.axse("post", "/QST/postinformationtabQuduanController/insertZone", {
 						fProjectID: this.projectId,
 						fPostName: this.qdfPostName,
 						fPostNameState: this.qdfPostNameState,

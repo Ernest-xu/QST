@@ -28,5 +28,22 @@ public interface postinformationtabQuduanDaoI {
 	 * @param PostinformationtabQuduan
 	 * @return
 	 */
-	int UpdateByfID(PostinformationtabQuduan PostinformationtabQuduan);
+	int UpdateByfID(PostinformationtabQuduan postinformationtabQuduan);
+	
+	
+	/**
+	 * 新增区段
+	 * @param PostinformationtabQuduan
+	 * @return
+	 */
+	int saveById(PostinformationtabQuduan postinformationtabQuduan);
+	
+	/**
+	 * 获取区段的数量
+	 * @param fMasterId
+	 * @return
+	 */
+	int findByfMasterId(String fMasterId);
+	
+	
 }

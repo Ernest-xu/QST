@@ -67,5 +67,87 @@
 		where fid = #{fid,jdbcType=VARCHAR}
 	</update>
 	
+	<insert id="saveById" parameterType="Ernest.Entity.PostinformationtabQuduan">
+		insert into pm_project_project_postinformationtab_quduan1 
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="fid != null">
+				 fid,
+			</if>
+			<if test="fstate != null">
+				 fstate,
+			</if>
+			<if test="fmsterId != null">
+				 fmsterId,
+			</if>
+			<if test="fpostName != null">
+				 fpostName,
+			</if>
+			<if test="fpostId != null">
+				 fpostNameState,
+			</if>
+			<if test="fpostNameEnd != null">
+				 fpostNameEnd,
+			</if>
+			<if test="fpostId != null">
+				 fpostId,
+			</if>
+			<if test="fpointCut != null">
+				 fpointCut,
+			</if>
+			<if test="basicsSubPageState != null">
+				 basicsSubPageState,
+			</if>
+			<if test="fspanSum != null">
+				 fspanSum,
+			</if>
+			<if test="fzhuangJdjiaxian != null">
+				 fzhuangJdjiaxian,
+			</if>
+			
+			
+		</trim>
+		<trim prefix=" values (" suffix=")" suffixOverrides=",">
+			<if test="fid != null">
+				 #{fid,jdbcType=VARCHAR},
+			</if>
+			<if test="fstate != null">
+				 #{fstate,jdbcType=VARCHAR},
+			</if>
+			<if test="fmsterId != null">
+				 #{fmsterId,jdbcType=VARCHAR},
+			</if>
+			<if test="fpostName != null">
+				 #{fpostName,jdbcType=VARCHAR},
+			</if>
+			
+			<if test="fpostNameState != null">
+				 #{fpostNameState,jdbcType=VARCHAR},
+			</if>
+			<if test="fpostNameEnd != null">
+				 #{fpostNameEnd,jdbcType=VARCHAR},
+			</if>
+			<if test="fpostId != null">
+				 #{fpostId,jdbcType=VARCHAR},
+			</if>
+			<if test="fpointCut != null">
+				 #{fpointCut,jdbcType=VARCHAR},
+			</if>
+			<if test="basicsSubPageState != null">
+				 #{basicsSubPageState,jdbcType=VARCHAR},
+			</if>
+			<if test="fspanSum != null">
+				 #{fspanSum,jdbcType=REAL},
+			</if>
+			<if test="fzhuangJdjiaxian != null">
+				 #{fzhuangJdjiaxian,jdbcType=REAL},
+			</if>
+			
+		</trim>
+	</insert>	
+	
+	
+	<select id="findByfMasterId" parameterType="String" resultType="Integer">
+		select count(*) num from fMasterId=#{fMasterId}
+	</select>
 	
 </mapper>

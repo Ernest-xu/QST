@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +16,10 @@ import org.springframework.stereotype.Service;
 import com.alibaba.fastjson.JSONObject;
 
 import Ernest.Dao.postinformationtabQuduanDaoI;
+import Ernest.Entity.InformationTable;
 import Ernest.Entity.Postinformationtab;
 import Ernest.Entity.PostinformationtabQuduan;
+import Ernest.Service.informationTableServiceI;
 import Ernest.Service.postinformationtabQuduanServiceI;
 import Ernest.Service.postinformationtabServiceI;
 import Ernest.until.RecursiveHierarchy;
@@ -32,7 +35,8 @@ public class postinformationtabQuduanServiceimpl implements postinformationtabQu
 	private postinformationtabQuduanDaoI postinformationtabQuduanDao;
 	@Autowired
 	private postinformationtabServiceI postinformationtabService;
-	
+	@Autowired
+	private informationTableServiceI informationTableService;
 	
 	@Override
 	public List<PostinformationtabQuduan> findListByfMsterID(String fMsterID) {
@@ -115,6 +119,45 @@ public class postinformationtabQuduanServiceimpl implements postinformationtabQu
 	public int UpdateByfID(PostinformationtabQuduan postinformationtabQuduan) {
 		// 
 		return postinformationtabQuduanDao.UpdateByfID(postinformationtabQuduan);
+	}
+
+
+
+	@Override
+	public JSONObject insertZone(String fProjectID, String fPostName, String fPostNameState, String fPostNameEnd,
+			String fSpanSum) {
+		JSONObject json = new JSONObject();
+		// TODO Auto-generated method stub
+		PostinformationtabQuduan postinformationtabQuduan = new PostinformationtabQuduan();
+		String fID = UUID.randomUUID().toString();
+		postinformationtabQuduan.setFid(fID);
+		postinformationtabQuduan.setFmsterId(fProjectID);
+		postinformationtabQuduan.setFpostName(fPostName);
+		postinformationtabQuduan.setFpostNameState(fPostNameState);
+		postinformationtabQuduan.setFpostNameEnd(fPostNameEnd);
+		postinformationtabQuduan.setFspanSum(Float.valueOf(fSpanSum));
+		int a = postinformationtabQuduanDao.saveById(postinformationtabQuduan);
+		if(a>0){
+			int b = postinformationtabQuduanDao.findByfMasterId(fProjectID);
+			String fqdgeshu = b+"";
+			InformationTable informationTable = new InformationTable();
+			informationTable.setFid(fProjectID);
+			informationTable.setFqdgeshu(fqdgeshu);
+			informationTableService.updateByMapId(informationTable);
+			json.put("success", true);
+			json.put("message", "新增成功");
+		}else{
+			json.put("success", false);
+			json.put("message", "新增失败");
+		}
+		return json;
+	}
+
+
+	
+	@Override
+	public int saveById(PostinformationtabQuduan postinformationtabQuduan) {
+		return postinformationtabQuduanDao.saveById(postinformationtabQuduan);
 	}
 
 }

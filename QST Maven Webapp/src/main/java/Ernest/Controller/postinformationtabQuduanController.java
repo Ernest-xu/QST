@@ -5,6 +5,7 @@ package Ernest.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,6 +31,13 @@ public class postinformationtabQuduanController {
 		return json;
 	}
 	
+	
+	@PostMapping("/insertZone")
+	public JSONObject insertZone(String fProjectID ,String fPostName,String fPostNameState,String fPostNameEnd,String fSpanSum){
+		JSONObject json = new JSONObject();
+		json = postinformationtabQuduanService.insertZone(fProjectID, fPostName, fPostNameState, fPostNameEnd, fSpanSum);
+		return json;
+	}
 	
 	
 }

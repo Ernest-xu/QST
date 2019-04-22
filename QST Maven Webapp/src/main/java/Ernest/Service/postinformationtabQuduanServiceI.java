@@ -38,4 +38,24 @@ public interface postinformationtabQuduanServiceI {
 	 */
 	int UpdateByfID(PostinformationtabQuduan postinformationtabQuduan);
 	
+	
+	/**
+	 * 新增区段
+	 * @param fProjectID 项目id
+	 * @param fPostName 区段名称
+	 * @param fPostNameState 区段开始
+	 * @param fPostNameEnd 区段结束
+	 * @param fSpanSum 档距
+	 * @return
+	 */
+	JSONObject insertZone(String fProjectID ,String fPostName,String fPostNameState,String fPostNameEnd,String fSpanSum);
+	
+	
+	/**
+	 * 传入的区段实体类新建区段
+	 * @param PostinformationtabQuduan
+	 * @return
+	 */
+	int saveById(PostinformationtabQuduan postinformationtabQuduan);
+	
 }
