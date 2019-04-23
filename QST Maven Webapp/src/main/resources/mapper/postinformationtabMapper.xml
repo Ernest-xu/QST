@@ -84,7 +84,7 @@
 	
 	<select id="findMapByMasterId" parameterType="String" resultType="java.util.HashMap">
 		select 
-			sum(ifnull(fSpanSum,0)) as num  
+			ifnull(sum(ifnull(fSpanSum,0)),0) as num  
 		from 
 			pm_project_project_postinformationtab 
 		WHERE 
@@ -167,7 +167,7 @@
 		</trim>
 	</insert>
 	
-	<insert id="batchSave" parameterMap="java.until.List">
+	<insert id="batchSave" parameterType="java.util.List">
 		insert into pm_project_project_postinformationtab 
 		(fID,fMsterID,fProjectCode,fPostName,fCubeSum,fTonnageSum,fSpanSum)values 
 		<foreach collection="list" item="item" index="index" separator=",">
@@ -199,7 +199,7 @@
 	
 	</delete>
 	
-	<delete id="batchDelete" parameterMap="java.util.List">
+	<delete id="batchDelete" parameterType="java.util.List">
 		DELETE FROM
 			pm_project_project_postinformationtab 
 		WHERE fid in 

@@ -82,7 +82,7 @@
 			<if test="fpostName != null">
 				 fpostName,
 			</if>
-			<if test="fpostId != null">
+			<if test="fpostNameState != null">
 				 fpostNameState,
 			</if>
 			<if test="fpostNameEnd != null">
@@ -147,7 +147,7 @@
 	
 	
 	<select id="findByfMasterId" parameterType="String" resultType="Integer">
-		select count(*) num from pm_project_project_postinformationtab_quduan1 where fMasterId=#{fMasterId}
+		select count(*) num from pm_project_project_postinformationtab_quduan1 where fMsterId=#{fMasterId}
 	</select>
 	
 	

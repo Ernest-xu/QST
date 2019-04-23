@@ -179,7 +179,9 @@ public class postinformationtabServiceimpl implements postinformationtabServiceI
 		JSONObject json = new JSONObject();
 		int a = postinformationtabDao.deleteById(fID);
 		if(a>0){
+			logger.info(fMsterID);
 			HashMap<String, Object> map = postinformationtabDao.findMapByMasterId(fMsterID);
+			logger.info(map.toString());
 			PostinformationtabQuduan postinformationtabQuduan = new PostinformationtabQuduan();
 			postinformationtabQuduan.setFid(fMsterID);
 			postinformationtabQuduan.setFspanSum((float)((double)map.get("num")));
