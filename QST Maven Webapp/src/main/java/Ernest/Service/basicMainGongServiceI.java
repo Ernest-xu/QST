@@ -25,4 +25,11 @@ public interface basicMainGongServiceI {
 	
 	JSONObject SelectProcess(String fProjectID);
 	
+	/**
+	 * 批量插入
+	 * @param list
+	 * @return
+	 */
+	int batchSave(List<BasicMainGong> list);
+	
 }

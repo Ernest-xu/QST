@@ -20,6 +20,11 @@ public interface basicMainGongDaoI {
 	List<BasicMainGong> findByfMasterId(String fMasterID);
 	
 	
-	
+	/**
+	 * 批量插入
+	 * @param list
+	 * @return
+	 */
+	int batchSave(List<BasicMainGong> list);
 	
 }

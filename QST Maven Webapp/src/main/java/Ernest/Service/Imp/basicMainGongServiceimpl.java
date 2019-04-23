@@ -72,4 +72,10 @@ public class basicMainGongServiceimpl implements basicMainGongServiceI {
 		return json;
 	}
 
+
+	@Override
+	public int batchSave(List<BasicMainGong> list) {
+		return basicMainGongDao.batchSave(list);
+	}
+
 }

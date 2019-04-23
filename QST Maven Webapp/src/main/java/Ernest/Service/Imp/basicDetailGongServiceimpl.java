@@ -27,4 +27,10 @@ public class basicDetailGongServiceimpl implements basicDetailGongServiceI {
 		return basicDetailGongDao.findbyfMasterIdAndfBz(fMasterID, fBz);
 	}
 
+	
+	@Override
+	public int batchSaves(List<BasicDetailGong> list) {
+		return basicDetailGongDao.batchSaves(list);
+	}
+
 }

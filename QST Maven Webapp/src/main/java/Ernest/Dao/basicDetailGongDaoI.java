@@ -25,4 +25,12 @@ public interface basicDetailGongDaoI {
 	 */
 	List<BasicDetailGong> findbyfMasterIdAndfBz(String fMasterID,String fBz);
 	
+	
+	/**
+	 * 批量插入
+	 * @param list
+	 * @return
+	 */
+	int batchSaves (List<BasicDetailGong> list);
+	
 }
