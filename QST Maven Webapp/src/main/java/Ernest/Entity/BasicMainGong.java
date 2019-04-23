@@ -1,7 +1,11 @@
 package Ernest.Entity;
 
 
-
+/**
+ * 项目基础主表实体类
+ * @author Ernest
+ *
+ */
 public class BasicMainGong implements java.io.Serializable {
 
 	// Fields

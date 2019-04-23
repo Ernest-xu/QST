@@ -4,7 +4,11 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
 
-
+/**
+ * 人员表实体类
+ * @author Ernest
+ *
+ */
 public class SaOpperson implements Serializable {
 
 

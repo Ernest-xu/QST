@@ -2,7 +2,11 @@ package Ernest.Entity;
 
 
 
-
+/**
+ * 项目图片配置实体类
+ * @author Ernest
+ *
+ */
 public class PmDocStakeClass implements java.io.Serializable {
 
 	// Fields

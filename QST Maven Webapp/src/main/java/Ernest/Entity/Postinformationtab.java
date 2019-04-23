@@ -3,8 +3,9 @@ package Ernest.Entity;
 import java.util.Date;
 
 /**
- * PmProjectProjectPostinformationtab entity. @author MyEclipse Persistence
- * Tools
+ * 桩号表实体类
+ * @author Ernest
+ *
  */
 
 public class Postinformationtab implements java.io.Serializable {

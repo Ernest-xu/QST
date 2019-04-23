@@ -3,9 +3,11 @@
  */
 package Ernest.Service.Imp;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -195,6 +197,29 @@ public class informationTableServiceimpl implements informationTableServiceI {
 	@Override
 	public int updateByMapId(InformationTable informationTable) {
 		return informationTableDao.updateByMapId(informationTable);
+	}
+
+
+	/* (non-Javadoc)
+	 * @see Ernest.Service.informationTableServiceI#CreateProjectgx(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)
+	 */
+	@Override
+	public JSONObject CreateProjectgx(String UserID, String md5Str, String fProjectQuanName, String fProjectMessage,
+			String fStateTime, String fEndTime, String fProjectAddress, String fPrjoectName) {
+		JSONObject json = new JSONObject();
+		// TODO Auto-generated method stub
+		DateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		String fWrtietime = df.format(new Date());//创建时间
+		DateFormat df1 = new SimpleDateFormat("yyyy/MM/dd");
+		String fWrtietime1 = df1.format(new Date());//创建时间
+		String s_fPrjoectName = fPrjoectName;//获取项目名称
+		String s_fID = UUID.randomUUID().toString();
+		String s_fProjectCode = UUID.randomUUID().toString();//获取项目编码
+		
+		
+		
+		
+		return json;
 	}
 
 }

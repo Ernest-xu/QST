@@ -22,6 +22,7 @@ import Ernest.Service.postsetbXm3gwServiceI;
 import Ernest.Service.postsetbXmServiceI;
 
 /**
+ * 项目部/分包商岗位配置表实现类
  * @author Ernest
  *
  */

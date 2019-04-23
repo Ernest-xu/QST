@@ -25,6 +25,7 @@ import Ernest.Service.saOproleServiceI;
 import Ernest.until.TimeUntil;
 
 /**
+ * 角色表实现类
  * @author Ernest
  *
  */

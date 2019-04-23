@@ -25,6 +25,7 @@ import Ernest.until.ReadXml;
 
 
 /**
+ * 功能表实现类
  * @author Ernest
  *
  */

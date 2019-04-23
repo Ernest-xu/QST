@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
+ * 角色表实体类
  * @author Ernest
  *
  */

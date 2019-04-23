@@ -36,6 +36,7 @@ import Ernest.Service.saOproleServiceI;
 import Ernest.until.TimeUntil;
 
 /**
+ * 岗位配置表(人员角度)实现类
  * @author Ernest
  *
  */

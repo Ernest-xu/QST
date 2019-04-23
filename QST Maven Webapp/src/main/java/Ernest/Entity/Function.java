@@ -1,7 +1,11 @@
 package Ernest.Entity;
 
 
-
+/**
+ * 功能实体类
+ * @author Ernest
+ *
+ */
 public class Function {
 private Integer id;
 private String url;

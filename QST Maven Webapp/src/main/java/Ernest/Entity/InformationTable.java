@@ -2,10 +2,12 @@ package Ernest.Entity;
 
 import java.util.Date;
 
-/**
- * PmProjectProjectInformationtable entity. @author MyEclipse Persistence Tools
- */
 
+/**
+ * 项目实体类
+ * @author Ernest
+ *
+ */
 public class InformationTable implements java.io.Serializable {
 
 	// Fields

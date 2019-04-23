@@ -2,7 +2,11 @@ package Ernest.Entity;
 
 
 
-
+/**
+ * 基础配置从表实体类
+ * @author Ernest
+ *
+ */
 
 public class PmProjectBasicDetail implements java.io.Serializable {
 

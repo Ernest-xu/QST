@@ -3,11 +3,10 @@ package Ernest.Entity;
 
 
 /**
- * PmProjectProjectInformationtablePostsetbPeople entity. @author MyEclipse
- * Persistence Tools
+ * 岗位配置(人员角度)
+ * @author Ernest
+ *
  */
-
-
 public class PostsetbPeople implements java.io.Serializable {
 
 	// Fields

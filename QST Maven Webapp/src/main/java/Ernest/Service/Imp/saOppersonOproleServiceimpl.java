@@ -16,6 +16,7 @@ import Ernest.Entity.SaOppersonOprole;
 import Ernest.Service.saOppersonOproleServiceI;
 
 /**
+ * 中间表实现类
  * @author Ernest
  *
  */

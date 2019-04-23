@@ -3,7 +3,11 @@ package Ernest.Entity;
 
 
 
-
+/**
+ * 项目基础从表
+ * @author Ernest
+ *
+ */
 public class BasicDetailGong implements java.io.Serializable {
 
 	/**

@@ -2,7 +2,11 @@ package Ernest.Entity;
 
 
 
-
+/**
+ * 基础岗位实体类
+ * @author Ernest
+ *
+ */
 public class PmProjectBasciPostset implements java.io.Serializable {
 
 	// Fields

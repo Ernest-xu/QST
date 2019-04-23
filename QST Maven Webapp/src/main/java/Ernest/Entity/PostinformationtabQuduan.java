@@ -2,6 +2,12 @@ package Ernest.Entity;
 
 import java.util.Date;
 
+
+/**
+ * 区段表实体类
+ * @author Ernest
+ *
+ */
 public class PostinformationtabQuduan implements java.io.Serializable {
 
 	// Fields

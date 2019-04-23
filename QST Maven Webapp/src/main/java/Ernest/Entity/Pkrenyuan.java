@@ -4,7 +4,9 @@ import java.sql.Timestamp;
 
 
 /**
- * PmProjectProjectPkrenyuan1 entity. @author MyEclipse Persistence Tools
+ * 项目人员权限表（谁能看到的项目信息）实体类
+ * @author Ernest
+ *
  */
 
 public class Pkrenyuan implements java.io.Serializable {

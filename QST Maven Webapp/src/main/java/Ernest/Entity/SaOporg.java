@@ -4,11 +4,13 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 
+
+
 /**
- * SaOporg entity. @author MyEclipse Persistence Tools
+ * 组织表实体类
+ * @author Ernest
+ *
  */
-
-
 public class SaOporg implements Serializable {
 
 	// Fields

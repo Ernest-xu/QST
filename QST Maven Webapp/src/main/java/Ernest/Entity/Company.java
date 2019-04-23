@@ -3,7 +3,11 @@ package Ernest.Entity;
 
 
 import java.util.List;
-
+/**
+ * 拓展功能权限功能读取实体类
+ * @author Ernest
+ *
+ */
 public class Company {
 
 	private String id;

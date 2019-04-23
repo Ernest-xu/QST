@@ -2,11 +2,10 @@ package Ernest.Entity;
 
 
 /**
- * PmProjectProjectInformationtablePostsetbXm entity. @author MyEclipse
- * Persistence Tools
+ * 岗位配置表(分包商角度)实体类
+ * @author Ernest
+ *
  */
-
-
 public class PostsetbXm implements java.io.Serializable {
 
 	/**

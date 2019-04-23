@@ -27,6 +27,7 @@ import Ernest.until.Head;
 import Ernest.until.RecursiveHierarchy;
 
 /**
+ * 组织表实现类
  * @author Ernest
  *
  */

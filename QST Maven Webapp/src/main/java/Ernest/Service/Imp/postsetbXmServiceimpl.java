@@ -16,6 +16,7 @@ import Ernest.Entity.PostsetbXm;
 import Ernest.Service.postsetbXmServiceI;
 
 /**
+ * 岗位配置表(分包商角度)实现类
  * @author Ernest
  *
  */

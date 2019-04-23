@@ -3,12 +3,12 @@ package Ernest.Entity;
 
 
 
+
 /**
- * PmProjectProjectInformationtablePostsetbXm3gw entity. @author MyEclipse
- * Persistence Tools
+ * 项目部/分包商岗位配置表实体类
+ * @author Ernest
+ *
  */
-
-
 public class PostsetbXm3gw implements java.io.Serializable {
 
 	// Fields

@@ -41,6 +41,7 @@ import jxl.write.WriteException;
 import jxl.write.biff.RowsExceededException;
 
 /**
+ * 人员表实现类
  * @author Ernest
  *
  */

@@ -1,7 +1,11 @@
 package Ernest.Entity;
 
 
-
+/**
+ * 中间表
+ * @author Ernest
+ *
+ */
 public class SaOppersonOprole implements java.io.Serializable {
 
 

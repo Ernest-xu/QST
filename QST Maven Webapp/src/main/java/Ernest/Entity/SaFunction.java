@@ -1,11 +1,11 @@
 package Ernest.Entity;
 
 
-
 /**
- * SaFunction entity. @author MyEclipse Persistence Tools
+ * 功能表实体类
+ * @author Ernest
+ *
  */
-
 public class SaFunction implements java.io.Serializable {
 
 	
