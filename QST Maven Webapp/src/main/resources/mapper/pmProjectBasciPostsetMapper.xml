@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Ernest.Dao.pmProjectBasciPostsetDaoI">
+	<resultMap type="Ernest.Dao.PmProjectBasciPostset" id="pmProjectBasciPostsetMap">
+		<id column="fid" jdbcType="VARCHAR" property="fid"/>
+		<result column="fno" jdbcType="VARCHAR" property="fno"/>
+		<result column="fpostName" jdbcType="VARCHAR" property="fpostName"/>
+		<result column="fpostCode" jdbcType="VARCHAR" property="fpostCode"/>
+		<result column="fpostState" jdbcType="VARCHAR" property="fpostState"/>
+		<result column="fpostType" jdbcType="VARCHAR" property="fpostType"/>
+		<result column="fpostXlb" jdbcType="VARCHAR" property="fpostXlb"/>
+	</resultMap>
+	
+	<sql id="all">
+		fid,fno,fpostName,fpostCode,fpostState,fpostType,fpostXlb
+	</sql>
+	
+	<select id="findAll" resultMap="pmProjectBasciPostsetMap">
+		select 
+		<include refid="all"/>
+		from 
+			pm_project_basci_postset 
+	</select>
+	
+</mapper>
