@@ -128,7 +128,6 @@ public class postinformationtabQuduanServiceimpl implements postinformationtabQu
 	public JSONObject insertZone(String fProjectID, String fPostName, String fPostNameState, String fPostNameEnd,
 			String fSpanSum) {
 		JSONObject json = new JSONObject();
-		// TODO Auto-generated method stub
 		PostinformationtabQuduan postinformationtabQuduan = new PostinformationtabQuduan();
 		String fID = UUID.randomUUID().toString();
 		postinformationtabQuduan.setFid(fID);
@@ -193,6 +192,28 @@ public class postinformationtabQuduanServiceimpl implements postinformationtabQu
 	@Override
 	public int deleteById(String fID) {
 		return postinformationtabQuduanDao.deleteById(fID);
+	}
+
+
+	
+	@Override
+	public JSONObject updateZone(String fID, String fPostName, String fPostNameState, String fPostNameEnd) {
+		JSONObject json = new JSONObject();
+		PostinformationtabQuduan postinformationtabQuduan = new PostinformationtabQuduan();
+		postinformationtabQuduan.setFid(fID);
+		postinformationtabQuduan.setFpostName(fPostName);
+		postinformationtabQuduan.setFpostNameState(fPostNameState);
+		postinformationtabQuduan.setFpostNameEnd(fPostNameEnd);
+		int number=postinformationtabQuduanDao.UpdateByfID(postinformationtabQuduan);
+		if(number>0){
+			json.put("success", true);
+			json.put("message", "成功");
+		}else{
+			json.put("success", false);
+			json.put("message", "失败");
+		}
+		
+		return json;
 	}
 
 }

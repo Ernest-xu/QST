@@ -44,6 +44,13 @@ public class postinformationtabQuduanController {
 		JSONObject json = new JSONObject();
 		json = postinformationtabQuduanService.deleteZone(fID, fProjectID);
 		return json;
-		
 	}
+	
+	@PostMapping("/updateZone")
+	public JSONObject updateZone(String fID,String fPostName,String fPostNameState ,String fPostNameEnd){
+		JSONObject json = new JSONObject();
+		json = postinformationtabQuduanService.updateZone(fID, fPostName, fPostNameState, fPostNameEnd);
+		return json;
+	}
+	
 }

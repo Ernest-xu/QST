@@ -259,7 +259,7 @@ $(document).ready(function() {
 						type: 'error'
 					});
 				}
-				$.axse("get", "/baas/PC/project/updateZone", {/*****/
+				$.axse("post", "/QST/postinformationtabQuduanController/updateZone", {/*****/
 						fID: this.sectionRowID,
 						fPostName: this.MsgPostName,
 						fPostNameState: this.MsgPostNameState,

@@ -78,4 +78,14 @@ public interface postinformationtabQuduanServiceI {
 	 */
 	int deleteById(String fID);
 	
+	/**
+	 * 修改区段
+	 * @param fID  区段id
+	 * @param fPostName 区段名称
+	 * @param fPostNameState 开始桩
+	 * @param fPostNameEnd	结束桩
+	 * @return
+	 */
+	JSONObject updateZone(String fID,String fPostName,String fPostNameState ,String fPostNameEnd);
+	
 }
