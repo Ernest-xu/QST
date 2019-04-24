@@ -63,11 +63,18 @@ public class informationTableController {
 		try {
 			json =informationTableService.CreateProjectgx(UserID,UserName, md5Str, fProjectQuanName, fProjectMessage, fStateTime, fEndTime, fProjectAddress, fPrjoectName);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return json;
 	}
 	
+	
+	
+	@PostMapping("/delectProjectgx")
+	public JSONObject delectProjectgx(String fProjectID){
+		JSONObject json = new JSONObject();
+		json =informationTableService.delectProjectgx(fProjectID);
+		return json;
+	}
 	
 }

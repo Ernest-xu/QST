@@ -33,4 +33,10 @@ public class basicDetailGongServiceimpl implements basicDetailGongServiceI {
 		return basicDetailGongDao.batchSaves(list);
 	}
 
+
+	@Override
+	public int deleteByfMasterId(String fMasterId) {
+		return basicDetailGongDao.deleteByfMasterId(fMasterId);
+	}
+
 }

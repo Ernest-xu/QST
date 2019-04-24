@@ -751,7 +751,7 @@ $(document).ready(function() {
 					cancelButtonText: '取消',
 					type: 'warning'
 				}).then(() => {
-					$.axse("get", "/baas/PC/project/delectProjectgx", {/*****/
+					$.axse("post", "/QST/informationTableController/delectProjectgx", {/*****/
 							fProjectID: this.projectId
 						},
 						function(res) {

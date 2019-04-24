@@ -51,4 +51,13 @@ public interface pkrenyuanServiceI {
 	 */
 	int getNumByfWriteId(String fWriteID);
 	
+	
+	/**
+	 * 根据项目id删除
+	 * @param fProjectId 项目id
+	 * @return 影响数据条数
+	 */
+	int deleteByfProjectId(String fProjectId);
+	
+	
 }

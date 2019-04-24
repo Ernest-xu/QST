@@ -27,4 +27,10 @@ public interface basicMainGongDaoI {
 	 */
 	int batchSaves(List<BasicMainGong> list);
 	
+	/**
+	 * 根据项目id删除
+	 * @param fMasterId 项目id
+	 * @return
+	 */
+	int deleteByfMasterId(String fMasterId);
 }

@@ -53,5 +53,10 @@ public interface postinformationtabQuduanDaoI {
 	 */
 	int deleteById(String fID);
 	
-	
+	/**
+	 * 根据项目id删除
+	 * @param fMsterId 项目id
+	 * @return 返回影响数据条数
+	 */
+	int deleteByfMsterId(String fMsterId);
 }

@@ -175,7 +175,6 @@ public class postinformationtabServiceimpl implements postinformationtabServiceI
 	
 	@Override
 	public JSONObject deleteZhuang(String fID, String fMsterID, String fProjectCode) {
-		// TODO Auto-generated method stub
 		JSONObject json = new JSONObject();
 		int a = postinformationtabDao.deleteById(fID);
 		if(a>0){
@@ -219,6 +218,12 @@ public class postinformationtabServiceimpl implements postinformationtabServiceI
 	@Override
 	public int deleteByfMasterId(String fMasterId) {
 		return postinformationtabDao.deleteByfMasterId(fMasterId);
+	}
+
+
+	@Override
+	public int deleteByfProjectCode(String fProjectCode) {
+		return postinformationtabDao.deleteByfProjectCode(fProjectCode);
 	}
 
 }

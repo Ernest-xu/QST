@@ -55,4 +55,13 @@ public class pkrenyuanServiceimpl implements pkrenyuanServiceI {
 		return pkrenyuanDao.getNumByfWriteId(fWriteID);
 	}
 
+
+	@Override
+	public int deleteByfProjectId(String fProjectId) {
+		return pkrenyuanDao.deleteByfProjectId(fProjectId);
+	}
+
+	
+	
+	
 }

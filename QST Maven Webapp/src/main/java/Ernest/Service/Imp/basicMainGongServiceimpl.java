@@ -78,4 +78,10 @@ public class basicMainGongServiceimpl implements basicMainGongServiceI {
 		return basicMainGongDao.batchSaves(list);
 	}
 
+
+	@Override
+	public int deleteByfMasterId(String fMasterId) {
+		return basicMainGongDao.deleteByfMasterId(fMasterId);
+	}
+
 }

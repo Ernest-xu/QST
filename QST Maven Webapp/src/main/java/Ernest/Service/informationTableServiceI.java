@@ -80,7 +80,11 @@ public interface informationTableServiceI {
 	JSONObject CreateProjectgx(String UserID,String UserName,String md5Str,String fProjectQuanName,String fProjectMessage,
 			String fStateTime,String fEndTime,String fProjectAddress,String fPrjoectName)throws ParseException;
 	
-	
-	
+	/**
+	 * 删除项目及项目下的信息
+	 * @param fProjectID
+	 * @return
+	 */
+	JSONObject delectProjectgx(String fProjectID);
 	
 }

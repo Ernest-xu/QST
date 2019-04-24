@@ -20,21 +20,21 @@ public interface pkrenyuanDaoI {
 		/**
 		 * 批量插入
 		 * @param list
-		 * @return
+		 * @return 影响数据条数
 		 */
 		int batchSaves(List<Pkrenyuan> list);
 		
 		/**
 		 * 新增
 		 * @param pkrenyuan
-		 * @return
+		 * @return 影响数据条数
 		 */
 		int save(Pkrenyuan pkrenyuan);
 		
 		/**
 		 * 删除
 		 * @param list
-		 * @return
+		 * @return 影响数据条数
 		 */
 		int deletByIds(List<String> list);
 		
@@ -42,7 +42,7 @@ public interface pkrenyuanDaoI {
 		 * 删除
 		 * @param ProjectId
 		 * @param fWriteID
-		 * @return
+		 * @return 影响数据条数
 		 */
 		int deleteByProjectAndUser(String ProjectId ,String fWriteID );
 		
@@ -52,5 +52,12 @@ public interface pkrenyuanDaoI {
 		 * @return 项目数量
 		 */
 		int getNumByfWriteId(String fWriteID);
+		
+		/**
+		 * 根据项目id删除
+		 * @param fProjectId 项目id
+		 * @return 影响数据条数
+		 */
+		int deleteByfProjectId(String fProjectId);
 		
 }

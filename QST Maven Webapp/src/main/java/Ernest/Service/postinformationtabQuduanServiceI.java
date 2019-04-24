@@ -88,4 +88,12 @@ public interface postinformationtabQuduanServiceI {
 	 */
 	JSONObject updateZone(String fID,String fPostName,String fPostNameState ,String fPostNameEnd);
 	
+	
+	/**
+	 * 根据项目id删除
+	 * @param fMsterId 项目id
+	 * @return 返回影响数据条数
+	 */
+	int deleteByfMsterId(String fMsterId);
+	
 }

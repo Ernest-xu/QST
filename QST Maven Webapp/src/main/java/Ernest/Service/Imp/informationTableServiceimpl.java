@@ -35,6 +35,8 @@ import Ernest.Service.pkrenyuanServiceI;
 import Ernest.Service.pmProjectBasciPostsetServiceI;
 import Ernest.Service.pmProjectBasicDetailServiceI;
 import Ernest.Service.pmProjectBasicMainServiceI;
+import Ernest.Service.postinformationtabQuduanServiceI;
+import Ernest.Service.postinformationtabServiceI;
 import Ernest.Service.postsetbXm1ServiceI;
 import Ernest.until.RecursiveHierarchy;
 import Ernest.until.TimeUntil;
@@ -62,6 +64,30 @@ public class informationTableServiceimpl implements informationTableServiceI {
 	private postsetbXm1ServiceI postsetbXm1Service;
 	@Autowired
 	private pkrenyuanServiceI pkrenyuanService;
+	@Autowired
+	private postinformationtabQuduanServiceI postinformationtabQuduanService;
+	@Autowired
+	private postinformationtabServiceI postinformationtabService;
+	@Override
+	public JSONObject delectProjectgx(String fProjectID) {
+		JSONObject json = new JSONObject();
+		int number=0;
+		number = informationTableDao.deleteById(fProjectID);
+		basicMainGongService.deleteByfMasterId(fProjectID);
+		basicDetailGongService.deleteByfMasterId(fProjectID);
+		postinformationtabQuduanService.deleteByfMsterId(fProjectID);
+		postinformationtabService.deleteByfProjectCode(fProjectID);
+		postsetbXm1Service.deleteByfProjectId(fProjectID);
+		pkrenyuanService.deleteByfProjectId(fProjectID);
+		if(number>0){
+			json.put("success", true);
+			json.put("message", "删除成功");
+		}else{
+			json.put("success", false);
+			json.put("message", "删除失败");
+		}
+		return json;
+	}
 	
 	@Override
 	public JSONObject findMainList(String writeId) {
@@ -380,5 +406,8 @@ public class informationTableServiceimpl implements informationTableServiceI {
 		}
 		return json;
 	}
+
+
+	
 
 }

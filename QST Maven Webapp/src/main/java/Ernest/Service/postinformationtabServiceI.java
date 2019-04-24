@@ -126,7 +126,12 @@ public interface postinformationtabServiceI {
 	int deleteByfMasterId(String fMasterId);
 	
 	
-	
+	/**
+	 * 根据项目id删除桩
+	 * @param fProjectCode 项目id
+	 * @return 返回影响数据条数
+	 */
+	int deleteByfProjectCode(String fProjectCode);
 	
 	
 }

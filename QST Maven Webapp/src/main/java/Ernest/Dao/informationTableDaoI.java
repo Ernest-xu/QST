@@ -45,4 +45,11 @@ public interface informationTableDaoI {
 	 * @return
 	 */
 	int save(InformationTable informationTable);
+	
+	/**
+	 * 根据id删除
+	 * @param fID
+	 * @return
+	 */
+	int deleteById(String fID);
 }

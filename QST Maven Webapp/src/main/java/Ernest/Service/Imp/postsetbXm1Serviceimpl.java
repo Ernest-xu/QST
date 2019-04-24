@@ -27,4 +27,10 @@ public class postsetbXm1Serviceimpl implements postsetbXm1ServiceI {
 		return postsetbXm1DaoI.batchSave(list);
 	}
 
+	
+	@Override
+	public int deleteByfProjectId(String fProjectId) {
+		return postsetbXm1DaoI.deleteByfProjectId(fProjectId);
+	}
+
 }

@@ -216,4 +216,11 @@ public class postinformationtabQuduanServiceimpl implements postinformationtabQu
 		return json;
 	}
 
+
+	
+	@Override
+	public int deleteByfMsterId(String fMsterId) {
+		return postinformationtabQuduanDao.deleteByfMsterId(fMsterId);
+	}
+
 }
