@@ -35,4 +35,8 @@
 		</foreach>
 	</insert>
 	
+	<delete id="deleteByfMasterId" parameterType="String">
+		DELETE FROM pm_project_basic_main_gong WHERE fMasterId=#{fMasterId}
+	</delete>
+	
 </mapper>

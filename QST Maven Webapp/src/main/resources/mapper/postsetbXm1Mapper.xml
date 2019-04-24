@@ -41,5 +41,8 @@
 		</foreach>
 	</insert>
 
-
+	<delete id="deleteByfProjectId" parameterType="String">
+		delete from pm_project_project_informationtable_postsetb_xm1 where fProjectId = #{fProjectId}
+	</delete>
+	
 </mapper>

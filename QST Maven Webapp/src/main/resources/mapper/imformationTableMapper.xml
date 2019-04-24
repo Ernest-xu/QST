@@ -331,6 +331,8 @@
 		</trim>
 	</insert>
 	
-	
+	<delete id="deleteById" parameterType="String">
+		DELETE FROM pm_project_project_informationtable where fID=#{fID}
+	</delete>
 	
 </mapper>

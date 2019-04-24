@@ -199,6 +199,14 @@
 	
 	</delete>
 	
+	<delete id="deleteByfProjectCode" parameterType="String">
+		DELETE FROM 
+			pm_project_project_postinformationtab 
+		WHERE 
+			fProjectCode=#{fProjectCode}
+	
+	</delete>
+	
 	<delete id="batchDelete" parameterType="java.util.List">
 		DELETE FROM
 			pm_project_project_postinformationtab 

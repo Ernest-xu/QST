@@ -116,5 +116,10 @@
 		select count(*) as num from pm_project_project_pkrenyuan1 where fWriteID=#{fWriteID}
 	</select>
 	
-	
+	<delete id="deleteByfProjectId" parameterType="String">
+		DELETE FROM  
+			pm_project_project_pkrenyuan1 
+		where 
+			fProjectId = #{fProjectId}
+	</delete>
 </mapper>

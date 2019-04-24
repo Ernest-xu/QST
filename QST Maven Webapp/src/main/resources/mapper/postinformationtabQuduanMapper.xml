@@ -155,6 +155,10 @@
 		DELETE FROM pm_project_project_postinformationtab_quduan1 WHERE fID=#{fID}
 	</delete>
 	
+	<delete id="deleteByfMsterId" parameterType="String">
+		DELETE FROM pm_project_project_postinformationtab_quduan1 WHERE fMsterID=#{fMsterId}
+	</delete>
+	
 	
 	
 </mapper>
