@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Ernest.Dao.pmProjectBasicDetailDaoI">
-	<resultMap type="Ernest.Dao.PmProjectBasicDetail" id="pmProjectBasicDetailMap">
+	<resultMap type="Ernest.Entity.PmProjectBasicDetail" id="pmProjectBasicDetailMap">
 		<id column="fid" jdbcType="VARCHAR" property="fid"/>
 		<result column="fno" jdbcType="VARCHAR" property="fno"/>
 		<result column="fbasicName" jdbcType="VARCHAR" property="fbasicName"/>

@@ -38,4 +38,11 @@ public interface informationTableDaoI {
 	 * @return
 	 */
 	int updateByMapId(InformationTable informationTable);
+	
+	/**
+	 * 新增项目
+	 * @param informationTable
+	 * @return
+	 */
+	int save(InformationTable informationTable);
 }

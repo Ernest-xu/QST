@@ -49,4 +49,10 @@ public class pkrenyuanServiceimpl implements pkrenyuanServiceI {
 		return pkrenyuanDao.deleteByProjectAndUser(ProjectId, fWriteID);
 	}
 
+
+	@Override
+	public int getNumByfWriteId(String fWriteID) {
+		return pkrenyuanDao.getNumByfWriteId(fWriteID);
+	}
+
 }

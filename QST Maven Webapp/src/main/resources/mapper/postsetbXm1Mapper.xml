@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Ernest.Dao.postsetbXm1DaoI">
+	<resultMap type="Ernest.Entity.PostsetbXm1" id="postsetbXm1Map">
+		<id column="fid" jdbcType="VARCHAR" property="fid"/>
+		<result column="fno" jdbcType="VARCHAR" property="fno"/>
+		<result column="fpostName" jdbcType="VARCHAR" property="fpostName"/>
+		<result column="fmasterId" jdbcType="VARCHAR" property="fmasterId"/>
+		<result column="fprojectName" jdbcType="VARCHAR" property="fprojectName"/>
+		<result column="fprojectId" jdbcType="VARCHAR" property="fprojectId"/>
+		<result column="fprojectCode" jdbcType="VARCHAR" property="fprojectCode"/>
+		<result column="fpostXlb" jdbcType="VARCHAR" property="fpostXlb"/>
+		<result column="fpostType" jdbcType="VARCHAR" property="fpostType"/>
+		
+		<result column="fmd5" jdbcType="VARCHAR" property="fmd5"/>
+		<result column="fpostCode" jdbcType="VARCHAR" property="fpostCode"/>
+		<result column="fpostId" jdbcType="VARCHAR" property="fpostId"/>
+		<result column="fpostWriteName" jdbcType="VARCHAR" property="fpostWriteName"/>
+		<result column="fpostWriteId" jdbcType="VARCHAR" property="fpostWriteId"/>
+		<result column="fpostState" jdbcType="VARCHAR" property="fpostState"/>
+		<result column="froleName" jdbcType="VARCHAR" property="froleName"/>
+		<result column="froleId" jdbcType="VARCHAR" property="froleId"/>
+	</resultMap>
+
+	<insert id="batchSave" parameterType="java.util.List">
+		insert into pm_project_project_informationtable_postsetb_xm1 
+		(fid,fno,fpostName,fmasterId,fprojectName,fprojectId,fprojectCode,fpostXlb,fpostType)values
+		<foreach collection="list" item="item" index="index" separator=",">
+			<!-- 保证与实体类的字段一致，以对象的关系定义（注：区分大小写） -->
+ 			(
+ 			#{item.fid,jdbcType=VARCHAR},
+ 			#{item.fno,jdbcType=VARCHAR},
+ 			#{item.fpostName,jdbcType=VARCHAR},
+ 			#{item.fmasterId,jdbcType=VARCHAR},
+ 			#{item.fprojectName,jdbcType=VARCHAR},
+			#{item.fprojectId,jdbcType=VARCHAR},
+			#{item.fprojectCode,jdbcType=VARCHAR},
+			#{item.fpostXlb,jdbcType=VARCHAR},
+			#{item.fpostType,jdbcType=VARCHAR}
+			) 
+		</foreach>
+	</insert>
+
+
+</mapper>

@@ -30,6 +30,6 @@ public interface basicMainGongServiceI {
 	 * @param list
 	 * @return
 	 */
-	int batchSave(List<BasicMainGong> list);
+	int batchSaves(List<BasicMainGong> list);
 	
 }

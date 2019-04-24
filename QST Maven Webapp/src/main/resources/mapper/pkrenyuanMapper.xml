@@ -112,4 +112,9 @@
 			fProjectID=#{0} and  fWriteID=#{1}
 	</delete>
 	
+	<select id="getNumByfWriteId" parameterType="String" resultType="Integer">
+		select count(*) as num from pm_project_project_pkrenyuan1 where fWriteID=#{fWriteID}
+	</select>
+	
+	
 </mapper>

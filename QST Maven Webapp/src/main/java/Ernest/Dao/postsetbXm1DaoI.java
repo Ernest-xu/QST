@@ -7,24 +7,21 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import Ernest.Entity.BasicMainGong;
+import Ernest.Entity.PostsetbXm1;
 
 /**
  * @author Ernest
  *
+ *
  */
 @Repository
-public interface basicMainGongDaoI {
-
-	
-	List<BasicMainGong> findByfMasterId(String fMasterID);
-	
+public interface postsetbXm1DaoI {
 	
 	/**
 	 * 批量插入
 	 * @param list
 	 * @return
 	 */
-	int batchSaves(List<BasicMainGong> list);
+	int batchSave(List<PostsetbXm1> list);
 	
 }

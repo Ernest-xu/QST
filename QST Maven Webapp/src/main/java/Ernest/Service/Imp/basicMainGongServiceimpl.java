@@ -74,8 +74,8 @@ public class basicMainGongServiceimpl implements basicMainGongServiceI {
 
 
 	@Override
-	public int batchSave(List<BasicMainGong> list) {
-		return basicMainGongDao.batchSave(list);
+	public int batchSaves(List<BasicMainGong> list) {
+		return basicMainGongDao.batchSaves(list);
 	}
 
 }

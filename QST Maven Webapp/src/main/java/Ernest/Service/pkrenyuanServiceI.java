@@ -44,4 +44,11 @@ public interface pkrenyuanServiceI {
 	 */
 	int deleteByProjectAndUser(String ProjectId ,String fWriteID );
 	
+	/**
+	 * 获取本人创建的项目数量
+	 * @param fWriteID 创建人id
+	 * @return 项目数量
+	 */
+	int getNumByfWriteId(String fWriteID);
+	
 }

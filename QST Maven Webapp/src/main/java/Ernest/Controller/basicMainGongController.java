@@ -28,7 +28,7 @@ public class basicMainGongController {
 	public JSONObject SelectProcess(String fProjectID){
 		JSONObject json = new JSONObject();
 		json = basicMainGongService.SelectProcess(fProjectID);
-		logger.info(json.toString());
+//		logger.info(json.toString());
 		return json;
 	}
 	

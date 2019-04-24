@@ -27,21 +27,10 @@
 			fMasterID=#{0}  and fBz=#{1}
 		 order by fNo
 	</select>
-	
 	<insert id="batchSaves" parameterType="java.util.List">
  		insert into pm_project_basic_detail_gong  (fID,fNo,fBasicType,fBasicName,fBasicCode,fBz,fMasterID,fGxid,fOnlyOne )values 
 		<foreach collection="list" item="item" index="index" separator=",">
- 			(
- 			#{item.fid,jdbcType=VARCHAR},
- 			#{item.fno,jdbcType=VARCHAR},
- 			#{item.fbasicType,jdbcType=VARCHAR},
- 			#{item.fbasicName,jdbcType=VARCHAR},
- 			#{item.fbasicCode,jdbcType=VARCHAR},
- 			#{item.fbz,jdbcType=VARCHAR},
-			#{item.fmasterId,jdbcType=VARCHAR},
-			#{item.fgxid,jdbcType=VARCHAR},
-			#{item.fonlyOne,jdbcType=VARCHAR}
-			) 
+ 			(#{item.fid,jdbcType=VARCHAR},#{item.fno,jdbcType=VARCHAR},#{item.fbasicType,jdbcType=VARCHAR},#{item.fbasicName,jdbcType=VARCHAR},#{item.fbasicCode,jdbcType=VARCHAR},#{item.fbz,jdbcType=VARCHAR},#{item.fmasterId,jdbcType=VARCHAR},#{item.fgxid,jdbcType=VARCHAR},#{item.fonlyOne,jdbcType=VARCHAR}) 
 		</foreach>
 	</insert>
 </mapper>

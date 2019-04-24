@@ -3,6 +3,8 @@
  */
 package Ernest.Controller;
 
+import java.text.ParseException;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -49,8 +51,23 @@ public class informationTableController {
 	@PostMapping("/updateProjectDetail")
 	public JSONObject updateProjectDetail(String fID,String fPrjoectName,String fProjectQuanName,String fProjectAddress,String fProjectMessage,String fStateTime,String fEndTime){
 		JSONObject json = new JSONObject();
-		informationTableService.updateProjectDetail(fID, fPrjoectName, fProjectQuanName, fProjectAddress, fProjectMessage, fStateTime, fEndTime);
+		json = informationTableService.updateProjectDetail(fID, fPrjoectName, fProjectQuanName, fProjectAddress, fProjectMessage, fStateTime, fEndTime);
 		return json;
 	}
+	
+	@PostMapping("/CreateProjectgx")
+	public JSONObject CreateProjectgx(String UserID,String UserName,String md5Str,String fProjectQuanName,String fProjectMessage,
+			String fStateTime,String fEndTime,String fProjectAddress,String fPrjoectName){
+		JSONObject json = new JSONObject();
+		logger.info("UserID:"+UserID+",UserName:"+UserName+",md5Str:"+md5Str+",fProjectQuanName:"+fProjectQuanName+",fProjectMessage:"+fProjectMessage+",fStateTime:"+fStateTime+",fEndTime:"+fEndTime+",fProjectAddress:"+fProjectAddress+",fPrjoectName:"+fPrjoectName);
+		try {
+			json =informationTableService.CreateProjectgx(UserID,UserName, md5Str, fProjectQuanName, fProjectMessage, fStateTime, fEndTime, fProjectAddress, fPrjoectName);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return json;
+	}
+	
 	
 }

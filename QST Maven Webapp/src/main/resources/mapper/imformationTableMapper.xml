@@ -171,4 +171,166 @@
 			fid=#{fid,jdbcType=VARCHAR}
 	</update>
 	
+	
+	<insert id="save" parameterType="Ernest.Entity.InformationTable">
+		insert into pm_project_project_informationtable 
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="fid != null">
+				fid,
+			</if>
+			<if test="gongxuChange != null">
+				gongxuChange,
+			</if>
+			<if test="fmd5 != null">
+				fmd5,
+			</if>
+			<if test="fprojectCode != null">
+				fprojectCode,
+			</if>
+			<if test="fwrtieName != null">
+				fwrtieName,
+			</if>
+			<if test="fwriteId != null">
+				fwriteId,
+			</if>
+			<if test="fno != null">
+				fno,
+			</if>
+			<if test="fprjoectName != null">
+				fprjoectName,
+			</if>
+			<if test="fprojectQuanName != null">
+				fprojectQuanName,
+			</if>
+			<if test="fprojectAddress != null">
+				fprojectAddress,
+			</if>
+			<if test="flongitude != null">
+				flongitude,
+			</if>
+			<if test="flatitude != null">
+				flatitude,
+			</if>
+			<if test="fprojectMessage != null">
+				fprojectMessage,
+			</if>
+			<if test="fproSuperAdminNa != null">
+				fproSuperAdminNa,
+			</if>
+			<if test="fproSuperAdminId != null">
+				fproSuperAdminId,
+			</if>
+			<if test="fwrtietime != null">
+				fwrtietime,
+			</if>
+			<if test="fstateTime != null">
+				fstateTime,
+			</if>
+			<if test="fendTime != null">
+				fendTime,
+			</if>
+			<if test="fsvgzs != null">
+				fsvgzs,
+			</if>
+			<if test="fsvgqd != null">
+				fsvgqd,
+			</if>
+			<if test="fqdgeshu != null">
+				fqdgeshu,
+			</if>
+			<if test="fzhuangshu != null">
+				fzhuangshu,
+			</if>
+			<if test="fpeolistName != null">
+				fpeolistName,
+			</if>
+			<if test="fpeolistId != null">
+				fpeolistId,
+			</if>
+			<if test="fpeolistMd5 != null">
+				fpeolistMd5,
+			</if>
+			
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="fid != null">
+				#{fid,jdbcType=VARCHAR},
+			</if>
+			<if test="gongxuChange != null">
+				#{gongxuChange,jdbcType=VARCHAR},
+			</if>
+			<if test="fmd5 != null">
+				#{fmd5,jdbcType=VARCHAR},
+			</if>
+			<if test="fprojectCode != null">
+				#{fprojectCode,jdbcType=VARCHAR},
+			</if>
+			<if test="fwrtieName != null">
+				#{fwrtieName,jdbcType=VARCHAR},
+			</if>
+			<if test="fwriteId != null">
+				#{fwriteId,jdbcType=VARCHAR},
+			</if>
+			<if test="fno != null">
+				#{fno,jdbcType=VARCHAR},
+			</if>
+			<if test="fprjoectName != null">
+				#{fprjoectName,jdbcType=VARCHAR},
+			</if>
+			<if test="fprojectQuanName != null">
+				#{fprojectQuanName,jdbcType=VARCHAR},
+			</if>
+			<if test="fprojectAddress != null">
+				#{fprojectAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="flongitude != null">
+				#{flongitude,jdbcType=VARCHAR},
+			</if>
+			<if test="flatitude != null">
+				#{flatitude,jdbcType=VARCHAR},
+			</if>
+			<if test="fprojectMessage != null">
+				#{fprojectMessage,jdbcType=VARCHAR},
+			</if>
+			<if test="fproSuperAdminNa != null">
+				#{fproSuperAdminNa,jdbcType=VARCHAR},
+			</if>
+			<if test="fproSuperAdminId != null">
+				#{fproSuperAdminId,jdbcType=VARCHAR},
+			</if>
+			<if test="fwrtietime != null">
+				#{fwrtietime,jdbcType=DATE},
+			</if>
+			<if test="fstateTime != null">
+				#{fstateTime,jdbcType=DATE},
+			</if>
+			<if test="fendTime != null">
+				#{fendTime,jdbcType=DATE},
+			</if>
+			<if test="fsvgzs != null">
+				#{fsvgzs,jdbcType=VARCHAR},
+			</if>
+			<if test="fsvgqd != null">
+				#{fsvgqd,jdbcType=VARCHAR},
+			</if>
+			<if test="fqdgeshu != null">
+				#{fqdgeshu,jdbcType=VARCHAR},
+			</if>
+			<if test="fzhuangshu != null">
+				#{fzhuangshu,jdbcType=VARCHAR},
+			</if>
+			<if test="fpeolistName != null">
+				#{fpeolistName,jdbcType=VARCHAR},
+			</if>
+			<if test="fpeolistId != null">
+				#{fpeolistId,jdbcType=VARCHAR},
+			</if>
+			<if test="fpeolistMd5 != null">
+				#{fpeolistMd5,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	
+	
 </mapper>

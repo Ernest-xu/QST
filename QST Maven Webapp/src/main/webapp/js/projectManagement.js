@@ -696,7 +696,7 @@ $(document).ready(function() {
 					});
 				}
 				 
-				$.axse("get", "/baas/PC/project/CreateProjectgx", {/*****/
+				$.axse("post", "/QST/informationTableController/CreateProjectgx", {/*****/
 						UserID: this.token.sID,
 						md5Str: this.token.sMd5Str,
 						UserName: this.token.sName,

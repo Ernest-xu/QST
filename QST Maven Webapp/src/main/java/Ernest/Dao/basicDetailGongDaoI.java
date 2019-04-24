@@ -31,6 +31,6 @@ public interface basicDetailGongDaoI {
 	 * @param list
 	 * @return
 	 */
-	int batchSaves (List<BasicDetailGong> list);
+	int batchSaves(List<BasicDetailGong> list);
 	
 }

@@ -20,9 +20,24 @@ import org.springframework.stereotype.Service;
 import com.alibaba.fastjson.JSONObject;
 
 import Ernest.Dao.informationTableDaoI;
+import Ernest.Entity.BasicDetailGong;
+import Ernest.Entity.BasicMainGong;
 import Ernest.Entity.InformationTable;
+import Ernest.Entity.Pkrenyuan;
+import Ernest.Entity.PmProjectBasciPostset;
+import Ernest.Entity.PmProjectBasicDetail;
+import Ernest.Entity.PmProjectBasicMain;
+import Ernest.Entity.PostsetbXm1;
+import Ernest.Service.basicDetailGongServiceI;
+import Ernest.Service.basicMainGongServiceI;
 import Ernest.Service.informationTableServiceI;
+import Ernest.Service.pkrenyuanServiceI;
+import Ernest.Service.pmProjectBasciPostsetServiceI;
+import Ernest.Service.pmProjectBasicDetailServiceI;
+import Ernest.Service.pmProjectBasicMainServiceI;
+import Ernest.Service.postsetbXm1ServiceI;
 import Ernest.until.RecursiveHierarchy;
+import Ernest.until.TimeUntil;
 
 /**
  * @author Ernest
@@ -33,6 +48,20 @@ public class informationTableServiceimpl implements informationTableServiceI {
 	private static final Logger logger = Logger.getLogger(informationTableServiceimpl.class);
 	@Autowired
 	private informationTableDaoI informationTableDao;
+	@Autowired
+	private pmProjectBasicMainServiceI pmProjectBasicMainService;
+	@Autowired
+	private pmProjectBasicDetailServiceI pmProjectBasicDetailService;
+	@Autowired
+	private pmProjectBasciPostsetServiceI pmProjectBasciPostsetService;
+	@Autowired
+	private basicMainGongServiceI basicMainGongService;
+	@Autowired
+	private basicDetailGongServiceI basicDetailGongService;
+	@Autowired
+	private postsetbXm1ServiceI postsetbXm1Service;
+	@Autowired
+	private pkrenyuanServiceI pkrenyuanService;
 	
 	@Override
 	public JSONObject findMainList(String writeId) {
@@ -200,14 +229,11 @@ public class informationTableServiceimpl implements informationTableServiceI {
 	}
 
 
-	/* (non-Javadoc)
-	 * @see Ernest.Service.informationTableServiceI#CreateProjectgx(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)
-	 */
+	
 	@Override
-	public JSONObject CreateProjectgx(String UserID, String md5Str, String fProjectQuanName, String fProjectMessage,
-			String fStateTime, String fEndTime, String fProjectAddress, String fPrjoectName) {
+	public JSONObject CreateProjectgx(String UserID,String UserName, String md5Str, String fProjectQuanName, String fProjectMessage,
+			String fStateTime, String fEndTime, String fProjectAddress, String fPrjoectName) throws ParseException {
 		JSONObject json = new JSONObject();
-		// TODO Auto-generated method stub
 		DateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		String fWrtietime = df.format(new Date());//创建时间
 		DateFormat df1 = new SimpleDateFormat("yyyy/MM/dd");
@@ -216,9 +242,142 @@ public class informationTableServiceimpl implements informationTableServiceI {
 		String s_fID = UUID.randomUUID().toString();
 		String s_fProjectCode = UUID.randomUUID().toString();//获取项目编码
 		
-		
-		
-		
+		InformationTable informationTable = new InformationTable();
+		informationTable.setFid(s_fID);//项目ID
+		informationTable.setFprojectCode(s_fProjectCode); //项目编码
+		informationTable.setFprjoectName(s_fPrjoectName); //项目简称
+		informationTable.setFwriteId(UserID); //人员ID
+		informationTable.setFproSuperAdminId(UserID); //管理员ID
+		informationTable.setFpeolistId(UserID); //授权人ID
+		informationTable.setFwrtieName(UserName);//人员姓名
+		informationTable.setFproSuperAdminNa(UserName);//管理员姓名
+		informationTable.setFpeolistName(UserName);//授权人姓名
+		informationTable.setFmd5( md5Str);//项目Md5
+		informationTable.setFpeolistMd5(md5Str);//授权人md5
+		informationTable.setGongxuChange("已插入工序");//工序鉴别
+		informationTable.setFprojectQuanName( fProjectQuanName);//
+		informationTable.setFprojectAddress( fProjectAddress);//
+		informationTable.setFprojectMessage(fProjectMessage);//
+		if(!"".equals(fWrtietime1)){
+			informationTable.setFwrtietime(TimeUntil.DateStringtoDate(fWrtietime1));
+		}
+		if(!"".equals(fStateTime)){
+			informationTable.setFstateTime(TimeUntil.DateStringtoDate(fStateTime));//
+		}
+		if(!"".equals(fEndTime)){
+			informationTable.setFendTime( TimeUntil.DateStringtoDate(fEndTime));//
+		}
+		int savenumber = 0;
+		savenumber = informationTableDao.save(informationTable);
+		//插入项目基础主表信息
+		if(savenumber>0){
+//		logger.info("savenumber:"+savenumber+",fID:"+s_fID);
+//		if(false){
+			List<PmProjectBasicMain> PPBMlist = new ArrayList<PmProjectBasicMain>();
+			List<BasicMainGong> BMGlist = new ArrayList<BasicMainGong>();
+			List<BasicDetailGong> BDGlist = new ArrayList<BasicDetailGong>();
+			List<PostsetbXm1> PX1list = new ArrayList<PostsetbXm1>();
+			PPBMlist = pmProjectBasicMainService.findAll();
+			for(PmProjectBasicMain pmProjectBasicMain:PPBMlist){
+				Map<String, Object> insertMain= new HashMap<String, Object>();
+				String new_uuid = UUID.randomUUID().toString();//获取UUID并转化为String对象s
+//				logger.info("pm_project_basic_main_gong:" + new_uuid);
+				String rt_fID = pmProjectBasicMain.getFid();//主键
+				String rt_fBasicType = pmProjectBasicMain.getFbasicType();//类别
+				String rt_fBasicCode = pmProjectBasicMain.getFbasicCode();//类别编码
+				String rt_fBz = pmProjectBasicMain.getFbz();//备注二次鉴别
+				BasicMainGong basicMainGong = new BasicMainGong();
+				basicMainGong.setFid(new_uuid);
+				basicMainGong.setFmasterId(s_fID);			
+				basicMainGong.setFprojectName(s_fPrjoectName);
+				basicMainGong.setFprojectCode(s_fProjectCode);
+				basicMainGong.setFgxfId(rt_fID);
+				basicMainGong.setFbz(rt_fBz);
+				basicMainGong.setFbasicType(rt_fBasicType);
+				basicMainGong.setFbasicCode(rt_fBasicCode);
+//				logger.info(basicMainGong.toString());
+				BMGlist.add(basicMainGong);
+			}
+			if(!BMGlist.isEmpty()){
+				int BMGnum = basicMainGongService.batchSaves(BMGlist);
+//				logger.info("BMGnum:"+BMGnum);
+			}
+			//插入项目的基础从表信息
+			List<PmProjectBasicDetail> PPBDlist = new ArrayList<PmProjectBasicDetail>();
+			 PPBDlist = pmProjectBasicDetailService.findAll();
+			for(PmProjectBasicDetail pmProjectBasicDetail:PPBDlist){
+				String new_uuid = UUID.randomUUID().toString(); //获取UUID并转化为String对象  
+				String rt_fID = pmProjectBasicDetail.getFid();//主键
+				String rt_fNo = pmProjectBasicDetail.getFno();//编号
+				String rt_fBasicType = pmProjectBasicDetail.getFbasicType();//类别 
+				String rt_fBasicName = pmProjectBasicDetail.getFbasicName();//类别名称
+				String rt_fBasicCode = pmProjectBasicDetail.getFbasicCode();//类别编码
+				String rt_fBz = pmProjectBasicDetail.getFbz();//备注
+				String rt_fMasterID = pmProjectBasicDetail.getFmasterId();//类别外键
+				String rt_fOnlyOne = pmProjectBasicDetail.getFonlyOne();//唯一工序
+				BasicDetailGong basicDetailGong = new BasicDetailGong();
+				basicDetailGong.setFid(new_uuid);;
+				basicDetailGong.setFno(rt_fNo);
+				basicDetailGong.setFbasicType(rt_fBasicType);
+				basicDetailGong.setFbasicName(rt_fBasicName);
+				basicDetailGong.setFbasicCode(rt_fBasicCode);
+				basicDetailGong.setFbz(rt_fBz);
+				basicDetailGong.setFmasterId(s_fID);
+				basicDetailGong.setFgxid(rt_fMasterID);
+				basicDetailGong.setFonlyOne(rt_fOnlyOne);
+//				logger.info(basicDetailGong.toString());
+				BDGlist.add(basicDetailGong);
+			}
+			if(!BDGlist.isEmpty()){
+				int BDGnum = basicDetailGongService.batchSaves(BDGlist);
+//				logger.info("BDGnum:"+BDGnum);
+			}
+			//插入项目相关的岗位
+			List<PmProjectBasciPostset> PPBPlist = new ArrayList<PmProjectBasciPostset>();
+			PPBPlist = pmProjectBasciPostsetService.findAll();
+			for(PmProjectBasciPostset pmProjectBasciPostset: PPBPlist){
+				String new_uuid = UUID.randomUUID().toString(); //获取UUID并转化为String对象  
+				String rt_fNo = pmProjectBasciPostset.getFno();//编号
+				String rt_fPostName = pmProjectBasciPostset.getFpostName();;//类别 
+				String rt_fPostXlb = pmProjectBasciPostset.getFpostXlb();//类别 
+				String rt_fPostType = pmProjectBasciPostset.getFpostType();//分包类别
+				PostsetbXm1 postsetbXm1 = new  PostsetbXm1();
+				postsetbXm1.setFid(new_uuid);
+				postsetbXm1.setFno(rt_fNo);
+				postsetbXm1.setFpostName(rt_fPostName);
+				postsetbXm1.setFmasterId(s_fID);
+				postsetbXm1.setFprojectName(s_fPrjoectName);
+				postsetbXm1.setFprojectId(s_fID);
+				postsetbXm1.setFprojectCode(s_fProjectCode);
+				postsetbXm1.setFpostXlb(rt_fPostXlb);
+				postsetbXm1.setFpostType(rt_fPostType);
+				PX1list.add(postsetbXm1);
+			}
+			if(!PX1list.isEmpty()){
+				postsetbXm1Service.batchSave(PX1list);
+			}
+			int fNo=0;
+			fNo = pkrenyuanService.getNumByfWriteId(UserID);
+			Pkrenyuan pkrenyuan = new Pkrenyuan();
+			Map<String, Object> insertPx= new HashMap<String, Object>();
+			String pk = UUID.randomUUID().toString();
+			pkrenyuan.setFid(pk);
+			pkrenyuan.setFno(fNo);
+			pkrenyuan.setFmd5(md5Str);
+			pkrenyuan.setFprojectName(s_fPrjoectName);
+			pkrenyuan.setFprojectId(s_fID);
+			pkrenyuan.setFprojectCode(s_fProjectCode);
+			pkrenyuan.setFwriteName(UserName);
+			pkrenyuan.setFwriteId(UserID);
+			pkrenyuan.setFwriteMd5(md5Str);
+			pkrenyuan.setFwriteTime(TimeUntil.StringToTimestamp(fWrtietime));
+			pkrenyuanService.save(pkrenyuan);
+			json.put("success",true);
+			json.put("message", "成功");
+		}else{
+			json.put("success",false);
+			json.put("message", "失败");
+		}
 		return json;
 	}
 

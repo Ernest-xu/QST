@@ -28,21 +28,10 @@
 			fMasterID=#{fMasterID}
 		order by fBz
 	</select>
-	
-	<insert id="batchSave" parameterType="java.util.List">
-		insert into pm_project_basic_main_gong  (fID,fMasterID,fProjectName,fProjectCode,fGxfID,fBz,fBasicType,fBasicCode )values 
+	<insert id="batchSaves" parameterType="java.util.List">
+		insert into pm_project_basic_main_gong  (fID,fMasterID,fProjectName,fProjectCode,fGxfID,fBz,fBasicType,fBasicCode ) values
 		<foreach collection="list" item="item" index="index" separator=",">
-			<!-- 保证与实体类的字段一致，以对象的关系定义（注：区分大小写） -->
- 			(
- 			#{item.fid,jdbcType=VARCHAR},
- 			#{item.fMasterId,jdbcType=VARCHAR},
- 			#{item.fProjectName,jdbcType=VARCHAR},
- 			#{item.fProjectCode,jdbcType=VARCHAR},
- 			#{item.fGxfID,jdbcType=VARCHAR},
-			#{item.fBz,jdbcType=VARCHAR},
-			#{item.fBasicType,jdbcType=VARCHAR},
-			#{item.fBasicCode,jdbcType=VARCHAR}
-			) 
+ 			(#{item.fid,jdbcType=VARCHAR},#{item.fmasterId,jdbcType=VARCHAR},#{item.fprojectName,jdbcType=VARCHAR},#{item.fprojectCode,jdbcType=VARCHAR},#{item.fgxfId,jdbcType=VARCHAR},#{item.fbz,jdbcType=VARCHAR},#{item.fbasicType,jdbcType=VARCHAR},#{item.fbasicCode,jdbcType=VARCHAR}) 
 		</foreach>
 	</insert>
 	

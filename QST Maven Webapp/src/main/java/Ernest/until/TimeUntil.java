@@ -5,6 +5,7 @@ package Ernest.until;
 
 import java.sql.Timestamp;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -96,4 +97,52 @@ public class TimeUntil {
         }  
 		return TimeStr;
 	}
+	
+	/**
+	 * DateTime to String
+	 * @param DateTime
+	 * @return
+	 */
+	public static String DatetoString(Date DateTime){
+		DateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		return df.format(DateTime);
+	}
+	
+	/**
+	 * String to Date
+	 * @param DateTime
+	 * @return
+	 */
+	public static Date DateTimeStringtoDate(String DateTime){
+		String Time = DateTime.replaceAll("-", "/");
+		DateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date dt = null;
+		try {
+			dt=df.parse(Time);
+			return dt;
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return dt;
+	}
+	/**
+	 * DateString to Date
+	 * @param Date
+	 * @return
+	 */
+	public static Date DateStringtoDate(String Date){
+		String Time = Date.replaceAll("-", "/")+" 00:00:00";
+		DateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date dt = null;
+		try {
+			dt=df.parse(Time);
+			return dt;
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return dt;
+	}
+	
+	
+	
 }
