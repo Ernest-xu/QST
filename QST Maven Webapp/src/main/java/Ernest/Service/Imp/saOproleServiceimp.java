@@ -22,6 +22,7 @@ import Ernest.Entity.saOprole;
 import Ernest.Service.saFunctionServiceI;
 import Ernest.Service.saOppersonOproleServiceI;
 import Ernest.Service.saOproleServiceI;
+import Ernest.until.RecursiveHierarchy;
 import Ernest.until.TimeUntil;
 
 /**
@@ -192,6 +193,49 @@ public class saOproleServiceimp implements saOproleServiceI {
 		saOppersonOproleService.deletByUserId(id);
 		json.put("success", true);
 		json.put("message", "成功");
+		return json;
+	}
+
+
+	@Override
+	public JSONObject SelectRoleTier(String md5Str) {
+		JSONObject json = new JSONObject();
+		List<saOprole> SOlist = saOproleDao.findAllBySaOproleSmd5str(md5Str);
+		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
+		List<Map<String,Object>> list2 = new ArrayList<Map<String,Object>>();
+		Map<String, Object> parentMap = new HashMap<String, Object>();
+		String newID = UUID.randomUUID().toString();
+		parentMap.put("sID", newID);
+		parentMap.put("sName", "角色授权");
+		parentMap.put("sParentID",null);
+		parentMap.put("sMd5Str", md5Str);
+		list2.add(parentMap);
+		for(saOprole saOprole:SOlist){
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("sID", saOprole.getSid());
+			map.put("sName", saOprole.getSname());
+			map.put("sMd5Str", saOprole.getSmd5str());
+			map.put("sCreateTime", saOprole.getScreateTime());
+			map.put("sParentID", newID);
+			list2.add(map);
+		}
+		Map<String,String > fieldmap = new HashMap<String, String>();
+		fieldmap.put("id", "sID");
+		fieldmap.put("label", "sName");
+		fieldmap.put("sParentID","sParentID");
+		fieldmap.put("sMd5Str", "sMd5Str");
+		fieldmap.put("sCreateTime", "sCreateTime");
+		Map<String,String > Parentmap = new HashMap<String, String>();
+		Parentmap.put("sParentID", "id");
+		list = RecursiveHierarchy.getChildren(list2, fieldmap, Parentmap, 1, 2, null);
+		if(list.isEmpty()){
+			json.put("success", false);
+			json.put("message", "查找失败");
+		}else{
+			json.put("list", list);
+			json.put("success", true);
+			json.put("message", "查找成功");
+		}
 		return json;
 	}
 

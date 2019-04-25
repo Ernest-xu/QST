@@ -74,5 +74,11 @@ public class saOproleController {
 		return json;
 	}
 	
-	
+	@GetMapping("SelectRoleTier")
+	public JSONObject SelectRoleTier(String md5Str){
+		JSONObject json = new JSONObject();
+		json = saOproleservice.SelectRoleTier(md5Str);
+		return json;
+		 
+	}
 }

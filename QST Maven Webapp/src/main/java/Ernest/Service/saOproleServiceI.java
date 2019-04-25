@@ -33,4 +33,6 @@ public interface saOproleServiceI {
 	
 	JSONObject DeleteRole(String id);
 	
+	JSONObject SelectRoleTier(String md5Str);
+	
 }

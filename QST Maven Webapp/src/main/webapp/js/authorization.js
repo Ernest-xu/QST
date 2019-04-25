@@ -17,11 +17,12 @@ $(document).ready(function() {
 			//获取左侧列表
 			leftNav() {
 				var _this = this
-				$.axse("get", "/baas/PC/function/SelectRoleTier", {
+				$.axse("get", "/QST/saOproleController/SelectRoleTier", {
 						md5Str: this.token.sMd5Str
 					},
 					function(res) {
 						_this.nav = res.list;
+						console.info(res.list);
 						let sID = res.list[0].children[0].id;
 						let sName = res.list[0].children[0].label;
 						_this.organfindArry = sName;
