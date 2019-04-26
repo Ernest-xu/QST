@@ -34,7 +34,7 @@ public interface saFunctionServiceI {
 	 * @param id
 	 * @param sMainOrgID
 	 */
-	JSONObject SelectFunctionTier(String id,String sMainOrgID);
+	JSONObject SelectFunctionTier(String sID,String sMainOrgID);
 
 	
 	/**
@@ -43,5 +43,14 @@ public interface saFunctionServiceI {
 	 * @return
 	 */
 	List<SaFunction> findByroleandcompany(Map<String,Object> map);
+	
+	/**
+	 * 根据sID修改状态
+	 * @param sID 主键
+	 * @param isShow 状态
+	 * @return
+	 */
+	JSONObject UpdateFunction(String sID,int isShow);
+	
 	
 }

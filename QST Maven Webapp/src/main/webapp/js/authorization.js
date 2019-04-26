@@ -43,7 +43,7 @@ $(document).ready(function() {
 			//获取点击获取角色权限
 			jsAuthor(key) {
 				var _this = this
-				$.axse("get", "/baas/PC/function/SelectFunctionTier", {
+				$.axse("get", "/QST/saFunctionController/SelectFunctionTier", {
 						sID: key,
 						sMainOrgID: this.token.sMainOrgID
 					},
@@ -87,7 +87,7 @@ $(document).ready(function() {
 					return;
 				}
 				var _this = this
-				$.axse("get", "/baas/PC/function/UpdateFunction", {
+				$.axse("post", "/QST/saFunctionController/UpdateFunction", {
 						sID: sID,
 						isShow: $event
 					},

@@ -32,8 +32,17 @@ public class saFunctionController {
 	}
 
 	@GetMapping("/SelectFunctionTier")
-	public JSONObject SelectFunctionTier(String id,String sMainOrgID){
+	public JSONObject SelectFunctionTier(String sID,String sMainOrgID){
 		JSONObject json = new JSONObject();
+		json = saFunctionService.SelectFunctionTier(sID, sMainOrgID);
+		return json ;
+	}
+	
+	
+	@PostMapping("/UpdateFunction")
+	public JSONObject UpdateFunction(String sID,int isShow){
+		JSONObject json = new JSONObject();
+		json = saFunctionService.UpdateFunction(sID, isShow);
 		return json ;
 	}
 }

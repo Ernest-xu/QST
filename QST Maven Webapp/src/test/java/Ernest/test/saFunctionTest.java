@@ -33,8 +33,9 @@ public class saFunctionTest extends TestBase {
 		saFunctionDao = super.getContext().getBean("saFunctionDaoI",saFunctionDaoI.class);
 	}
 	
-//	@Test
+	@Test
 	public void allfunction(){
+		
 	}
 //	@Test
 	public void AllfunctionDao(){
