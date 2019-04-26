@@ -13,8 +13,25 @@
 		<result column="stype" jdbcType="VARCHAR" property="stype"/>
 	</resultMap>
 	
-	<select id="">
-	
+	<select id="findByroleandcompany" parameterType="java.util.Map"    resultMap="saFunctionMap">
+		select 
+			f.sID as sid,
+			f.sName as sname,
+			f.sUrl as surl,
+			f.isShow as isShow,
+			f.sIcon as sicon,
+			f.companyId as companyId,
+			f.roleId as roleId,
+			f.sOrder as sorder,
+			f.sType  as stype 
+		from 
+			sa_function f 
+		where 
+			f.roleId=#{roleId} 
+		and 
+			f.companyId=#{companyId} 
+		order by 
+			f.sType,f.sOrder
 	</select>
 	
 	<insert id="save" parameterType="Ernest.Entity.SaFunction">
@@ -131,5 +148,7 @@
 	#{item}
 	</foreach>
 	</delete>
+	
+	
 	
 </mapper>

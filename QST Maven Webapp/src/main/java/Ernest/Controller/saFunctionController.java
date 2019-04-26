@@ -5,6 +5,7 @@ package Ernest.Controller;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,4 +31,9 @@ public class saFunctionController {
 		return json;
 	}
 
+	@GetMapping("/SelectFunctionTier")
+	public JSONObject SelectFunctionTier(String id,String sMainOrgID){
+		JSONObject json = new JSONObject();
+		return json ;
+	}
 }

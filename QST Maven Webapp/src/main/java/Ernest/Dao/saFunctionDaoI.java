@@ -4,6 +4,7 @@
 package Ernest.Dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
@@ -45,4 +46,12 @@ public interface saFunctionDaoI {
 	 * @return
 	 */
 	int deleteByRoleIds(List<String> list);
+	
+	/**
+	 * 根据roleId和company获取
+	 * @param map roleId and companyId
+	 * @return
+	 */
+	List<SaFunction> findByroleandcompany(Map<String,Object> map);
+	
 }

@@ -6,6 +6,7 @@ package Ernest.Service.Imp;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.apache.log4j.Logger;
@@ -45,7 +46,6 @@ public class saFunctionServiceimpl implements saFunctionServiceI {
 		} catch (DocumentException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		int aa=0;
@@ -80,9 +80,7 @@ public class saFunctionServiceimpl implements saFunctionServiceI {
 		return json;
 	}
 
-	/* (non-Javadoc)
-	 * @see Ernest.Service.saFunctionServiceI#deleteFunctionByRole(java.lang.String)
-	 */
+	
 	@Override
 	public JSONObject deleteFunctionByRole(String id) {
 		JSONObject json = new JSONObject();
@@ -91,6 +89,23 @@ public class saFunctionServiceimpl implements saFunctionServiceI {
 		json.put("success", true);
 		json.put("message", "成功");
 		return json;
+	}
+
+	@Override
+	public JSONObject SelectFunctionTier(String id, String sMainOrgID) {
+		JSONObject json = new JSONObject();
+		
+		return json;
+	}
+
+
+
+	@Override
+	public List<SaFunction> findByroleandcompany(Map<String, Object> map) {
+		JSONObject json = new JSONObject();
+		// TODO Auto-generated method stub
+		
+		return null;
 	}
 	
 	

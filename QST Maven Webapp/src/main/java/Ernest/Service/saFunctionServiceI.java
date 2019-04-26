@@ -3,7 +3,12 @@
  */
 package Ernest.Service;
 
+import java.util.List;
+import java.util.Map;
+
 import com.alibaba.fastjson.JSONObject;
+
+import Ernest.Entity.SaFunction;
 
 /**
  * @author Ernest
@@ -24,6 +29,19 @@ public interface saFunctionServiceI {
 	 */
 	JSONObject deleteFunctionByRole(String id);
 	
-	
+	/**
+	 * 
+	 * @param id
+	 * @param sMainOrgID
+	 */
+	JSONObject SelectFunctionTier(String id,String sMainOrgID);
 
+	
+	/**
+	 * 根据roleId和company获取
+	 * @param map roleId and companyId
+	 * @return
+	 */
+	List<SaFunction> findByroleandcompany(Map<String,Object> map);
+	
 }
