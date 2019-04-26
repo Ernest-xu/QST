@@ -5,7 +5,6 @@ package Ernest.test;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,8 +14,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.alibaba.fastjson.JSONObject;
+
 import Ernest.Dao.informationTableDaoI;
 import Ernest.Entity.InformationTable;
+import Ernest.Service.Imp.informationTableServiceimpl;
 
 /**
  * @author Ernest
@@ -26,10 +28,22 @@ public class informationTest extends TestBase {
 	private static final Logger logger = Logger.getLogger(informationTest.class);
 	@Autowired
 	private informationTableDaoI informationTableDao;
+	@Autowired
+	private informationTableServiceimpl informationTableService;
 	
 //	@Before
 	public void init(){
 		informationTableDao = super.getContext().getBean("informationTableDaoI",informationTableDaoI.class);
+	}
+	@Before
+	public void init2(){
+		informationTableService = super.getContext().getBean("informationTableServiceimpl",informationTableServiceimpl.class);
+	}
+	
+	@Test
+	public void insert() throws ParseException{
+		JSONObject json = informationTableService.CreateProjectgx("", "", "", "", "", "2019-04-04", "2019-04-04", "2019-04-04", "");
+		logger.info(json.toJSONString());
 	}
 	
 //	@Test
