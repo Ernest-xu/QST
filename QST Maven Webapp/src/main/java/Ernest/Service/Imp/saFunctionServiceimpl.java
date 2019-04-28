@@ -88,7 +88,7 @@ public class saFunctionServiceimpl implements saFunctionServiceI {
 	public JSONObject deleteFunctionByRole(String id) {
 		JSONObject json = new JSONObject();
 		int a = saFunctionDao.deleteByRoleId(id);
-		logger.info(a);
+//		logger.info(a);
 		json.put("success", true);
 		json.put("message", "成功");
 		return json;
@@ -110,15 +110,15 @@ public class saFunctionServiceimpl implements saFunctionServiceI {
 		Map<String,Object> paramsmap = new HashMap<String, Object>();
 		paramsmap.put("roleId", sID);
 		paramsmap.put("companyId", sMainOrgID);
-		logger.info(paramsmap.toString());
+//		logger.info(paramsmap.toString());
 		List<SaFunction> SFlist = findByroleandcompany(paramsmap);
 		for(SaFunction saFunction:SFlist){
-			logger.info(saFunction.toString());
+//			logger.info(saFunction.toString());
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("sID", saFunction.getSid());
 			map.put("sName", saFunction.getSname());
 			map.put("sUrl", saFunction.getSurl());
-			map.put("isShow",saFunction.getIsShow());
+			map.put("isShow",saFunction.getIsShow()+"");
 			map.put("sIcon", saFunction.getSicon());
 			map.put("companyId", saFunction.getCompanyId());
 			map.put("roleId", saFunction.getRoleId());
