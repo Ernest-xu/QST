@@ -22,7 +22,7 @@ public class saOppersonTest extends TestBase {
 	@Autowired
 	private saOppersonDaoI saOpersonDao;
 	
-	@Before
+//	@Before
 	public void init(){
 		saOpersonDao = super.getContext().getBean("saOppersonDaoI",saOppersonDaoI.class);
 	}

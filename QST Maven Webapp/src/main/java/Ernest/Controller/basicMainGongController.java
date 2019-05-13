@@ -14,6 +14,7 @@ import com.alibaba.fastjson.JSONObject;
 import Ernest.Service.basicMainGongServiceI;
 
 /**
+ * 基础（主）
  * @author Ernest
  *
  */

@@ -35,12 +35,12 @@ public class informationTest extends TestBase {
 	public void init(){
 		informationTableDao = super.getContext().getBean("informationTableDaoI",informationTableDaoI.class);
 	}
-	@Before
+//	@Before
 	public void init2(){
 		informationTableService = super.getContext().getBean("informationTableServiceimpl",informationTableServiceimpl.class);
 	}
 	
-	@Test
+//	@Test
 	public void insert() throws ParseException{
 		JSONObject json = informationTableService.CreateProjectgx("", "", "", "", "", "2019-04-04", "2019-04-04", "2019-04-04", "");
 		logger.info(json.toJSONString());

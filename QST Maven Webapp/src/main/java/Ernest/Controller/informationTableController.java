@@ -17,6 +17,7 @@ import com.alibaba.fastjson.JSONObject;
 import Ernest.Service.informationTableServiceI;
 
 /**
+ * 项目
  * @author Ernest
  *
  */
@@ -68,8 +69,7 @@ public class informationTableController {
 		return json;
 	}
 	
-	
-	
+
 	@PostMapping("/delectProjectgx")
 	public JSONObject delectProjectgx(String fProjectID){
 		JSONObject json = new JSONObject();

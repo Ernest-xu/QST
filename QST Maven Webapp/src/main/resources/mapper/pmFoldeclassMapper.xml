@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Ernest.Dao.pmFolderclassDaoI">
+	<resultMap type="Ernest.Entity.PmFolderclass" id="pmFolderclassMap">
+		<id column="sid" jdbcType="VARCHAR" property="sid"/>
+		<result column="sfname" jdbcType="VARCHAR" property="sfname"/>
+		<result column="sparentId" jdbcType="VARCHAR" property="sparentId"/>
+		<result column="shootPoint" jdbcType="VARCHAR" property="shootPoint"/>
+		<result column="namingRule" jdbcType="VARCHAR" property="namingRule"/>
+		<result column="photoName" jdbcType="VARCHAR" property="photoName"/>
+		<result column="spersonId" jdbcType="VARCHAR" property="spersonId"/>
+		<result column="photoNumber" jdbcType="INTEGER" property="photoNumber"/>
+		<result column="indexs" jdbcType="INTEGER" property="indexs"/>
+		<result column="status" jdbcType="INTEGER" property="status"/>
+	</resultMap>
+	<resultMap id="studentIdResult" type="java.util.HashMap" >
+    <result column="number" property="number" jdbcType="VARCHAR" />
+    <result column="sid" property="sid" jdbcType="VARCHAR" />
+    <result column="sparentid" property="sparentid" jdbcType="VARCHAR" />
+</resultMap>
+
+	<sql id="allsql">
+		sid,sfname,sparentId,shootPoint,namingRule,photoName,spersonId,photoNumber,indexs,status
+	</sql>
+	
+	<select id="findAll" resultMap="pmFolderclassMap">
+		select  
+			<include refid="allsql"/>
+		from 
+			pm_folderclass  
+		order by 
+			indexs
+	</select>
+	
+	<select id="findByProjectId" parameterType="String" resultMap="studentIdResult">
+		SELECT COUNT(img.id) as number,class.sID as sid ,class.sParentID as sparentid FROM (SELECT im.id,im.orgId FROM pm_folder_img im WHERE 	projectId = #{ProjectId} and delectStatus = 1) AS img RIGHT JOIN pm_folderclass AS class on(img.orgId = class.sID)  GROUP BY class.sID
+	</select>
+	
+	
+	
+</mapper>

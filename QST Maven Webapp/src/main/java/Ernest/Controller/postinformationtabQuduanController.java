@@ -14,6 +14,7 @@ import com.alibaba.fastjson.JSONObject;
 import Ernest.Service.postinformationtabQuduanServiceI;
 
 /**
+ * 区段
  * @author Ernest
  *
  */
